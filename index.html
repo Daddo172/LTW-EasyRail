@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyRail</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <header class="header">
+            <a href="#" class="logo">Logo</a>
+            <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#">Prenotazione</a>
+                <a href="#">Ricerca</a>
+                <a href="#">Profilo</a>
+                <a href="#">Registrati</a>
+            </nav>
+            
+    </header>
+    <br><br><br><br><br>
+    <div class="news" Style="float:center;">
+		<h3 STYLE="text-align: center;">NEWS/PROMOZIONI(SCEGLIAMO)</h3>
+		<marquee behavior="scroll" id="marq"  scrollamount=4 direction="up" height="250px" onmouseover="nestop()" onmouseout="nestrt()">
+			<div style="text-align:center;">
+			<p><b>Nuove misure di sicurezza introdotte sui treni italiani</b></p>
+			</br>
+			<p>In risposta alle crescenti preoccupazioni per la sicurezza dei passeggeri sui treni italiani, sono state annunciate oggi una serie di nuove misure volte a migliorare la protezione e il comfort dei viaggiatori.</p></br>
+			<p>Il Ministro dei Trasporti ha dichiarato che il governo sta intensificando gli sforzi per garantire che i viaggi in treno rimangano sicuri ed efficienti per tutti. Tra le misure chiave annunciate,vi è l'installazione di telecamere di sorveglianza aggiuntive sui convogli principali, al fine di monitorare costantemente le attività a bordo e garantire un ambiente sicuro per i passeggeri.</p></br>
+			<p>Inoltre, è previsto un rafforzamento delle procedure di controllo e vigilanza all'interno delle stazioni ferroviarie più trafficate del paese, con l'impiego di personale di sicurezza supplementare per garantire un maggior presidio delle aree sensibili.</p></br>
+			<p>Le nuove misure si inseriscono in un quadro più ampio di investimenti nel settore dei trasporti, mirati a potenziare l'infrastruttura ferroviaria e a migliorare l'esperienza complessiva dei viaggiatori. Si prevede che queste iniziative contribuiranno significativamente a rassicurare i passeggeri e a promuovere un uso sempre più diffuso dei trasporti pubblici in Italia.<p></br>
+			<p>Tuttavia, i funzionari avvertono che la sicurezza sui treni rimane una responsabilità condivisa e incoraggiano i passeggeri a rimanere vigili e a segnalare qualsiasi comportamento sospetto o situazione di emergenza alle autorità competenti.</p><br>
+			<p>Continueremo a monitorare gli sviluppi relativi alle misure di sicurezza sui treni italiani e a fornire aggiornamenti tempestivi su questa importante questione.</p><br>
+			</div>
+		</marquee>
+		</div>
+	</div>
+    <div class="booking-form-box">
+        <div class="radio-btn">
+            <input type="radio" class="btn" name="check" checked="checked">
+            <span >Andata e Ritorno</span>
+            <input type="radio" class="btn" name="check" checked="checked">
+            <span>Andata</span>
+        </div>
+        <div class="booking-form">
+            <label >Stazione di partenza</label>
+            <select class="custom-select">
+                <option value="1">Roma</option>
+                <option value="2">Milano</option>
+            </select>            
+            <label>Stazione di arrivo</label>
+            <select class="custom-select">
+                <option value="1">Milano</option>
+                <option value="2">Roma</option>
+            </select>            <br>
+            <div class="input-grp">
+                <label>Partenza</label>
+                <input type="date" class="form-control select-date">
+            </div>
+            <div class="input-grp">
+                <label>Arrivo</label>
+                <input type="date" class="form-control select-date">
+            </div>
+            <br>
+            <div class="input-grp">
+                <label>Adulti</label>
+                <input type="number" class="form-control" value="1">
+            </div>
+            <div class="input-grp">
+                <label>Bambini</label>
+                <input type="number" class="form-control" value="0">
+            </div>
+            <div class="input-grp">
+                <label>Classe</label>
+                <select class="custom-select">
+                    <option value="1">Economy class</option>
+                    <option value="2">Business class</option>
+                </select>
+            </div>
+            <div class="input-grp">
+                <button type="button" class="btn btn-primary flight">Show Flights</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
