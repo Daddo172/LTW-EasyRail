@@ -1,0 +1,29 @@
+/*Tutto Arial*/
+* {
+	font-family: Arial;
+}
+/*Barra superiore*/
+h1 {
+	color: white;
+	font-style: italic;
+	border-style: solid; border-radius: 10px;
+	background-color: rgb(69, 69, 255); /*background-image: url("logo.jpg");
+											immagine logo che andrebbe nella
+											barra superiore*/
+}
+/*Form per inserimento dati*/
+form {
+	border-style: solid; border-radius: 8px; border-width: 2px;
+	background-color: rgb(201, 242, 255);
+	margin-left: 24px;
+	width:fit-content;
+}
+/*Campi della form arrotondati*/
+input {
+	border-radius: 3px;
+	border-width: 1px;
+}
+/*Classe provvisoria per elementi da mostrare ma ancora da implementare*/
+.provvisorio {
+	text-align: center;
+}
