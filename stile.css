@@ -6,22 +6,41 @@
 h1 {
 	color: white;
 	font-style: italic;
-	border-style: solid; border-radius: 10px;
-	background-color: rgb(69, 69, 255); /*background-image: url("logo.jpg");
-											immagine logo che andrebbe nella
-											barra superiore*/
+	width: ad;
+	background-color: rgb(69, 69, 255);
+/*	background-image: url("logo.jpg");
+/*	immagine logo che andrebbe nella barra superiore*/
 }
 /*Form per inserimento dati*/
 form {
-	border-style: solid; border-radius: 8px; border-width: 2px;
-	background-color: rgb(201, 242, 255);
+	border-style: solid; border-radius: 8px; border-width: 1px;
+	background-color: rgb(255, 255, 255);
 	margin-left: 24px;
-	width:fit-content;
+	width: fit-content;
+	margin-top: 24px;
+	padding: 32px
 }
-/*Campi della form arrotondati*/
+td {
+	padding: 8px;
+}
+div.formhead {
+	font-size: 24px;
+	text-align: center;
+	border-bottom-style: solid; border-width: 1px;
+	margin-bottom: 10px;
+}
 input {
-	border-radius: 3px;
-	border-width: 1px;
+	border-radius: 10px;
+	border-width: 0%;
+	border-color: lightgray;
+	padding: 10px;
+}
+input.button {
+	font-size: 16px; color: rgb(255, 255, 255); font-weight: bold;
+	width: 120px;
+	border-radius: 10px;
+	background-color: rgb(0, 0, 255);
+	padding: 16px;
 }
 /*Classe provvisoria per elementi da mostrare ma ancora da implementare*/
 .provvisorio {
