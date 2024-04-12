@@ -4,12 +4,16 @@
 }
 /*Barra superiore*/
 h1 {
+	padding: 40px 80px 200px;
 	color: white;
 	font-style: italic;
-	width: ad;
-	background-color: rgb(69, 69, 255);
-/*	background-image: url("logo.jpg");
-/*	immagine logo che andrebbe nella barra superiore*/
+	background-color: rgb(100, 100, 255);
+}
+img {
+	width: 360px;
+	position: absolute;
+	top: 60px;
+	left: 20px;
 }
 /*Form per inserimento dati*/
 form {
@@ -30,10 +34,14 @@ div.formhead {
 	margin-bottom: 10px;
 }
 input {
-	border-radius: 10px;
-	border-width: 0%;
-	border-color: lightgray;
+	font-size: 16px;
+	border-radius: 10px; border-width: 0%; border-color: lightgray;
+	background-color: rgb(240, 240, 240);
 	padding: 10px;
+	width: 240px;
+}
+input.date {
+	font-size: 19px;
 }
 input.button {
 	font-size: 16px; color: rgb(255, 255, 255); font-weight: bold;
