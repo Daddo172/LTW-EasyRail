@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://kit.fontawesome.com/cbe8049c6b.js" crossorigin="anonymous"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EasyRail</title>
+	<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+	<ul>
+		<li class="nav"><a href="Login.html">Accedi</a></li>
+		<li class="nav"><a href="TrainStatus.html">Stato treno</a></li>
+		<li class="nav"><a href="FindTicket.html">Recupera biglietto</a></li>
+		<li class="nav"><a class="active" href="HomePage.html">Home</a></li>
+		<li class="er"><a href="HomePage.html">EasyRail</a></li>
+		<li class="img"><a href="HomePage.html"><img src="logo.jpg"></a></li>
+	</ul>
+	<p style="text-align: center;">(messaggi promozionali/codici sconto qui ...)</p>
+	<form action="">
+		<div class="formhead">Cerca viaggio</div> 
+		<p>
+			<label for="part">Da</label>
+			<input type="text" name="part" size=auto style="margin-right: 16px;"
+			placeholder=" inserisci stazione di partenza">
+			<button style="width: 36px; height: 36px; border: 1px solid gray; border-radius: 20%;">
+				&rlarr;
+			</button>
+			<label for="arr">A</label>
+			<input type="text" name="arr"
+			placeholder=" inserisci stazione di arrivo">
+		</p>
+		<p>
+			<table>
+				<tr>
+					<td style="padding: 0px 10px 0px 7px;">Andata e ritorno</td>
+					<td><input type="checkbox" id="switch" class="checkbox">
+					<label for="switch" class="toggle"></label></td>
+				</tr>
+			</table>
+		</p>
+		<p>
+			<label for="dataAnd">Andata</label>
+			<input type="date" name="dataAnd">
+			<label for="dataRit">Ritorno</label>
+			<input type="date" name="dataRit">
+		</p>
+		<p>
+			<label for="pass">Passeggeri (popup con età)</label>
+			<input type="number" name="pass">
+		</p>
+		<p>
+			<label for="cs">Codice sconto (opzionale) </label>
+			<input type="text" name="cs">
+		</p>
+		<p>
+			<div style="text-align: center;">
+			<input class="button" type="submit" value="Cerca">
+			<input class="button" type="reset" value="Cancella">
+			</div>
+		<p>
+	</form>
+	<br>
+	<div class="bottom"> contatti, assistenza, ...</div>
+</body>
+</html>
