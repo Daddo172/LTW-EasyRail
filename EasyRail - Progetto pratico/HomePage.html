@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://kit.fontawesome.com/cbe8049c6b.js" crossorigin="anonymous"></script>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +7,26 @@
 	<link rel="stylesheet" href="stile.css">
 </head>
 <body>
+	<!--Barra superiore-->
 	<ul>
 		<li class="nav"><a href="Login.html">Accedi</a></li>
 		<li class="nav"><a href="TrainStatus.html">Stato treno</a></li>
 		<li class="nav"><a href="FindTicket.html">Recupera biglietto</a></li>
 		<li class="nav"><a class="active" href="HomePage.html">Home</a></li>
-		<li class="er"><a href="HomePage.html">EasyRail</a></li>
-		<li class="img"><a href="HomePage.html"><img src="logo.jpg"></a></li>
-	</ul>
-	<p style="text-align: center;">(messaggi promozionali/codici sconto qui ...)</p>
+		<li class="titolo"><a href="HomePage.html">EasyRail</a></li>
+		</ul>
+
+	<!--(Carousel) Messaggi promozionali/codici sconto-->
+	<p style="text-align: center;">carousel (messaggi promozionali/codici sconto qui ...)</p>
+	
+	<!--Form Cerca viaggio-->
 	<form action="">
 		<div class="formhead">Cerca viaggio</div> 
 		<p>
 			<label for="part">Da</label>
 			<input type="text" name="part" size=auto style="margin-right: 16px;"
 			placeholder=" inserisci stazione di partenza">
-			<button style="width: 36px; height: 36px; border: 1px solid gray; border-radius: 20%;">
+			<button class="switch">
 				&rlarr;
 			</button>
 			<label for="arr">A</label>
@@ -35,7 +38,7 @@
 				<tr>
 					<td style="padding: 0px 10px 0px 7px;">Andata e ritorno</td>
 					<td><input type="checkbox" id="switch" class="checkbox">
-					<label for="switch" class="toggle"></label></td>
+					<label for="switch" class="toggle"></label>rimuovere ritorno con JS(?) se non selezionato</td>
 				</tr>
 			</table>
 		</p>
@@ -59,8 +62,21 @@
 			<input class="button" type="reset" value="Cancella">
 			</div>
 		<p>
-	</form>
+	</form></div>
 	<br>
-	<div class="bottom"> contatti, assistenza, ...</div>
+
+	<!--Parte inferiore-->
+	<table class="bottom">
+		<tr>
+			<td>
+				<p>EasyRail &copy;</p>
+				<p>Un progetto per LTW (Linguaggi e Tecnologie per il Web) - A.A. 2023/24 - Prof. Lorenzo Marconi</p>
+			</td>
+		<tr>	
+			<td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p></td>
+			<td colspan="">Sede legale Università La Sapienza<br>
+				Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
+		</tr>
+	</table>
 </body>
 </html>

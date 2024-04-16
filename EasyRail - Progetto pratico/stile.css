@@ -1,59 +1,59 @@
 body {
 	margin: 0;
+	background: url("back.jpg") no-repeat center;
 }
 /*Tutto Arial*/
 * {
 	font-family: Arial;
 }
+/*Barra superiore*/
 a {
 	text-decoration: none; color: white;
 }
-/*Parte superiore*/
 ul {
-	position:sticky;
+	position: sticky;
 	top: 0;
 	width: 100%;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: rgb(69, 69, 255); background-size: cover;
+	background-color: rgb(16, 16, 104);
+	border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+	z-index: 1;
 } 
-li.nav a{
+.nav a{
 	float: right;
 	display: block;
 	padding: 26px;
 	color: white;
 }
-li.nav a:hover:not(.active) {
-	background-color: rgb(0, 0, 169);
+.nav a:hover:not(.active) {
+	background-color: rgb(19, 19, 255);
 }
 .active {
-	background-color: rgb(0, 210, 255);
+	background-color: rgb(0, 140, 255);
 }
-li.er {
+.titolo {
 	font-size: 30px; font-weight: bold; font-style: italic;
 	float: left;
 	padding: 16px 0px 20px 20px;
 }
-li.img {
-	float: left;
-	padding: 0px 0px 0px 10px;
-	margin: -10px 0px -50px 0px;
-}
 img {
 	width: 100px;
+	padding: 0px 0px 0px 10px;
+	margin: -23px 0px -50px 0px;
 }
 /*Form per inserimento dati*/
 form {
-	border-style: solid; border-radius: 8px; border-width: 1px;
-	background-color: rgb(255, 255, 255);
+	border-style: solid; border-radius: 20px; border-width: 0px;
+	background-color: white;
 	margin-left: 24px;
 	width: 670px;
 	margin-top: 24px;
 	padding: 16px
 }
-div.formhead {
+.formhead {
 	font-size: 20px;
 	text-align: center;
 	border-bottom-style: solid; border-width: 1px;
@@ -62,6 +62,14 @@ div.formhead {
 label {
 	padding: 10px 10px 0px 10px;
 }
+/*Bottone switch Andata/ritorno*/
+.switch {
+	font-size: 19px;
+	width: 36px; height: 36px;
+	border: 1px solid gray;
+	border-radius: 20%;
+	cursor: pointer;
+}
 input {
 	font-size: 16px;
 	border-radius: 10px; border-width: 1px; border-color: lightgray;
@@ -69,16 +77,22 @@ input {
 	padding: 5px;
 	width: 240px;
 }
-input.checkbox {
-	margin: -100px;
-	height: 15px;
-}
-input.button {
+/*Tasti Cerca e Cancella*/
+.button {
 	color: rgb(255, 255, 255); font-weight: bold;
 	width: 160px;
 	border-radius: 10px;
-	background-color: rgb(69, 69, 255);
+	background-color: rgb(16, 16, 104);
 	padding: 12px;
+}
+.button:hover {
+	cursor: pointer;
+	box-shadow: 3px 4px rgba(0,0,0,0.3);
+	transition-duration: 0.25s;
+}
+.button:active{
+	transform: translateY(2px);
+	box-shadow: 1px 1px rgba(0,0,0,0.3);
 }
 /*Checkbox Andata/Ritorno*/
 .checkbox { 
@@ -86,19 +100,20 @@ input.button {
 }
 .toggle {
 	position: relative;
-	display:inline-table;
-	width: 30px;
-	height: 12px;
+	display:inline-block;
+	width: 23px;
+	height: 8px;
 	background-color: lightgray;
 	border-radius: 30px;
 	border: 3px solid lightgray;
 	margin-top: 0px;
+	
 }
 .toggle:after {
 	content: '';
 	position: absolute;
-	width: 22px;
-	height: 22px;
+	width: 18px;
+	height: 18px;
 	border-radius: 50%;
 	background-color: white;
 	top: 0px; 
@@ -107,15 +122,18 @@ input.button {
 }
 /*Effetto movimento Checkbox*/
 .checkbox:checked + .toggle::after {
-	left: 28px; 
+	left: 25px; 
 }	   
 /*Sfondo Checkbox spuntata*/
 .checkbox:checked + .toggle {
 	background-color: rgb(50, 50, 50);
 	border: 3px solid rgb(50, 50, 50);
 }
-div.bottom {
-	color: white; text-align: center;
-	background-color: rgba(69, 69, 255);
-	padding: 100px;
+/*Parte inferiore*/
+.bottom {
+	border-top-left-radius: 12px; border-top-right-radius: 12px;
+	color: white;
+	width: 100%;
+	background-color: rgb(16, 16, 104);
+	padding: 30px 0px 20px 50px;
 }
