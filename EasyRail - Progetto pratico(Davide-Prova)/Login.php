@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    header("Location: /");
+}
+else {
+    $dbconn = pg_connect("host=localhost port=5432 dbname=EsempioLogin 
+                user=daddo password=biar") 
+                or die('Could not connect: ' . pg_last_error());
+}
+?>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,10 +52,40 @@
 		  </nav>
 		<div class="container-fluid">
 			<form class="mx-auto">
-				<h4 class="text-center">Inserire dati treno</h4>
+				<h4 class="text-center">Login</h4>
 				<div class="mb-3 mt-5">
-					<label for="exampleInputEmail1" class="form-label">Codice treno</label>
+					<label for="exampleInputEmail1" class="form-label">Nome Utente</label>
 					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">Password</label>
+					<input type="password" class="form-control" id="exampleInputPassword1">
+				<?php	
+					if ($dbconn) {
+					$email = $_POST['inputEmail'];
+					$q1 = "select * from utente where email= $1";
+					$result = pg_query_params($dbconn, $q1, array($email));
+					if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
+						echo "<h1>Non sembra che ti sia registrato/a</h1>
+							<a href=../registrazione/HomePage.html> Clicca qui per farlo </a>";
+					}
+					else {
+						$password =$_POST['inputPassword'];
+						$q2 = "select * from utente where email = $1 and paswd = $2";
+						$result = pg_query_params($dbconn, $q2, array($email,$password));
+						if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
+							echo "<h1> La password e' sbagliata! </h1>
+								<a href=login.php> Clicca qui per loggarti </a>";
+						}
+						else {
+							$nome = $tuple['nome'];
+                        echo "<a href=../registrazione.php?name=$nome> Premi qui </a>
+                            per inziare a usare il sito";						}
+					}
+				}
+			?> 
+					<a id="emailHelp" class="form-text" href="Registrazione.html?nome=$nome">Non sei registrato?Registrati!</a>
 				</div>
 				<a href="HomePage.html" type="submit" class="btn btn-primary mt-4">Login
 				</a>

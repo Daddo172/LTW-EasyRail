@@ -32,7 +32,7 @@ form{
     border-radius:  4px 4px 0 0;
 }
 h4{
-    font-size: 2rem ;
+    font-size: 2rem;
     font-weight: 700;
 }
 
@@ -47,9 +47,6 @@ div.formhead {
 	font-size: 20px;
 	text-align: center;
 	border-bottom-style: solid; border-width: 1px;
-}
-label {
-	padding: 10px 10px 0px 10px;
 }
 input {
 	font-size: 16px;
@@ -108,15 +105,24 @@ input.button {
 /*Navigation Bar*/
 
 .navbar{
-    background-color: #fff;
+    background-color: white;
     height: 80px;
     margin: 20px;
     border-radius: 16px;
     padding: 0.5rem;
 }
-.login-button{
-    background-color: rgb(0, 0, 139);
+a.navbar-brand{
+    color: darkblue;
+    font-weight: 500;
+    font-size: 24px;
+    transition: 0.3s color;
+}
+button.offcanvas-header{
     color: #fff;
+}
+.login-button{
+    background-color:  darkblue;
+    color: white;
     font-size: 14px;
     margin-right:auto;
     padding: 8px 20px;
@@ -126,7 +132,7 @@ input.button {
 }
 
 .login-button:hover{
-    background-color: rgba(6, 6, 170, 0.886);
+    background-color: rgb(6, 6, 177);
 }
 
 .navbar-toggler{
