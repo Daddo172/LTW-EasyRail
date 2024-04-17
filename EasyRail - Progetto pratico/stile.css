@@ -1,55 +1,55 @@
 body {
 	margin: 0;
-	background: url("back.jpg") no-repeat center;
+	background: url("back.jpg") no-repeat 44%;
+	text-align: center;
 }
 /*Tutto Arial*/
 * {
 	font-family: Arial;
 }
 /*Barra superiore*/
-a {
-	text-decoration: none; color: white;
-}
-ul {
-	position: sticky;
-	top: 0;
-	width: 100%;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+.topnav {
+	text-align: center;
+	position: sticky; top: 0;
 	overflow: hidden;
 	background-color: rgb(16, 16, 104);
 	border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
 	z-index: 1;
-} 
-.nav a{
-	float: right;
-	display: block;
-	padding: 26px;
+}
+a {
+	text-decoration: none;
 	color: white;
-}
-.nav a:hover:not(.active) {
-	background-color: rgb(19, 19, 255);
-}
-.active {
-	background-color: rgb(0, 140, 255);
 }
 .titolo {
 	font-size: 30px; font-weight: bold; font-style: italic;
 	float: left;
-	padding: 16px 0px 20px 20px;
+	padding: 12px 3% 16px 1.5%;
 }
-img {
-	width: 100px;
-	padding: 0px 0px 0px 10px;
-	margin: -23px 0px -50px 0px;
+.center {
+	display: inline-block;
+	padding: 22px 1.25% 22px 1.25%;
 }
+.log {
+	float: right;
+	background-color: white;
+	color: rgb(16, 16, 104);
+	padding: 22px 2% 22px 2%;
+}
+a.center:hover:not(.active), a.log:hover:not(.active) {
+	text-decoration: underline;
+}
+.active {
+	background-color: rgb(0, 140, 255);
+}
+
 /*Form per inserimento dati*/
 form {
+	display: inline-block;
+	text-align: left;
 	border-style: solid; border-radius: 20px; border-width: 0px;
 	background-color: white;
 	margin-left: 24px;
-	width: 670px;
+	width: 640px;
 	margin-top: 24px;
 	padding: 16px
 }
@@ -75,7 +75,7 @@ input {
 	border-radius: 10px; border-width: 1px; border-color: lightgray;
 	background-color: rgb(240, 240, 240);
 	padding: 5px;
-	width: 240px;
+	width: 215px;
 }
 /*Tasti Cerca e Cancella*/
 .button {
@@ -107,7 +107,6 @@ input {
 	border-radius: 30px;
 	border: 3px solid lightgray;
 	margin-top: 0px;
-	
 }
 .toggle:after {
 	content: '';
@@ -131,9 +130,9 @@ input {
 }
 /*Parte inferiore*/
 .bottom {
+	text-align: left;
 	border-top-left-radius: 12px; border-top-right-radius: 12px;
-	color: white;
 	width: 100%;
-	background-color: rgb(16, 16, 104);
-	padding: 30px 0px 20px 50px;
+	background-color: white;
+	padding: 30px 50px 20px 50px;
 }

@@ -8,75 +8,75 @@
 </head>
 <body>
 	<!--Barra superiore-->
-	<ul>
-		<li class="nav"><a href="Login.html">Accedi</a></li>
-		<li class="nav"><a href="TrainStatus.html">Stato treno</a></li>
-		<li class="nav"><a href="FindTicket.html">Recupera biglietto</a></li>
-		<li class="nav"><a class="active" href="HomePage.html">Home</a></li>
-		<li class="titolo"><a href="HomePage.html">EasyRail</a></li>
-		</ul>
+	<nav class="topnav">	
+		<a class="titolo" href="HomePage.html">EasyRail</a>
+		<a class="log" href="Login.html">Accedi</a>
+		<a class="active center" href="HomePage.html">Home</a>
+		<a class="center" href="TrainStatus.html">Stato treno</a>
+		<a class="center" href="FindTicket.html">Trova biglietto</a>
+	</nav>
 
 	<!--(Carousel) Messaggi promozionali/codici sconto-->
 	<p style="text-align: center;">carousel (messaggi promozionali/codici sconto qui ...)</p>
 	
 	<!--Form Cerca viaggio-->
-	<form action="">
-		<div class="formhead">Cerca viaggio</div> 
-		<p>
-			<label for="part">Da</label>
-			<input type="text" name="part" size=auto style="margin-right: 16px;"
-			placeholder=" inserisci stazione di partenza">
-			<button class="switch">
-				&rlarr;
-			</button>
-			<label for="arr">A</label>
-			<input type="text" name="arr"
-			placeholder=" inserisci stazione di arrivo">
-		</p>
-		<p>
-			<table>
-				<tr>
+	<main>
+		<form action="">
+			<div class="formhead">Cerca viaggio</div> 
+			<p>
+				<label for="part">Da</label>
+				<input type="text" name="part" size=auto style="margin-right: 16px;"
+				placeholder=" inserisci stazione di partenza">
+				<button class="switch">&rlarr;</button>
+				<label for="arr">A</label>
+				<input type="text" name="arr"
+				placeholder=" inserisci stazione di arrivo">
+			</p>
+			<p>
+				<table><tr>
 					<td style="padding: 0px 10px 0px 7px;">Andata e ritorno</td>
 					<td><input type="checkbox" id="switch" class="checkbox">
 					<label for="switch" class="toggle"></label>rimuovere ritorno con JS(?) se non selezionato</td>
-				</tr>
-			</table>
-		</p>
-		<p>
-			<label for="dataAnd">Andata</label>
-			<input type="date" name="dataAnd">
-			<label for="dataRit">Ritorno</label>
-			<input type="date" name="dataRit">
-		</p>
-		<p>
-			<label for="pass">Passeggeri (popup con età)</label>
-			<input type="number" name="pass">
-		</p>
-		<p>
-			<label for="cs">Codice sconto (opzionale) </label>
-			<input type="text" name="cs">
-		</p>
-		<p>
-			<div style="text-align: center;">
-			<input class="button" type="submit" value="Cerca">
-			<input class="button" type="reset" value="Cancella">
-			</div>
-		<p>
-	</form></div>
-	<br>
+				</tr></table>
+			</p>
+			<p>
+				<label for="dataAnd">Andata</label>
+				<input type="date" name="dataAnd">
+				<label for="dataRit">Ritorno</label>
+				<input type="date" name="dataRit">
+			</p>
+			<p>
+				<label for="pass">Passeggeri (popup con età)</label>
+				<input type="number" name="pass">
+			</p>
+			<p>
+				<label for="cs">Codice sconto (opzionale) </label>
+				<input type="text" name="cs">
+			</p>
+			<p>
+				<div style="text-align: center;">
+				<input class="button" type="submit" value="Cerca">
+				<input class="button" type="reset" value="Cancella">
+				</div>
+			<p>
+		</form>
+	</main>
+	<br><br><br>
 
 	<!--Parte inferiore-->
-	<table class="bottom">
-		<tr>
-			<td>
-				<p>EasyRail &copy;</p>
-				<p>Un progetto per LTW (Linguaggi e Tecnologie per il Web) - A.A. 2023/24 - Prof. Lorenzo Marconi</p>
-			</td>
-		<tr>	
-			<td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p></td>
-			<td colspan="">Sede legale Università La Sapienza<br>
-				Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
-		</tr>
-	</table>
+	<footer>
+		<table class="bottom">
+			<tr>
+				<td>
+					<p>EasyRail &copy;</p>
+					<p>Un progetto per LTW (Linguaggi e Tecnologie per il Web) - A.A. 2023/24 - Prof. Lorenzo Marconi</p>
+				</td>
+			<tr>	
+				<td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p></td>
+				<td colspan="">Sede legale Università La Sapienza<br>
+					Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
+			</tr>
+		</table>
+	</footer>
 </body>
 </html>
