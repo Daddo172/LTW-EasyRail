@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>EasyRail</title>
 	<link rel="stylesheet" href="stile.css">
+
 </head>
 <body>
 	<!--Barra superiore-->
@@ -16,9 +17,37 @@
 		<a class="center" href="FindTicket.html">Trova biglietto</a>
 	</nav>
 
-	<!--(Carousel) Messaggi promozionali/codici sconto-->
-	<p style="text-align: center;">carousel (messaggi promozionali/codici sconto qui ...)</p>
-	
+	<!--Carousel di messaggi promozionali/codici sconto-->
+	<div class="carousel-container">
+		<div class="carousel my-carousel carousel--translate">
+			<input class="carousel__activator" type="radio" name="carousel" id="1" checked="checked"/>
+			<input class="carousel__activator" type="radio" name="carousel" id="2"/>
+			<input class="carousel__activator" type="radio" name="carousel" id="3"/>
+
+			<div class="carousel__controls">
+				<label class="carousel__control carousel__control--forward" for="2"></label>
+				<label class="carousel__control carousel__control--backward" for="3"></label>
+			</div>
+			<div class="carousel__controls">
+				<label class="carousel__control carousel__control--backward" for="1"></label>
+				<label class="carousel__control carousel__control--forward" for="3"></label>
+			</div>
+			<div class="carousel__controls">
+				<label class="carousel__control carousel__control--backward" for="2"></label>
+				<label class="carousel__control carousel__control--forward" for="1"></label>
+			</div>
+			<div class="carousel__track">
+				<li class="carousel__slide"></li>
+				<li class="carousel__slide"></li>
+				<li class="carousel__slide"></li>
+			</div>
+			<div class="carousel__indicators">
+				<label class="carousel__indicator" for="1"></label>
+				<label class="carousel__indicator" for="2"></label>
+				<label class="carousel__indicator" for="3"></label>
+			</div>
+		</div>
+	</div>
 	<!--Form Cerca viaggio-->
 	<main>
 		<form action="">
@@ -64,8 +93,8 @@
 	<br><br><br>
 
 	<!--Parte inferiore-->
-	<footer>
-		<table class="bottom">
+	<footer class="bottom">
+		<table>
 			<tr>
 				<td>
 					<p>EasyRail &copy;</p>
