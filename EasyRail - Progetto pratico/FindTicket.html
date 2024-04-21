@@ -6,8 +6,9 @@
 	<title>Trova biglietto</title>
 	<link href="stile.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
 </head>
-<body style="background-color: rgb(200, 200, 200);">
+<body>
 	<header class="topnav">
 		<nav>	
 			<a class="titolo" href="HomePage.html" ALT="EasyRail">EasyRail</a>
@@ -23,38 +24,39 @@
 			<a class="active center" href="FindTicket.html">Trova biglietto</a>
 		</nav>
 	</header>
-	<form action="" style="margin-top: 60px; width: 40%; min-width: 450px;">
-		<div class="formhead">Recupera il tuo biglietto</div>
-		<table>
-			<tr>
-				<p>
-				<td><label for="nome">Nome </label></td>
-				<td><input type="text" name="nome" id="nome"></td>
-				</p>
-			</tr>
-			<tr>
-				<p>
-				<td><label for="cognome">Cognome </label></td>
-				<td><input type="text" name="cognome" id="cohnome"></td>
-				</p>
-			</tr>
-			<tr>
-				<p>
-				<td><label for="cb">Codice biglietto </label></td>
-				<td><input type="text" name="cb" id="cb"></td>
-				</p>
-			</tr>
-		</table>
-		<p>
-			<div style="text-align: center;">
-			<input class="button" type="submit" value="Cerca" id="cerca">
-			<input class="button" type="reset" value="Cancella" id="cancella">
-			</div>
-		<p>
-	</form>
+	<main>
+		<form action="" style="margin-top: 60px auto 60px auto;">
+			<div class="formhead">Recupera il tuo biglietto</div>
+			<table>
+				<tr>
+					<p>
+					<td><label for="nome">Nome </label></td>
+					<td><input type="text" name="nome" id="nome"></td>
+					</p>
+				</tr>
+				<tr>
+					<p>
+					<td><label for="cognome">Cognome </label></td>
+					<td><input type="text" name="cognome" id="cohnome"></td>
+					</p>
+				</tr>
+				<tr>
+					<p>
+					<td><label for="cb">Codice biglietto </label></td>
+					<td><input type="text" name="cb" id="cb"></td>
+					</p>
+				</tr>
+			</table>
+			<p>
+				<div style="text-align: center;">
+				<input class="button" type="submit" value="Cerca" id="cerca">
+				</div>
+			<p>
+		</form>
+	</main>
 	<br><br><br>
 
-	<footer class="bottom">
+	<footer>
 		<table>
 			<tr>
 				<td>

@@ -6,8 +6,9 @@
 	<title>Trova biglietto</title>
 	<link href="stile.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
 </head>
-<body style="background-color: rgb(220, 220, 220);">
+<body>
 	<header class="topnav">
 		<nav>	
 			<a class="titolo" href="HomePage.html" ALT="EasyRail">EasyRail</a>
@@ -23,7 +24,43 @@
 			<a class="center" href="FindTicket.html">Trova biglietto</a>
 		</nav>
 	</header>
-	<footer class="bottom" style="position: absolute; bottom: 0;">
+	<main>
+		<form action="" style="margin-top: 60px auto 60px auto;">
+			<div class="formhead">Registrazione</div>
+			<table>
+				<tr>
+					<p>
+					<td><label for="nome">Nome </label></td>
+					<td><input type="text" name="nome" id="nome"></td>
+					</p>
+				</tr>
+				<tr>
+					<p>
+					<td><label for="cognome">Cognome </label></td>
+					<td><input type="text" name="cognome" id="cohnome"></td>
+					</p>
+				</tr>
+				<tr>
+					<p>
+					<td><label for="email">Email </label></td>
+					<td><input type="email" name="email" id="email"></td>
+					</p>
+				</tr>
+				<tr>
+					<p>
+					<td><label for="pw">Password </label></td>
+					<td><input type="password" name="pw" id="pw"></td>
+					</p>
+				</tr>
+			</table>
+			<p>
+				<div style="text-align: center;">
+				<input class="button" type="submit" value="Registrati" id="register">
+				</div>
+			<p>
+		</form>
+	</main>
+	<footer>
 		<table>
 			<tr>
 				<td>

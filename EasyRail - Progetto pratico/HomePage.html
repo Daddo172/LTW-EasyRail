@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>EasyRail</title>
-	<link href="stile.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="stile.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
+	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -23,9 +24,15 @@
 			$('#dataRit').attr('min', minDate); //inserire dataAnd come min
 		});
 		</script>
+	<style>
+		input {
+			margin: 0;
+			min-width: 220px;
+		}
+	</style>
 </head>
 <body>
-	<main>
+	<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
 		<!--Barra superiore-->
 		<header class="topnav">
 			<nav>
@@ -63,10 +70,10 @@
 				<label class="carousel__control carousel__control--forward" for="1"></label>
 			</div>
 			<div class="carousel__track">
-				<li class="carousel__slide">
+				<li class="carousel__slide" style="text-align: center;">
 					<p>Viaggia in serenità e risparmia con EasyRail!</p>
 					<p>Solo per questa settimana, 20% di sconto sulla tariffa Economy, con codice sconto
-						<span style="background-color: white; font-weight: bold; padding: 5px 8px 5px 8px; border-radius: 8px;">LTW24</span>
+						<span style="background-color: white; font-weight: bold; padding: 2px 6px 2px 6px; border-radius: 6px;">LTW24</span>
 					</p>
 					<p>Posti disponibili: 50.000.</p>
 				</li>
@@ -88,7 +95,7 @@
 						<h1>Con EasyRail</h1>
 						<p>Scopri le principali città italiane a<br>prezzi imbattibili!</p>
 						<p>Le nostre destinazioni sono:<br>Roma, Milano, Venezia, Napoli,<br>Firenze, Bologna e Torino.</p>
-						<p>Ogni giorno, offriamo ai nostri<br>passeggeri decine di collegamenti<br>e l'efficienza del nostro servizio.</p>
+						<p>Ogni giorno, offriamo ai nostri<br>passeggeri decine di collegamenti<br>con l'efficienza del nostro servizio.</p>
 					</div>
 				</li>
 			</div>
@@ -99,8 +106,9 @@
 			</div>
 		</div>
 	</div>
+	<div style="text-align: center;">
 		<!--Form Cerca viaggio-->
-		<form action="">
+		<form action="" style="min-width: 666px; max-width: 666px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p>
 				<label for="part">Da</label>
@@ -147,6 +155,7 @@
 				</div>
 			<p>
 		</form>
+	</div>
 		<br><br><br>
 	</main>
 

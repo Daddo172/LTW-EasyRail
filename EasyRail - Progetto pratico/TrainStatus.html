@@ -6,8 +6,9 @@
 	<title>Stato treno</title>
 	<link href="stile.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
 </head>
-<body style="background-color: rgb(220, 220, 220);">
+<body>
 	<header class="topnav">
 		<nav>	
 			<a class="titolo" href="HomePage.html" ALT="EasyRail">EasyRail</a>
@@ -23,7 +24,25 @@
 			<a class="center" href="FindTicket.html">Trova biglietto</a>
 		</nav>
 	</header>
-	<footer class="bottom" style="position: absolute; bottom: 0;">
+	<main>
+		<form action="" style="margin-top: 60px auto 60px auto;">
+			<div class="formhead">Visualizza informazioni</div>
+			<table style="margin: 20px 0 20px 0;">
+				<tr>
+					<p>
+					<td><label for="ct">Codice treno </label></td>
+					<td><input type="number" name="ct" id="ct" placeholder=" codice identificativo"></td>
+					</p>
+				</tr>
+			</table>
+			<p>
+				<div style="text-align: center;">
+				<input class="button" type="submit" value="Cerca" id="cerca">
+				</div>
+			<p>
+		</form>
+	</main>
+	<footer>
 		<table>
 			<tr>
 				<td>
@@ -32,8 +51,7 @@
 				</td>
 			<tr>	
 				<td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p></td>
-				<td colspan="">Sede legale Università La Sapienza<br>
-					Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
+				<td colspan="">Sede legale Università La Sapienza<br>Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
 			</tr>
 		</table>
 	</footer>

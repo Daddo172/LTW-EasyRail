@@ -5,12 +5,9 @@
 }
 body {
 	margin: 0;
-	text-align: center;
-}
-main {
-	background: url("back3.jpg") no-repeat;
-	background-size: cover;
-	background-position: center;
+	min-height: 100vh;
+	background: rgb(200, 200, 200);
+	display: flex; flex-direction: column;
 }
 /*Barra superiore*/
 .topnav {
@@ -48,12 +45,14 @@ a.center:hover:not(.active), a.log:hover:not(.active) {
 }
 /*Form per inserimento dati*/
 form {
-	margin-left: 3%;
-	display: inline-block;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 40px;
 	text-align: left;
-	border-style: solid; border-radius: 20px; border-width: 0px;
+	border-style: solid 0px; border-radius: 16px;
 	background-color: white;
-	width: 666px;
+	width: 90%;
+	max-width: 500px;
 	padding: 16px;
 }
 .formhead {
@@ -83,6 +82,7 @@ input {
 	border-radius: 10px; border-width: 1px; border-color: lightgray;
 	background-color: rgb(240, 240, 240);
 	padding: 5px;
+	margin: 5px 0 5px 0;
 	width: 240px;
 }
 input.date {
@@ -143,11 +143,11 @@ input.cs{
 	border: 3px solid rgb(50, 50, 50);
 }
 /*Parte inferiore*/
-.bottom {
+footer {
 	text-align: left;
-	position: 0;
 	border-top-left-radius: 12px; border-top-right-radius: 12px;
 	width: 100%;
+	margin-top: auto;
 	background-color: white;
 	padding: 20px 40px 20px 40px;
 }
@@ -293,8 +293,7 @@ input.cs{
 	text-align: center;
 }
 .carousel__indicator {
-	height: 1px;
-	width: 50px;
+	width: 40px;
 	display: inline-block;
 	z-index: 1;
 	cursor: pointer;
@@ -338,8 +337,6 @@ input.cs{
 	height: 100%;
 	position: absolute;
 	opacity: 0;
-}
-.carousel__slide {
 	overflow: hidden;
 }
 .carousel--thumb .carousel__indicator {
