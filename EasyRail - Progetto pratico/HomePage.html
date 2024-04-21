@@ -4,18 +4,44 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>EasyRail</title>
-	<link rel="stylesheet" href="stile.css">
-
+	<link href="stile.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var dtToday = new Date();
+			var month = dtToday.getMonth() + 1;
+			var day = dtToday.getDate();
+			var year = dtToday.getFullYear();
+			if(month < 10)
+				month = '0' + month.toString();
+			if(day < 10)
+			 day = '0' + day.toString();
+			var minDate = year + '-' + month + '-' + day;
+			$('#dataAnd').val(minDate);
+			$('#dataAnd').attr('min', minDate);
+			$('#dataRit').attr('min', minDate); //inserire dataAnd come min
+		});
+		</script>
 </head>
 <body>
-	<!--Barra superiore-->
-	<nav class="topnav">	
-		<a class="titolo" href="HomePage.html">EasyRail</a>
-		<a class="log" href="Login.html">Accedi</a>
-		<a class="active center" href="HomePage.html">Home</a>
-		<a class="center" href="TrainStatus.html">Stato treno</a>
-		<a class="center" href="FindTicket.html">Trova biglietto</a>
-	</nav>
+	<main>
+		<!--Barra superiore-->
+		<header class="topnav">
+			<nav>
+				<a class="titolo" href="HomePage.html">EasyRail</a>
+				<div class="log dropdown">
+					<button class="dropbtn">Accedi</button>
+					<div class="dropdown-content">
+						<a href="Login.html">Login</a>
+						<a href="Register.html">Registrati</a>
+					</div>
+				</div>
+				<a class="active center" href="HomePage.html">Home</a>
+				<a class="center" href="TrainStatus.html">Stato treno</a>
+				<a class="center" href="FindTicket.html">Trova biglietto</a>
+			</nav>
+		</header>
 
 	<!--Carousel di messaggi promozionali/codici sconto-->
 	<div class="carousel-container">
@@ -37,9 +63,34 @@
 				<label class="carousel__control carousel__control--forward" for="1"></label>
 			</div>
 			<div class="carousel__track">
-				<li class="carousel__slide"></li>
-				<li class="carousel__slide"></li>
-				<li class="carousel__slide"></li>
+				<li class="carousel__slide">
+					<p>Viaggia in serenità e risparmia con EasyRail!</p>
+					<p>Solo per questa settimana, 20% di sconto sulla tariffa Economy, con codice sconto
+						<span style="background-color: white; font-weight: bold; padding: 5px 8px 5px 8px; border-radius: 8px;">LTW24</span>
+					</p>
+					<p>Posti disponibili: 50.000.</p>
+				</li>
+				<li class="carousel__slide" style="text-align: left; padding: 30px 0px 0px 50px; background-color: white;">
+					<table style="background-color: yellow; border-radius: 10px;">						
+						<tr>
+							<td style="font-size: 80px; padding: 0px 0px 10px 30px;">&#x26A0;</td>
+							<td style="font-size: 25px; padding: 0px 40px 10px 0px;">ATTENZIONE</td>
+						</tr>
+					</table>
+					<p style="margin: 3% 10% 3% 1%;">Si informano i viaggiatori che per lavori di potenziamento infrastrutturale la tratta
+						<span style="text-decoration: underline 1px;">Milano-Torino sarà chiusa al traffico ferroviario</span>
+						per tutta la giornata di sabato 8 giugno 2024. 
+						<span style="text-decoration: underline 1px;">Tutti i treni per tale tratta sono cancellati.</span>
+					</p>
+				</li>
+				<li class="carousel__slide" style="text-align: right;">
+					<div style="margin-right: 40px; min-width: 100px;">
+						<h1>Con EasyRail</h1>
+						<p>Scopri le principali città italiane a<br>prezzi imbattibili!</p>
+						<p>Le nostre destinazioni sono:<br>Roma, Milano, Venezia, Napoli,<br>Firenze, Bologna e Torino.</p>
+						<p>Ogni giorno, offriamo ai nostri<br>passeggeri decine di collegamenti<br>e l'efficienza del nostro servizio.</p>
+					</div>
+				</li>
 			</div>
 			<div class="carousel__indicators">
 				<label class="carousel__indicator" for="1"></label>
@@ -48,18 +99,25 @@
 			</div>
 		</div>
 	</div>
-	<!--Form Cerca viaggio-->
-	<main>
+		<!--Form Cerca viaggio-->
 		<form action="">
 			<div class="formhead">Cerca viaggio</div> 
 			<p>
 				<label for="part">Da</label>
-				<input type="text" name="part" size=auto style="margin-right: 16px;"
-				placeholder=" inserisci stazione di partenza">
+				<input list="stazioni" name="part" maxlength="27" placeholder=" inserisci stazione di partenza">
 				<button class="switch">&rlarr;</button>
 				<label for="arr">A</label>
-				<input type="text" name="arr"
-				placeholder=" inserisci stazione di arrivo">
+				<input list="stazioni" name="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
+
+				<datalist id="stazioni">
+					<option>Bologna Centrale</option>
+					<option>Firenze Santa Maria Novella</option>
+					<option>Milano Centrale</option>
+					<option>Napoli Centrale</option>
+					<option>Roma Termini</option>
+					<option>Torino Porta Nuova</option>
+					<option>Venezia Santa Lucia</option>
+				</datalist>
 			</p>
 			<p>
 				<table><tr>
@@ -70,27 +128,27 @@
 			</p>
 			<p>
 				<label for="dataAnd">Andata</label>
-				<input type="date" name="dataAnd">
+				<input class="date" type="date" name="dataAnd" id="dataAnd">
 				<label for="dataRit">Ritorno</label>
-				<input type="date" name="dataRit">
+				<input class="date" type="date" name="dataRit" id="dataRit">
 			</p>
 			<p>
 				<label for="pass">Passeggeri (popup con età)</label>
-				<input type="number" name="pass">
+				<input type="number" name="pass" id="pass">
 			</p>
 			<p>
 				<label for="cs">Codice sconto (opzionale) </label>
-				<input type="text" name="cs">
+				<input class="cs" type="text" name="cs" id="cs">
 			</p>
 			<p>
 				<div style="text-align: center;">
-				<input class="button" type="submit" value="Cerca">
-				<input class="button" type="reset" value="Cancella">
+				<input class="button" type="submit" value="Cerca" id="cerca">
+				<input class="button" type="reset" value="Cancella" id="cancella">
 				</div>
 			<p>
 		</form>
+		<br><br><br>
 	</main>
-	<br><br><br>
 
 	<!--Parte inferiore-->
 	<footer class="bottom">
