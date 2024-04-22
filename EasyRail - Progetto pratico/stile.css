@@ -68,8 +68,8 @@ select {
 	border-radius: 5px;
 	font-size: 16px;
 }
-/*Bottone switch Andata/ritorno*/
-.switch {
+/*Bottone swap Andata/ritorno*/
+.swap {
 	margin-left: 16px;
 	font-size: 19px;
 	width: 36px; height: 36px;
@@ -84,12 +84,6 @@ input {
 	padding: 5px;
 	margin: 5px 0 5px 0;
 	width: 240px;
-}
-input.date {
-	width: 200px;
-}
-input.cs{
-	width: 120px;
 }
 /*Tasti Cerca e Cancella*/
 .button {
@@ -161,6 +155,7 @@ footer {
 .dropbtn {
 	background-color: white;
 	display: inline-block;
+	height: 0px;
 	color: rgb(16, 16, 104);
 	font-size: 16px;
 	border: none;
