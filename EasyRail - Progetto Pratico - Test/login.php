@@ -1,12 +1,9 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location: /");
-}
-else {
+
     $dbconn = pg_connect("host=localhost port=5432 dbname=Easyrail 
                 user=daddo password=biar") 
                 or die('Could not connect: ' . pg_last_error());
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,8 +54,9 @@ else {
                     </script> <?php                     }
                     else {
                         $nome = $tuple['nome'];
-                        $_SESSION['name']=$tuple['nome'];
-                        $_SESSION['email']=$tuple['email'];
+                        $_SESSION['name']=$nome;
+                        $email= $tuple['email'];
+                        $_SESSION['email']=$email;
                         header("location:HomePage.php");
                     }
                 }

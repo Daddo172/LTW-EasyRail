@@ -120,7 +120,7 @@
 	</div>
 	<div style="text-align: center;">
 		<!--Form Cerca viaggio-->
-		<form action="" style="min-width: 666px; max-width: 666px;">
+		<form action="formand.php" method="post" style="min-width: 666px; max-width: 666px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p>
 				<label for="part">Da</label>
