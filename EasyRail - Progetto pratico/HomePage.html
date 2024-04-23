@@ -8,70 +8,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
 	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script>
-
-		function swap() {
-			var stzPart = document.getElementById("part");
-			var stzArr = document.getElementById("arr");
-			var temp = stzPart.value;
-			stzPart.value = stzArr.value;
-			stzArr.value = temp;
-		}
-
-/*		function validaStz() {
-			var stzPart = document.getElementById("part").value;
-			var stzArr = document.getElementById("arr").value;
-			//controllo siano stazioni valide
-			//AGGIUNGERE IGNORE CASE
-			var array = document.getElementsByTagName("option");
-			var c=0;
-			for (var i = 0; i < a.length; i++) {
-				if (stzPart == a[i] || stzArr == a[i]) c++;
-			}
-			if (c!=2) {
-				alert("Inserire stazioni di partenza e di destinazione valide");
-				return false;
-			}
-			//controllo stazioni non uguali
-			if (stzPart==stzArr) {
-				alert("Sono state inserite partenza e destinazione stazioni uguali");
-				return false;
-			}
-
-			return true;
-		}
-*/
-		function ritornoOnOff() {
-			if (document.getElementById("onOff").checked) {
-				document.getElementById("lr").style.display = "inline";
-				document.getElementById("dataRit").style.display = "inline";
-			}
-			else {
-				document.getElementById("lr").style.display = "none";
-				document.getElementById("dataRit").style.display = "none";
-			}
-		}
-
-		$(function() {
-			var today = new Date();
-			var month = today.getMonth() + 1;
-			var day = today.getDate();
-			var year = today.getFullYear();
-			if(month < 10)
-				month = '0' + month.toString();
-			if(day < 10)
-				day = '0' + day.toString();
-			var minDate = year + '-' + month + '-' + day;
-			$("#dataAnd").attr("min", minDate);
-			$("#dataAnd").attr("value", minDate);
-			});
-
-		function dataMinimaRit() {
-			var minDateRit = document.getElementById("dataAnd").value;
-			document.getElementById("dataRit").min = minDateRit;
-		}
-		
-		</script>
+	<script src="funzioni.js"></script>
 	<style>
 		input {
 			margin: 0;
@@ -156,7 +93,7 @@
 	</div>
 	<div style="text-align: center;">
 		<!--Form Cerca viaggio-->
-		<form action="" onsubmit="return validaStz()" name="form" id="form" style="min-width: 666px; max-width: 666px;">
+		<form action="" onsubmit="return validaStz()" autocomplete="off" name="form" id="form" style="min-width: 666px; max-width: 666px; margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p>
 				<label for="part">Da</label>
@@ -166,13 +103,13 @@
 				<input list="stazioni" name="arr" id="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
 
 				<datalist id="stazioni">
-					<option>Bologna Centrale</option>
-					<option>Firenze Santa Maria Novella</option>
-					<option>Milano Centrale</option>
-					<option>Napoli Centrale</option>
-					<option>Roma Termini</option>
-					<option>Torino Porta Nuova</option>
-					<option>Venezia Santa Lucia</option>
+					<option value="Bologna Centrale"></option>
+					<option value="Firenze Santa Maria Novella"></option>
+					<option value="Milano Centrale"></option>
+					<option value="Napoli Centrale"></option>
+					<option value="Roma Termini"></option>
+					<option value="Torino Porta Nuova"></option>
+					<option value="Venezia Santa Lucia"></option>
 				</datalist>
 			</p>
 			<p>
@@ -184,14 +121,34 @@
 			</p>
 			<p>
 				<label for="dataAnd">Andata</label>
-				<input type="date" name="dataAnd" id="dataAnd" style="width: 160px;">
+				<input oninput="vincoliDate()" type="date" name="dataAnd" id="dataAnd" style="width: 160px;">
 				<label for="dataRit" id="lr" style="margin-left: 24px;" hidden>Ritorno</label>
-				<input onclick="dataMinimaRit()" type="date" name="dataRit" id="dataRit" style="width: 160px;" hidden>
+				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px;" hidden>
 			</p>
-			<p>
-				<label for="pass">Passeggeri (popup con età)</label>
-				<input type="number" name="pass" id="pass">
-			</p>
+			<label for="pass">Passeggeri (massimo: 10)</label>
+			<div class="dropdown" style="padding: 5px; border: solid 1px gray; border-radius: 5px; background-color: rgb(224, 224, 224);">
+				<button class="dropbtn" type="button" name="pass" id="pass" style="background-color: rgb(224, 224, 224);">Visualizza</button>
+				<div class="dropdown-content2" style="padding: 12px; border-radius: 10px;">
+					<table>
+						<tr>
+							<td><label for="adt">Adulti</label></td>
+							<td>
+								<button type="button" onclick="subAdt()" class="addSubPass">-</button>
+								<input type="number" name="adt" id="adt" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;">
+								<button type="button" onclick="addAdt()" class="addSubPass">+</button>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="yng">Ragazzi (&lt;25 anni)</label></td>
+							<td>
+								<button type="button" onclick="subYng()" class="addSubPass">-</button>
+								<input type="number" name="yng" id="yng" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;">
+								<button type="button" onclick="addYng()" class="addSubPass">+</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 			<p>
 				<label for="cs">Codice sconto (opzionale) </label>
 				<input class="cs" type="text" name="cs" id="cs" style="width: 160px;">
@@ -204,7 +161,6 @@
 			<p>
 		</form>
 	</div>
-		<br><br><br>
 	</main>
 
 	<!--Parte inferiore-->
