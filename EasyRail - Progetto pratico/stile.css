@@ -145,7 +145,7 @@ footer {
 	background-color: white;
 	padding: 20px 40px 20px 40px;
 }
-/*Dropdown su Accedi*/
+/*Dropdown su Accedi e Dropdown2 su Visualizza passeggeri*/
 .dropdown {
 	position: relative;
 	display: inline-block;
@@ -203,6 +203,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+/*Tasti -/+ per i passeggeri*/
 .addSubPass {
 	font-size: 16px;
 	width: 24px; height: 24px;

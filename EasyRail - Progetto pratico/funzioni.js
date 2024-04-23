@@ -1,3 +1,4 @@
+//Swap stazione partenza con stazione arrivo
 function swap() {
 	var stzPart = document.getElementById("part");
 	var stzArr = document.getElementById("arr");
@@ -6,11 +7,10 @@ function swap() {
 	stzArr.value = temp;
 }
 
+//Controllo validità stazioni inserite
 function validaStz() {
 	var stzPart = document.getElementById("part").value;
 	var stzArr = document.getElementById("arr").value;
-	//controllo siano stazioni valide
-	//AGGIUNGERE IGNORE CASE
 	var a = document.getElementsByTagName("option");
 	var c=0;
 	for (var i = 0; i < a.length; i++) {
@@ -25,6 +25,7 @@ function validaStz() {
 	return true;
 }
 
+//Visibilità campo Ritorno
 function ritornoOnOff() {
 	var rit = document.getElementById("dataRit");
 	if (document.getElementById("onOff").checked) {
@@ -38,6 +39,7 @@ function ritornoOnOff() {
 	}
 }
 
+//Data minima impostabile
 $(function() {
 	var today = new Date();
 	var day = today.getDate();
@@ -53,32 +55,31 @@ $(function() {
 	$("#dataRit").attr("min", minDate);
 });
 
+//Gestione date
 function vincoliDate() {
 	var maxDateAnd = document.getElementById("dataRit").value;
-	if (maxDateAnd<document.getElementById("dataAnd").value)
+	if (maxDateAnd < document.getElementById("dataAnd").value)
 		document.getElementById("dataRit").value="";
 	var minDateRit = document.getElementById("dataAnd").value;
 	document.getElementById("dataRit").min = minDateRit;
 }
 
+//Funzioni di aumento e diminuzione numero passeggeri tramite tasti -/+
 function subAdt() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
 	if (parseInt(adt.value) > 0) adt.value--;
 }
-
 function addAdt() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
 	if (parseInt(adt.value) + parseInt(yng.value) < 10) adt.value++;
 }
-
 function subYng() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
 	if (parseInt(yng.value) > 0) yng.value--;
 }
-
 function addYng() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
