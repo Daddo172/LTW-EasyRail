@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php session_start(); 
+unset($_SESSION['stato']);
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -9,26 +11,11 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
 	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			var dtToday = new Date();
-			var month = dtToday.getMonth() + 1;
-			var day = dtToday.getDate();
-			var year = dtToday.getFullYear();
-			if(month < 10)
-				month = '0' + month.toString();
-			if(day < 10)
-			 day = '0' + day.toString();
-			var minDate = year + '-' + month + '-' + day;
-			$('#dataAnd').val(minDate);
-			$('#dataAnd').attr('min', minDate);
-			$('#dataRit').attr('min', minDate); //inserire dataAnd come min
-		});
-		</script>
+	<script src="funzioni.js"></script>
 	<style>
 		input {
 			margin: 0;
-			min-width: 220px;
+			width: 240px;
 		}
 	</style>
 </head>
@@ -37,8 +24,7 @@
 		<!--Barra superiore-->
 		<header class="topnav">
 			<nav>
-				<a class="titolo" href="HomePage.php">EasyRail</a>
-				
+				<a class="titolo" href="HomePage.html">EasyRail</a>
 				<?php if(isset($_SESSION['name'])){?>
 					<div class="log dropdown">
 						<button class="dropbtn"><?= $_SESSION['name']?></button>
@@ -118,47 +104,68 @@
 			</div>
 		</div>
 	</div>
+	
+	<!--Form Cerca viaggio-->	
 	<div style="text-align: center;">
-		<!--Form Cerca viaggio-->
-		<form action="formand.php" method="post" style="min-width: 666px; max-width: 666px;">
+		<form action="formand.php" method="post" onsubmit="return validaStz()" autocomplete="off" name="form" id="form" style="min-width: 666px; max-width: 666px; margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p>
 				<label for="part">Da</label>
-				<input list="stazioni" name="part" maxlength="27" placeholder=" inserisci stazione di partenza">
-				<button class="switch">&rlarr;</button>
+				<input list="stazioni" name="part" id="part" maxlength="27" placeholder=" inserisci stazione di partenza">
+				<button onclick="swap()" class="swap" type="button">&rlarr;</button>
 				<label for="arr">A</label>
-				<input list="stazioni" name="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
+				<input list="stazioni" name="arr" id="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
 
 				<datalist id="stazioni">
-					<option>Bologna Centrale</option>
-					<option>Firenze Santa Maria Novella</option>
-					<option>Milano Centrale</option>
-					<option>Napoli Centrale</option>
-					<option>Roma Termini</option>
-					<option>Torino Porta Nuova</option>
-					<option>Venezia Santa Lucia</option>
+					<option value="Bologna Centrale"></option>
+					<option value="Firenze Santa Maria Novella"></option>
+					<option value="Milano Centrale"></option>
+					<option value="Napoli Centrale"></option>
+					<option value="Roma Termini"></option>
+					<option value="Torino Porta Nuova"></option>
+					<option value="Venezia Santa Lucia"></option>
 				</datalist>
 			</p>
 			<p>
 				<table><tr>
 					<td style="padding: 0px 10px 0px 7px;">Andata e ritorno</td>
-					<td><input type="checkbox" id="switch" class="checkbox">
-					<label for="switch" class="toggle"></label>rimuovere ritorno con JS(?) se non selezionato</td>
+					<td><input onclick="ritornoOnOff()" class="checkbox" type="checkbox" id="onOff" name="onOff">
+					<label for="onOff" class="toggle"></label></td>
 				</tr></table>
 			</p>
 			<p>
 				<label for="dataAnd">Andata</label>
-				<input class="date" type="date" name="dataAnd" id="dataAnd">
-				<label for="dataRit">Ritorno</label>
-				<input class="date" type="date" name="dataRit" id="dataRit">
+				<input oninput="vincoliDate()" type="date" name="dataAnd" id="dataAnd" style="width: 160px;">
+				<label for="dataRit" id="lr" style="margin-left: 24px;" hidden>Ritorno</label>
+				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px;" hidden>
 			</p>
-			<p>
-				<label for="pass">Passeggeri (popup con età)</label>
-				<input type="number" name="pass" id="pass">
-			</p>
+			<label name="pass">Passeggeri (massimo: 10)</label>
+			<div class="dropdown" style="padding: 5px; border: solid 1px gray; border-radius: 5px; background-color: rgb(224, 224, 224);">
+				<button class="dropbtn" type="button" name="pass" id="pass" style="background-color: rgb(224, 224, 224);">Visualizza</button>
+				<div class="dropdown-content2" style="padding: 12px; border-radius: 10px;">
+					<table>
+						<tr>
+							<td><label for="adt">Adulti</label></td>
+							<td>
+								<button type="button" onclick="subAdt()" class="addSubPass">-</button>
+								<input type="number" name="adt" id="adt" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;" reqired>
+								<button type="button" onclick="addAdt()" class="addSubPass">+</button>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="yng">Ragazzi (&lt;25 anni)</label></td>
+							<td>
+								<button type="button" onclick="subYng()" class="addSubPass">-</button>
+								<input type="number" name="yng" id="yng" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;">
+								<button type="button" onclick="addYng()" class="addSubPass">+</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 			<p>
 				<label for="cs">Codice sconto (opzionale) </label>
-				<input class="cs" type="text" name="cs" id="cs">
+				<input class="cs" type="text" name="cs" id="cs" style="width: 160px;">
 			</p>
 			<p>
 				<div style="text-align: center;">
@@ -168,7 +175,6 @@
 			<p>
 		</form>
 	</div>
-		<br><br><br>
 	</main>
 
 	<!--Parte inferiore-->

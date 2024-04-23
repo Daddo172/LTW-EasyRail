@@ -16,7 +16,7 @@ $partenza = $_SESSION['part'];
 $andata = $_SESSION['dataAnd'];
 
 //QUERYANDATA
-    $queryrit ="select * from viaggi where arrivo like '%$partenza%' and andata = '$ritorno'";
+    $queryrit ="select * from viaggi where arrivo like '%$partenza%' and andata ='$ritorno'";
     $result=pg_query($dbconn,$queryrit) or die ('Query failed: ' . pg_last_error());    
     while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
     echo '<br><br>Codice Treno: ' .$row['codice'];
@@ -38,9 +38,7 @@ $andata = $_SESSION['dataAnd'];
   }
 
 
-
   pg_free_result($result);
-
   pg_close($dbconn);
 
    ?>

@@ -68,8 +68,8 @@ select {
 	border-radius: 5px;
 	font-size: 16px;
 }
-/*Bottone switch Andata/ritorno*/
-.switch {
+/*Bottone swap Andata/ritorno*/
+.swap {
 	margin-left: 16px;
 	font-size: 19px;
 	width: 36px; height: 36px;
@@ -84,12 +84,6 @@ input {
 	padding: 5px;
 	margin: 5px 0 5px 0;
 	width: 240px;
-}
-input.date {
-	width: 200px;
-}
-input.cs{
-	width: 120px;
 }
 /*Tasti Cerca e Cancella*/
 .button {
@@ -151,20 +145,19 @@ footer {
 	background-color: white;
 	padding: 20px 40px 20px 40px;
 }
-/*Dropdown su Accedi*/
+/*Dropdown su Accedi e Dropdown2 su Visualizza passeggeri*/
 .dropdown {
 	position: relative;
 	display: inline-block;
-	cursor: pointer;
 	border-bottom-right-radius: 10px;
 }
 .dropbtn {
 	background-color: white;
 	display: inline-block;
-	color: rgb(16, 16, 104);
+	height: 0px;
+	color: black;
 	font-size: 16px;
 	border: none;
-	cursor: pointer;
 }
 .dropdown-content {
 	display: none;
@@ -175,10 +168,10 @@ footer {
 	padding-top: 20px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
 	z-index: 1;
 }
-.dropdown-content a {
+.dropdown-content a{
 	color: black;
 	padding: 10px 0px 14px 0px;
 	text-decoration: none;
@@ -189,6 +182,33 @@ footer {
 }
 .dropdown:hover .dropdown-content {
 	display: block;
+}
+.dropdown-content2 {
+	display: none;
+	position: absolute;
+	left: 0;
+	background-color: #f9f9f9;
+	min-width: 100%;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+	z-index: 1;
+}
+.dropdown:hover .dropdown-content2 {
+	width: 300px;
+	display: inline;
+}
+/* Non far apparire freccette su/giù per input type="number" (per Chrome, Safari, Edge, Opera) */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/*Tasti -/+ per i passeggeri*/
+.addSubPass {
+	font-size: 16px;
+	width: 24px; height: 24px;
+	border: solid 1px gray; border-radius: 8px;
+	cursor: pointer;
 }
 /*Carousel*/
 .carousel {

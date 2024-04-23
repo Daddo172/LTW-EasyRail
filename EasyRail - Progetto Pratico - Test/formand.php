@@ -28,6 +28,7 @@ $_SESSION['arr'] = $arrivo;
 $_SESSION['dataRit'] = $ritorno;
 
 
+
 //QUERYANDATA
     $queryand ="select * from viaggi where partenza like '%$partenza%' and andata = '$andata'";
     $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
@@ -48,8 +49,14 @@ $_SESSION['dataRit'] = $ritorno;
       echo '<br> <a href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }
     
-    if($_SESSION['dataRit']!= NULL)
-    echo '<br><a class="button" href="formrit.php" value="Ritorno"> Ritorno </a>';
+    if($_POST['dataRit']!= NULL){
+        echo '<br><a class="button" href="formrit.php" value="Ritorno"> Ritorno </a>';
+        $_SESSION["stato"]='ritorno';
+    }
+    else{
+      $_SESSION["stato"]='andata';
+
+    }
   }
    ?>
      </body>
