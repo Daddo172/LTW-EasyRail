@@ -148,7 +148,7 @@ unset($_SESSION['stato']);
 							<td><label for="adt">Adulti</label></td>
 							<td>
 								<button type="button" onclick="subAdt()" class="addSubPass">-</button>
-								<input type="number" name="adt" id="adt" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;" reqired>
+								<input type="number" name="adt" id="adt" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;" required>
 								<button type="button" onclick="addAdt()" class="addSubPass">+</button>
 							</td>
 						</tr>
