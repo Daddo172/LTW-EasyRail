@@ -43,12 +43,12 @@ session_start();?>
 						<a href="Register.html">Registrati</a>
 					</div>
 				</div>
+				<?php }?>
 				<a class="active center" href="HomePage.php">Home</a>
 				<a class="center" href="TrainStatus.html">Stato treno</a>
 				<a class="center" href="FindTicket.html">Trova biglietto</a>
 			</nav>
 		</header>
-        <?php }?>
             <form>
                 <h1>Informazioni Utente:</h1>
                 <?php
