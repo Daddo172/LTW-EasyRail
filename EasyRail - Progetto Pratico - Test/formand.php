@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<?php session_start();  ?>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,8 +50,7 @@
    <?php
     $dbconn = pg_connect("host=localhost port=5432 dbname=Easyrail 
                 user=daddo password=biar") 
-                or die('Could not connect: ' . pg_last_error());
-session_start();   
+                or die('Could not connect: ' . pg_last_error()); 
 //PRENDO TUTTI I DATI DEL FORM
 if(isset($_SESSION['part'])!=NULL){
 $arrivo = $_SESSION['arr'];
@@ -63,13 +63,14 @@ else{
 $partenza = $_POST['part'];
 $arrivo = $_POST['arr'];
 $andata = ($_POST['dataAnd']);
-$ritorno = ($_POST['dataRit']);
 $passeggeri = $_POST['adt'];
 }
+$ritorno = ($_POST['dataRit']);
 if(isset($_SESSION['name'])){
   $nome = $_SESSION['name'];
   $email = $_SESSION['email'];
 }
+
 $_SESSION['part'] = $partenza;
 $_SESSION['dataAnd'] = $andata;
 $_SESSION['arr'] = $arrivo;
@@ -98,10 +99,10 @@ $_SESSION['adt']=$passeggeri;
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }
   }
-  if($_SESSION['dataRit']!= ''){
+if($_SESSION['dataRit']!= ''){
     echo '<br><br><a class="button" href="formrit.php" value="Ritorno"> Ritorno </a>';
     $_SESSION["stato"]='ritorno';
-}
+	}
 else{
   $_SESSION["stato"]='andata';
 

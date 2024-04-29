@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <?php session_start();  ?>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +49,6 @@
     $dbconn = pg_connect("host=localhost port=5432 dbname=Easyrail 
                 user=daddo password=biar") 
                 or die('Could not connect: ' . pg_last_error());
-session_start(); 
  
 //PRENDO TUTTI I DATI DEL FORM
 if(isset($_SESSION['name'])){
@@ -62,9 +62,9 @@ $andata = $_SESSION['dataAnd'];
 $passeggeri = $_SESSION['adt'];
 $_SESSION["stato"]='andata';
 //QUERYANDATA
-    $queryrit ="select * from viaggi where arrivo like '%$partenza%' and andata ='$ritorno'";
-    $result=pg_query($queryrit) or die ('Query failed: ' . pg_last_error());    
-    while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
+    $queryrit ="select * from viaggi where arrivo like '$partenza' and andata ='$ritorno'";
+    $res=pg_query($queryrit) or die ('Query failed: ' . pg_last_error());    
+    while ($row = pg_fetch_array($res,NULL,PGSQL_ASSOC)){
     echo 'Codice Treno: ' .$row['codice'];
     $codice=$row['codice'];
     $_SESSION['codice'] = $codice;
@@ -84,8 +84,6 @@ $_SESSION["stato"]='andata';
     }
   }
 echo '<br><a class="button" href="formand.php" value="Ritorno"> Andata </a>';
-
-  pg_free_result($result);
   pg_close($dbconn);
 
   ?>

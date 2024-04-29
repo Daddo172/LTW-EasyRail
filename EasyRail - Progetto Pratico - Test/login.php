@@ -30,8 +30,7 @@
   icon: "error",
   html: `<b>Non sembra che ti sia registrato</b>`,
   focusConfirm: false,
-  confirmButtonText: `
-    <a style="color:white" href="Register.html" class="fa fa-thumbs-up">Registrati!</a>`
+  confirmButtonText: `<a style="color:white" href="Register.html" class="fa fa-thumbs-up">Registrati!</a>`
 });
 
                     </script> <?php                }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -46,7 +47,6 @@
 		</header>
     <form>
 <?php
-    session_start();
     $dbconn = pg_connect("host=localhost port=5432 dbname=Easyrail 
                 user=daddo password=biar") 
                 or die('Could not connect: ' . pg_last_error());
@@ -63,10 +63,9 @@
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo'Hai già prenotato';
                 if($stato != 'ritorno'){
-                    unset($_SESSION['stato']);
                     echo '<a class="button" href="HomePage.php" value="Ritorno"> Torna HomepAge </a>';
                 }else{
-
+					unset($_SESSION['stato']);
                     echo '<a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a>';
                 }
             }

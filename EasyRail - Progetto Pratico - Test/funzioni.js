@@ -85,3 +85,12 @@ function addYng() {
 	var yng = document.getElementById("yng");
 	if (parseInt(adt.value) + parseInt(yng.value) < 10) yng.value++;
 }
+function validaPass() {
+	var adt = document.getElementById("adt");
+	var yng = document.getElementById("yng");
+	if (parseInt(adt.value) + parseInt(yng.value) == 0) {
+		alert("Inserire almeno un passeggero");
+		return false;
+	}
+	return true;
+}
