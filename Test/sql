@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS public.prenotazioni
+(
+    codice integer,
+    email character varying ,
+    codbiglietto integer
+)
+
+CREATE TABLE IF NOT EXISTS public.utente
+(
+    email character varying(40) NOT NULL,
+    nome character varying(20) NOT NULL,
+    cognome character varying(20) NOT NULL,
+    paswd character varying(32) NOT NULL,
+    CONSTRAINT utente_pkey PRIMARY KEY (email)
+)
+
+CREATE TABLE IF NOT EXISTS public.viaggi
+(
+    codice integer NOT NULL,
+    partenza character varying(40) ,
+    arrivo character varying(40),
+    andata date,
+    passeggeri integer,
+    orariopartenza time without time zone,
+    orarioarrivo time without time zone,
+    CONSTRAINT viaggi_pkey PRIMARY KEY (codice)
+)
