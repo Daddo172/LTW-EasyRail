@@ -176,15 +176,15 @@
                     ?>
                 </div>
             </div>
-            <?php if(isset($_GET['prenotazioni'])){ ?>
+            <?php if(isset($_GET['codbiglietto'])){ ?>
             <DIV class="card">
                 <div class="card-header">
                     <h4>MODIFICA I DATI</h4>
                 </div>
                 <div class="card-body">
                     <?php        
-                    $email=$_GET['prenotazioni'];
-                    $query="SELECT * FROM prenotazioni WHERE email='$email'";
+                    $codbiglietto=$_GET['codbiglietto'];
+                    $query="SELECT * FROM prenotazioni WHERE codbiglietto='$codbiglietto'";
                     $result=pg_query($dbconn,$query);
                     while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC))
                     {?>
@@ -194,13 +194,19 @@
                     <tr>
                         <p>
                             <td><label for="codice">Codice </label></td>
-                            <td><input type="text" name="inputcodice" value="<?php echo $row['codice'];?>"id="codice" required></td>
+                            <td><input type="text" name="inputcodice3" value="<?php echo $row['codice'];?>"id="codice" required></td>
                         </p>
                     </tr>
                     <tr>
                         <p>
                             <td><label for="email">Email </label></td>
                             <td><input type="email" name="inputemail2" value="<?php echo $row['email'];?>" id="email" required></td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td><label for="codbiglietto">Codice Biglietto </label></td>
+                            <td><input type="number" name="updatecodbiglietto" value="<?php echo $row['codbiglietto'];?>" id="codbiglietto" readonly></td>
                         </p>
                     </tr>
                 </table>

@@ -70,7 +70,11 @@
                 }
             }
         else{
-            $query = "insert into prenotazioni values ($2,$1)";
+		$query1="select * from prenotazioni";
+		$result=pg_query($dbconn,$query1);
+		$row=pg_num_rows($result);
+		$row= 1000 + $row;
+		$query = "insert into prenotazioni values ($2,$1,$row)";
         $data = pg_query_params($dbconn, $query, array($email, $codice));
         echo 'prenotazione completata!';
         if($stato != 'ritorno'){

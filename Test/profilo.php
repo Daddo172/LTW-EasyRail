@@ -69,13 +69,17 @@ session_start();?>
             <form>
                 <h1>Treni Prenotati:</h1>
                 <?php
-                $query="select codice from prenotazioni where email='$email'";
+                $query="select codice,codbiglietto from prenotazioni where email='$email'";
                 $result=pg_query($query) or die ('Query failed: ' . pg_last_error());
                 while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){  
                     $codice= $row['codice'];
+					$codbiglietto= $row['codbiglietto'];
                     $query2="select * from viaggi where codice='$codice'";
                     $result2=pg_query($query2) or die ('Query failed: ' . pg_last_error());                           
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){
+						echo '<br /> Codice: ' .$row['codice'];
+						echo '<br /> Codice Biglietto: ' .$row['codbiglietto'];
+                        echo '<br /> Stazione di Arrivo: '.$row2['arrivo'];
                         echo '<br /> Stazione di Partenza: ' .$row2['partenza'];
                         echo '<br /> Stazione di Arrivo: '.$row2['arrivo'];
                         echo '<br /> Data Andata:'.$row2['andata'];

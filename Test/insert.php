@@ -96,6 +96,12 @@
                             <td><input type="email" name="inputemail2" id="email" required></td>
                         </p>
                     </tr>
+                    <tr>
+                        <p>
+                            <td><label for="codbiglietto">Codice Biglietto </label></td>
+                            <td><input type="number" name="inputcodbiglietto" id="codbiglietto" required></td>
+                        </p>
+                    </tr>
                 </table>
                 <p>
                 <div style="text-align: center;">

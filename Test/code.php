@@ -27,12 +27,13 @@ else {
     {
         $codice=$_POST['inputcodice'];
         $email=$_POST['inputemail2'];
+        $codbiglietto=$_POST['inputcodbiglietto'];
         
 
 
-        $q1 = "insert into prenotazioni values ($1,$2)";
+        $q1 = "insert into prenotazioni values ($1,$2,$3)";
         $data = pg_query_params($dbconn, $q1,
-            array($codice, $email));
+            array($codice, $email,$codbiglietto));
             header('location: admin.php');
     }
     if(isset($_POST['inputcodice2']))
@@ -81,6 +82,17 @@ else {
         header('location: shviaggi.php');
     }
 
+    if(isset($_POST['updatecodbiglietto']))
+    {
+        $codice=$_POST['inputcodice3'];
+        $email=$_POST['inputemail'];
+        $codbiglietto=$_POST['updatecodbiglietto'];
+
+        $query = "UPDATE prenotazioni SET codice='$codice', email='$email', codbiglietto='$codbiglietto' WHERE codice='$codice'";
+        $data = pg_query($dbconn,$query);
+        header('location: shprenotazioni.php');
+    }
+
     //UPDATE PRENOTAZIONE AGGIUNGERE CODICE BIGLIETTO
 
     if(isset($_POST['deleteemail'])){
@@ -95,6 +107,13 @@ else {
         $query="DELETE FROM viaggi WHERE codice='$codice'";
         $result=pg_query($dbconn,$query);
         header('location: shviaggi.php');
+    }
+
+    if(isset($_POST['deletecodbiglietto'])){
+        $codbiglietto=$_POST['deletecodbiglietto'];
+        $query="DELETE FROM prenotazioni WHERE codbiglietto='$codbiglietto'";
+        $result=pg_query($dbconn,$query);
+        header('location: shprenotazioni.php');
     }
 
     //DELETE PRENOTAZIONE AGGIUNGERE CODICE BIGLIETTO

@@ -60,6 +60,7 @@
                         <tr>
                             <th>Codice</th>
                             <th>Email</th>
+                            <th>Codice Biglietto</th>
                             <th>Modifica</th>
                             <th>Cancella</th>
                         </tr>
@@ -74,8 +75,15 @@
                         <tr>
                             <td><?php echo $row['codice']; ?></td>
                             <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['codbiglietto']; ?></td>
                             <td> 
-                                <a href="edit.php?prenotazioni=<?php echo $row['email']; ?>" class="btn btn-success">Modifica dati</a>
+                                <a href="edit.php?codbiglietto=<?php echo $row['codbiglietto']; ?>" class="btn btn-success">Modifica dati</a>
+                            </td>
+                            <td> 
+                                <form action="code.php" method="POST">
+                                    <input type="hidden" name=deletecodbiglietto value="<?php echo $row['codbiglietto']; ?>">
+                                    <button type="submit" class="btn btn-danger">Cancella dati</button>
+                                </form>
                             </td>
                         </tr><?php
                     }  ?>
