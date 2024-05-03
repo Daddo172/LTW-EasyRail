@@ -25,22 +25,21 @@
 		</nav>
 	</header>
 	<main>
-		<form action="TrainStatus.php" method="post" style="margin-top: 60px auto 60px auto;">
-			<div class="formhead">Visualizza informazioni</div>
-			<table style="margin: 20px 0 20px 0;">
-				<tr>
-					<p>
-					<td><label for="ct">Codice treno </label></td>
-					<td><input type="number" name="ct" id="ct" placeholder=" codice identificativo" required></td>
-					</p>
-				</tr>
-			</table>
-			<p>
-				<div style="text-align: center;">
-				<input class="button" type="submit" value="Cerca" id="cerca">
-				</div>
-			<p>
-		</form>
+		<?php
+			$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+			$ct = $_POST["ct"];
+			$query = "SELECT 1 from trenoCompleto where codice=$1";
+			$result = pg_query_params($dbconn, $query, array($ct));
+			$tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
+			if (!$tuple) {
+				echo"Treno non trovato, riprova";
+			} else {
+				echo "treno $ct<br>partenza:";
+				echo $tuple["f0"];
+				echo " alle ore ";
+				echo $tuple["hf0"];
+			}
+		?>
 	</main>
 	<footer>
 		<table>

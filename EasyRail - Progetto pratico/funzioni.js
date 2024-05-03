@@ -29,13 +29,15 @@ function validaStz() {
 function ritornoOnOff() {
 	var rit = document.getElementById("dataRit");
 	if (document.getElementById("onOff").checked) {
-		document.getElementById("lr").style.display = "inline";
-		rit.style.display = "inline";
+		document.getElementById("lr").style.opacity = "1";
+		rit.style.opacity = "1";
+		rit.disabled= false;
 	}
 	else {
 		rit.value="";
-		document.getElementById("lr").style.display = "none";
-		rit.style.display = "none";
+		document.getElementById("lr").style.opacity = "0.5";
+		rit.style.opacity = "0.5";
+		rit.disabled = true;
 	}
 }
 
@@ -51,17 +53,30 @@ $(function() {
 		month = '0' + month.toString();
 	var minDate = year + '-' + month + '-' + day;
 	$("#dataAnd").attr("min", minDate);
-	$("#dataAnd").attr("value", minDate);
 	$("#dataRit").attr("min", minDate);
+	$("#dataAnd").attr("value", minDate);
 });
 
 //Gestione date
 function vincoliDate() {
-	var maxDateAnd = document.getElementById("dataRit").value;
-	if (maxDateAnd < document.getElementById("dataAnd").value)
-		document.getElementById("dataRit").value="";
-	var minDateRit = document.getElementById("dataAnd").value;
-	document.getElementById("dataRit").min = minDateRit;
+	var dataRit = document.getElementById("dataRit");
+	var dataAnd = document.getElementById("dataAnd");
+	if (dataAnd.value > dataRit.value)
+		dataRit.value = "";
+	if (!dataAnd.value == "")
+		dataRit.min = dataAnd.value;
+	else {
+		var today = new Date();
+		var day = today.getDate();
+		var month = today.getMonth() + 1;
+		var year = today.getFullYear();
+		if(day < 10)
+			day = '0' + day.toString();
+		if(month < 10)
+			month = '0' + month.toString();
+		today = year + '-' + month + '-' + day;
+		dataRit.min = today;
+	}
 }
 
 //Funzioni di aumento e diminuzione numero passeggeri tramite tasti -/+
@@ -84,4 +99,14 @@ function addYng() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
 	if (parseInt(adt.value) + parseInt(yng.value) < 10) yng.value++;
+}
+
+function validaPass() {
+	var adt = document.getElementById("adt");
+	var yng = document.getElementById("yng");
+	if (parseInt(adt.value) + parseInt(yng.value) == 0) {
+		alert("Inserire almeno un passeggero");
+		return false;
+	}
+	return true;
 }
