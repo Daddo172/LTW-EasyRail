@@ -6,7 +6,15 @@
 	<title>Stato treno</title>
 	<link href="stile.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
+	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image">
+	<style>
+		th {
+			font-weight: 600;
+		}
+		th, td {
+			padding: 5px;
+		}
+	</style>
 </head>
 <body>
 	<header class="topnav">
@@ -26,33 +34,81 @@
 	</header>
 	<main>
 		<?php
-			$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+		$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+		if ($_POST==null) echo "nessun codice inserito";
+		else {
 			$ct = $_POST["ct"];
-			$query = "SELECT 1 from trenoCompleto where codice=$1";
+			if (!is_numeric($ct)) goto RETRY;
+			$query = "SELECT * from trenoCompleto where codice=$1";
 			$result = pg_query_params($dbconn, $query, array($ct));
-			$tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
-			if (!$tuple) {
-				echo"Treno non trovato, riprova";
+			$tuple = pg_fetch_assoc($result);
+			//Rimostra form ma stavolta con messaggio di errore
+			if ($tuple==false) {
+RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-top: 60px auto 60px auto;\">
+				<div class=\"formhead\">Visualizza informazioni</div>
+				<table style=\"margin: 20px 0 20px 0;\">
+					<tr>
+						<p>
+						<td><label for=\"ct\">Codice treno </label></td>
+						<td><input type=\"number\" name=\"ct\" id=\"ct\" placeholder=\" codice identificativo\" required></td>
+						</p>
+					</tr>
+					<tr>
+						<td></td>
+						<td style=\"color: rgb(160, 0, 0);\">Treno non trovato, inserisci un altro codice</td>
+					</tr>
+				</table>
+				<p>
+					<div style=\"text-align: center;\">
+					<input class=\"button\" type=\"submit\" value=\"Cerca\" id=\"cerca\">
+					</div>
+				<p>
+			</form>";
 			} else {
-				echo "treno $ct<br>partenza:";
-				echo $tuple["f0"];
-				echo " alle ore ";
-				echo $tuple["hf0"];
+			//Header del risultato
+			echo "<div class=train-status>";
+			echo "<div style=\"font-size: 24px;\">
+			EasyRail #$ct - " . date("d/m/Y");
+			echo "</div>";
+			//Subheader
+			echo "<div style=\"border-bottom: solid 1px black; padding-bottom: 10px;\">";
+			echo "Da " .
+			"<span style=\"font-weight: 600;\">" . $tuple["f0"] . "</span>" .
+			' a ' .
+			"<span style=\"font-weight: 600;\">" . $tuple["f5"] . "</span><br>";
+			echo "</div>";
+			//Box blu stato treno
+			echo  "<p>Stato treno:";
+			if (date("H:i:s") < $tuple["hf0"]) {
+			echo "<span class=box-stato>NON PARTITO</span>";
+			} elseif (date("H:i:s") >= $tuple["hf5"]) {
+				echo "<span class=box-stato>FINE CORSA</span>";
 			}
+			else echo "<span class=box-stato>IN VIAGGIO</span>";
+			echo "</p>";
+			//(DA TERMINARE) Tabella con tutti i dati + barra
+			echo "<p>";
+			echo "<table style=\"width: 100%; text-align: left;\">";
+			echo "<tr><th>Fermata</th><th>Orario</th><th style=\"text-align: right;\">Avanzamento</th><tr>";
+			$i = 0;
+			foreach($tuple as $index => $value) {
+				if (preg_match("/\bf\d/", $index)) {
+					if ($value!="") {
+						echo "<tr>";
+						echo "<td>" . $tuple["f$i"] . "</td>";
+						echo "<td>" . $tuple["hf$i"]. "</td>";
+						echo "<td style=\"text-align: center;\">barra</td>";
+						echo "</tr>";
+					}
+				$i++;
+				}
+			}
+			echo "</table>";
+			echo "</p>";
+			echo "</div>";
+			}
+		}
 		?>
 	</main>
-	<footer>
-		<table>
-			<tr>
-				<td>
-					<p>EasyRail &copy;</p>
-					<p>Un progetto per LTW (Linguaggi e Tecnologie per il Web) - A.A. 2023/24 - Prof. Lorenzo Marconi</p>
-				</td>
-			<tr>	
-				<td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p></td>
-				<td colspan="">Sede legale Università La Sapienza<br>Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
-			</tr>
-		</table>
-	</footer>
 </body>
 </html>

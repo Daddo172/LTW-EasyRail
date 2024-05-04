@@ -25,7 +25,7 @@ a {
 .titolo {
 	font-size: 30px; font-weight: bold; font-style: italic;
 	float: left;
-	padding: 10px 3% 12px 1.5%;
+	padding: 10px 3% 15px 1.5%;
 }
 .center {
 	display: inline-block;
@@ -35,7 +35,7 @@ a {
 	float: right;
 	background-color: white;
 	color: rgb(16, 16, 104);
-	padding: 22px 1.6% 22px 1.6%;
+	padding: 21px 1.6% 22px 1.6%;
 }
 a.center:hover:not(.active), a.log:hover:not(.active) {
 	text-decoration: underline;
@@ -58,6 +58,7 @@ form {
 .formhead {
 	font-size: 20px;
 	text-align: center;
+	background-color: white;
 	border-bottom-style: solid; border-width: 1px;
 	padding: 0px 0px 16px 0px;
 }
@@ -378,4 +379,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	background-image: url("pictures/carousel3.png");
 	background-size: cover;
 	background-position: right;
+}
+/*Stato Treno*/
+.train-status {
+	font-size: 17px;
+	margin: 24px auto auto auto;
+	background-color: white;
+	text-align: center;	
+	width: 40%;
+	min-width: 480px;
+	padding: 19px;
+	border-radius: 10px;	
+}
+.box-stato {
+	color: white;
+	font-weight: 500;
+	background-color: rgb(16, 16, 104);
+	border-radius: 8px;
+	padding: 5px 8px 5px 8px;
+	margin-left: 8px;
 }

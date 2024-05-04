@@ -47,11 +47,11 @@ INSERT INTO trenoCompleto values (1112, 'Torino Porta Nuova', 'Milano Centrale',
 INSERT INTO trenoCompleto values (1114, 'Torino Porta Nuova', 'Milano Centrale', NULL, NULL, NULL, 'Venezia Santa Lucia', '20:', '21:', NULL, NULL, NULL, '23:');
 
 /*Treni nord (est->ovest)*/
-INSERT INTO trenoCompleto values (1101, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '6:', '7:', NULL, NULL, NULL, '9:');
-INSERT INTO trenoCompleto values (1103, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '8:', '9:', NULL, NULL, NULL, '11:');
-INSERT INTO trenoCompleto values (1105, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '10:', '11:', NULL, NULL, NULL, '13:');
-INSERT INTO trenoCompleto values (1107, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '12:', '13:', NULL, NULL, NULL, '15:');
-INSERT INTO trenoCompleto values (1109, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '14:', '15:', NULL, NULL, NULL, '17:');
-INSERT INTO trenoCompleto values (1111, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '16:', '17:', NULL, NULL, NULL, '19:');
-INSERT INTO trenoCompleto values (1113, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '18:', '19:', NULL, NULL, NULL, '21:');
-INSERT INTO trenoCompleto values (1115, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '20:', '21:', NULL, NULL, NULL, '23:');
+INSERT INTO trenoCompleto values (1101, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '6:', '8:', NULL, NULL, NULL, '9:');
+INSERT INTO trenoCompleto values (1103, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '8:', '10:', NULL, NULL, NULL, '11:');
+INSERT INTO trenoCompleto values (1105, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '10:', '12:', NULL, NULL, NULL, '13:');
+INSERT INTO trenoCompleto values (1107, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '12:', '14:', NULL, NULL, NULL, '15:');
+INSERT INTO trenoCompleto values (1109, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '14:', '16:', NULL, NULL, NULL, '17:');
+INSERT INTO trenoCompleto values (1111, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '16:', '18:', NULL, NULL, NULL, '19:');
+INSERT INTO trenoCompleto values (1113, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '18:', '20:', NULL, NULL, NULL, '21:');
+INSERT INTO trenoCompleto values (1115, 'Venezia Santa Lucia', 'Milano Centrale', NULL, NULL, NULL, 'Torino Porta Nuova', '20:', '22:', NULL, NULL, NULL, '23:');
