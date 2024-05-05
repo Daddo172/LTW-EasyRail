@@ -380,17 +380,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	background-size: cover;
 	background-position: right;
 }
-/*Stato Treno*/
+/*Stato treno*/
 .train-status {
 	font-size: 17px;
-	margin: 24px auto auto auto;
+	margin: 24px auto 24px auto;
 	background-color: white;
-	text-align: center;	
-	width: 40%;
-	min-width: 480px;
+	text-align: center;
+	max-width: fit-content;
 	padding: 19px;
-	border-radius: 10px;	
+	border-radius: 10px;
 }
+/*Box di testo a sfondo blu per lo stato treno*/
 .box-stato {
 	color: white;
 	font-weight: 500;
