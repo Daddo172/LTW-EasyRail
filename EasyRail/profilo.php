@@ -27,7 +27,7 @@ session_start();?>
         <!--Barra superiore-->
         <header class="topnav">
             <nav>
-                <a class="titolo" href="HomePage.html">EasyRail</a>
+            <a class="titolo" href="HomePage.php">EasyRail</a>
                 <?php if(isset($_SESSION['name'])){?>
                 <div class="log dropdown">
                     <button class="dropbtn"><?= $_SESSION['name']?></button>
@@ -89,15 +89,14 @@ session_start();?>
         <form>
             <h1>Treni Prenotati</h1>
 			<div class="card-body">
-            <table class="table table-bordered">
+            <table  style="width:100%" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Codice</th>
-                        <th>Codice Biglietto</th>
-                        <th>Stazione di Partenza</th>
-						<th>Stazione di Arrivo</th>
-						<th>orario di partenza</th>
-						<th>orario di arrivo</th>
+                            <th>Codice</th>
+                            <th>Partenza</th>
+                            <th>Destinazione</th>
+                            <th>Orario di partenza</th>
+                            <th>Orario di destinazione</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,15 +106,16 @@ session_start();?>
                 while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){  
                     $codice= $row['codice'];
 					$codbiglietto= $row['codbiglietto'];
-                    $query2="select * from treno where codice='$codice'";
+                    $query2="select * from trenocompleto where codice='$codice'";
                     $result2=pg_query($query2) or die ('Query failed: ' . pg_last_error());                           
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
-						<tr><td><?php echo $row['codice']; ?></td>
-                    <td><?php echo $row['codbiglietto']; ?></td>
-					<td><?php echo $row2['partenza']; ?></td>
-                    <td><?php echo $row2['destinazione']; ?></td>
-					<td><?php echo $row2['hpartenza']; ?></td>
-                    <td><?php echo $row2['harrivo']; ?></td></tr>
+						<tr>
+                        <td><?php echo $row['codice']; ?></td>
+                            <td><?php echo $row2['f0']; ?></td>
+                            <td><?php echo $row2['f5']; ?></td>
+                            <td><?php echo $row2['hf0']; ?></td>
+                            <td><?php echo $row2['hf5']; ?></td>
+                </tr>
 					<?php                 
 					}
                 } 
