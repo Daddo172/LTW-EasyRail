@@ -36,7 +36,6 @@
 				<?php }?>
 				<a class="active center" href="HomePage.php">Home</a>
 				<a class="center" href="TrainStato.php">Stato treno</a>
-				<a class="center" href="FindTicket.html">Trova biglietto</a>
 			</nav>
 		</header>
 	<main>
@@ -57,18 +56,5 @@
 			<p>
 		</form>
 	</main>
-	<footer>
-		<table>
-			<tr>
-				<td>
-					<p>EasyRail &copy;</p>
-					<p>Un progetto per LTW (Linguaggi e Tecnologie per il Web) - A.A. 2023/24 - Prof. Lorenzo Marconi</p>
-				</td>
-			<tr>	
-				<td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p></td>
-				<td colspan="">Sede legale Università La Sapienza<br>Edificio Marco Polo, Viale Scalo San Lorenzo, 82, Roma</td>
-			</tr>
-		</table>
-	</footer>
 </body>
 </html>

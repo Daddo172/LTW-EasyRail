@@ -49,7 +49,6 @@ unset($_SESSION['stato']);
 				<?php }?>
 				<a class="active center" href="HomePage.php">Home</a>
 				<a class="center" href="TrainStato.php">Stato treno</a>
-				<a class="center" href="FindTicket.html">Trova biglietto</a>
 			</nav>
 		</header>
 

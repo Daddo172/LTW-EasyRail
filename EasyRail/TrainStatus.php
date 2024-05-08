@@ -19,48 +19,48 @@
 		.horizontal-bar {
 			color: white;
 			text-align: center;
+			overflow: hidden;
 		}
 		/*Zona lampeggiante*/
+		@keyframes blinker {
+			50% {
+				background-color: rgb(100, 100, 240);
+			}
+		}
 		.blinking {
 			animation: blinker 3s linear infinite;
 		}
-		@keyframes blinker {
-			50% {
-				opacity: 0.5;
+		@keyframes slide {
+			0% {
+				left: -110%;
+			}
+			100% {
+				left: 125%;
 			}
 		}
 		img {
+			position: relative;
 			margin-top: 2px;
 			width: 48px;
+			animation: slide 3s linear infinite;
 		}
 	</style>
 </head>
 <body>
-<header class="topnav">
-            <nav>
-            <a class="titolo" href="HomePage.php">EasyRail</a>
-                <?php if(isset($_SESSION['name'])){?>
-                <div class="log dropdown">
-                    <button class="dropbtn"><?= $_SESSION['name']?></button>
-                    <div class="dropdown-content">
-                        <a href="Admin.php">Area Admin</a>
-                        <a href="logout.php">Logout</a>
-                    </div>
-                </div>
-                <?php }else{?>
-                <div class="log dropdown">
-                    <button class="dropbtn">Accedi</button>
-                    <div class="dropdown-content">
-                        <a href="./Login.html">Login</a>
-                        <a href="Register.html">Registrati</a>
-                    </div>
-                </div>
-                <?php }?>
-                <a class="active center" href="HomePage.php">Home</a>
-				<a class="center" href="TrainStato.php">Stato treno</a>
-                <a class="center" href="FindTicket.html">Trova biglietto</a>
-            </nav>
-        </header>
+	<header class="topnav">
+		<nav>	
+			<a class="titolo" href="HomePage.html" ALT="EasyRail">EasyRail</a>
+			<div class="log dropdown">
+				<button class="dropbtn">Accedi</button>
+				<div class="dropdown-content">
+					<a href="Login.html">Login</a>
+					<a href="Register.html">Registrati</a>
+				</div>
+			</div>
+			<a class="center" href="HomePage.html">Home</a>
+			<a class="active center" href="TrainStatus.html">Stato treno</a>
+		</nav>
+	</header>
 	<main>
 	<?php
 	$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
@@ -179,7 +179,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 			if ($orafermata!=NULL) {
 				/*Lampeggiante*/
 				if ($lampeggiante && $ora < $orafermata && $n >= 0 && $ora >= $orafermataprec) {
-					echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104);";
+					echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104); text-align: left;";
 					if ($c==5) {
 						echo "border-top-right-radius: 20px; border-bottom-right-radius: 20px;\">";
 					}
