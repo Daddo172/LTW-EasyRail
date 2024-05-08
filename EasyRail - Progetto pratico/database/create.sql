@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS utente (
 );
 
 /*Tabella dei biglietti acquistati*/
-CREATE TABLE IF NOT EXISTS public.prenotazione (
+CREATE TABLE IF NOT EXISTS prenotazione (
     codice integer,
     email varchar,
     codbiglietto integer,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS public.prenotazione (
 );
 
 /*Tabella per visualizzare completamente un treno nello Stato Treno*/
-CREATE TABLE IF NOT EXISTS public.trenoCompleto (
+CREATE TABLE IF NOT EXISTS trenoCompleto (
     codice integer NOT NULL,
     f0 varchar(40) NOT NULL,
     f1 varchar(40) NOT NULL,
@@ -40,13 +40,17 @@ CREATE TABLE IF NOT EXISTS public.trenoCompleto (
 );
 
 /*Tabella dei treni disponibili*/
-CREATE TABLE IF NOT EXISTS public.treno (
+CREATE TABLE IF NOT EXISTS treno (
     codice integer NOT NULL,
     partenza varchar(40) NOT NULL,
     destinazione varchar(40) NOT NULL,
     hpartenza time without time zone NOT NULL,
     harrivo time without time zone NOT NULL,
+    prezzoeconomy integer NOT NULL,
+    prezzoprima integer NOT NULL,
     CONSTRAINT treno_pkey PRIMARY KEY(codice, partenza, destinazione),
     CHECK (hpartenza < harrivo),
+    CHECK (prezzoeconomy > 0),
+    CHECK (prezzoprima = prezzoeconomy + 10),
     FOREIGN KEY (codice) REFERENCES trenoCompleto(codice)
 );

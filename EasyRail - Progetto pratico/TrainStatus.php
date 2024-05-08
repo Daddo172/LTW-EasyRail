@@ -19,19 +19,30 @@
 		.horizontal-bar {
 			color: white;
 			text-align: center;
+			overflow: hidden;
 		}
 		/*Zona lampeggiante*/
+		@keyframes blinker {
+			50% {
+				background-color: rgb(100, 100, 240);
+			}
+		}
 		.blinking {
 			animation: blinker 3s linear infinite;
 		}
-		@keyframes blinker {
-			50% {
-				opacity: 0.5;
+		@keyframes slide {
+			0% {
+				left: -110%;
+			}
+			100% {
+				left: 125%;
 			}
 		}
 		img {
+			position: relative;
 			margin-top: 2px;
 			width: 48px;
+			animation: slide 3s linear infinite;
 		}
 	</style>
 </head>
@@ -48,7 +59,6 @@
 			</div>
 			<a class="center" href="HomePage.html">Home</a>
 			<a class="active center" href="TrainStatus.html">Stato treno</a>
-			<a class="center" href="FindTicket.html">Trova biglietto</a>
 		</nav>
 	</header>
 	<main>
@@ -169,7 +179,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 			if ($orafermata!=NULL) {
 				/*Lampeggiante*/
 				if ($lampeggiante && $ora < $orafermata && $n >= 0 && $ora >= $orafermataprec) {
-					echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104);";
+					echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104); text-align: left;";
 					if ($c==5) {
 						echo "border-top-right-radius: 20px; border-bottom-right-radius: 20px;\">";
 					}
