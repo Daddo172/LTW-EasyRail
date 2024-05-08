@@ -24,7 +24,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar 
 		<!--Barra superiore-->
 		<header class="topnav">
 			<nav>
-			<a class="titolo" href="HomePage.php">EasyRail</a>
+			<a class="titolo" >EasyRail</a>
 				<?php if(isset($_SESSION['name'])){?>
 					<div class="log dropdown">
 						<button class="dropbtn"><?= $_SESSION['name']?></button>
