@@ -78,8 +78,10 @@
 		$result=pg_query($dbconn,$query1);
 		$row=pg_num_rows($result);
 		$row= 1000 + $row;
-		$query = "insert into prenotazione values ($2,$1,$row)";
-        $data = pg_query_params($dbconn, $query, array($email, $codice));
+		$orariopartenza=$_GET['orariopartenza'];
+        $orariodestinazione=$_GET['orariodestinazione'];
+		$query = "insert into prenotazione values ($2,$1,$3,$4,$5)";
+        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$orariopartenza,$orariodestinazione));
         echo 'prenotazione completata!';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);

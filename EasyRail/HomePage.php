@@ -29,9 +29,9 @@ unset($_SESSION['stato']);
 					<div class="log dropdown">
 						<button class="dropbtn"><?= $_SESSION['name']?></button>
 						<div class="dropdown-content">
-							<?php if($_SESSION['name'] == 'Admin'){ ?>
-							<a href="Admin.php">Area Admin</a>
-							<a href="logout.php">Logout</a>
+							<?php if($_SESSION['name'] == 'Admin'){ 
+								header("location:Admin.php");?>
+							
 							<?php }else{?>
 							<a href="profilo.php">Area Personale</a>
 							<a href="logout.php">Logout</a>
@@ -142,7 +142,7 @@ unset($_SESSION['stato']);
 				<label for="dataAnd">Andata</label>
 				<input oninput="vincoliDate()" type="date" name="dataAnd" id="dataAnd" style="width: 160px;">
 				<label for="dataRit" id="lr" style="margin-left: 24px;" >Ritorno</label>
-				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px;" >
+				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px; opacity: 0.5;" >
 			</p>
 			<label name="pass">Passeggeri (massimo: 10)</label>
 			<div class="dropdown" style="padding: 5px; border: solid 1px gray; border-radius: 5px; background-color: rgb(224, 224, 224);">

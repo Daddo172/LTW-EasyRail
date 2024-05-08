@@ -8,8 +8,8 @@ session_start();?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyRail</title>
-    <link rel="stylesheet" href="stile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
     <link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -97,24 +97,28 @@ session_start();?>
                             <th>Destinazione</th>
                             <th>Orario di partenza</th>
                             <th>Orario di destinazione</th>
+                            <th>Stato</th>
                     </tr>
                 </thead>
                 <tbody>
             <?php
-                $query="select codice,codbiglietto from prenotazione where email='$email'";
+                $query="select * from prenotazione where email='$email'";
                 $result=pg_query($query) or die ('Query failed: ' . pg_last_error());
                 while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){  
                     $codice= $row['codice'];
 					$codbiglietto= $row['codbiglietto'];
-                    $query2="select * from trenocompleto where codice='$codice'";
+                    $orariopart= $row['hpartenza'];
+                    $orariodest= $row['harrivo'];
+                    $query2="select * from treno where codice='$codice' and hpartenza='$orariopart' and harrivo='$orariodest' ";
                     $result2=pg_query($query2) or die ('Query failed: ' . pg_last_error());                           
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
 						<tr>
                         <td><?php echo $row['codice']; ?></td>
-                            <td><?php echo $row2['f0']; ?></td>
-                            <td><?php echo $row2['f5']; ?></td>
-                            <td><?php echo $row2['hf0']; ?></td>
-                            <td><?php echo $row2['hf5']; ?></td>
+                            <td><?php echo $row2['partenza']; ?></td>
+                            <td><?php echo $row2['destinazione']; ?></td>
+                            <td><?php echo $row2['hpartenza']; ?></td>
+                            <td><?php echo $row2['harrivo']; ?></td>
+                            <td><a class="button" href="trainstatus.php" value="Stato"> Stato </a></td>
                 </tr>
 					<?php                 
 					}
@@ -124,6 +128,7 @@ session_start();?>
 				</tbody>
 			</table>
         </div>
+
         </form>
 
         <footer class="bottom">

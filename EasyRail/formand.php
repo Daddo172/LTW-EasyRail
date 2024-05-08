@@ -16,15 +16,19 @@
         margin: 0;
         width: 240px;
     }
+
+    td {
+        padding: 15px;
+    }
     </style>
 </head>
 
-<body>
-    <main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+<body style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+    <main>
         <!--Barra superiore-->
         <header class="topnav">
             <nav>
-			<a class="titolo" href="HomePage.php">EasyRail</a>
+                <a class="titolo" href="HomePage.php">EasyRail</a>
                 <?php if(isset($_SESSION['name'])){?>
                 <div class="log dropdown">
                     <button class="dropbtn"><?= $_SESSION['name']?></button>
@@ -48,11 +52,12 @@
                 </div>
                 <?php }?>
                 <a class="active center" href="HomePage.php">Home</a>
-				<a class="center" href="TrainStato.php">Stato treno</a>
+                <a class="center" href="TrainStato.php">Stato treno</a>
                 <a class="center" href="FindTicket.html">Trova biglietto</a>
+
             </nav>
         </header>
-        <form>
+        <div class="train-status">
             <?php
     $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
 
@@ -92,86 +97,78 @@ $_SESSION['dataRit'] = $ritorno;
 else{
   $_SESSION["stato"]='andata';
 } ?>
-                    <thead>
-                        <tr>
-                            <th>Codice</th>
-                            <th>Stazione di partenza</th>
-                            <th>Stazione di arrivo</th>
-                            <th>Orario di partenza</th>
-                            <th>Orario di arrivo</th>
-                            <th>Prenotazione</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Codice</th>
+                                <th>Stazione di partenza</th>
+                                <th>Stazione di arrivo</th>
+                                <th>Orario di partenza</th>
+                                <th>Orario di arrivo</th>
+                                <th>Prenotazione</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 						$data = '2024-06-08';
 						$ora= date("H:i:s");
 						if($data == $andata)
 						{
 							$queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063";
-								$result=pg_query($queryand2) or die ('Query failed: ' . pg_last_error()); 
-
+								$result=pg_query($queryand2);
 								while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
 								if($row['hpartenza']> $ora){?>
-                        <tr>
-                            <td><?php echo $row['codice']; ?></td> <?php
+                            <tr>
+                                <td><?php echo $row['codice']; ?></td> <?php
 								$codice=$row['codice'];
 								$_SESSION['codice'] = $codice; 
 							
                             ?><td><?php echo $row['partenza']; ?></td>
-                            <td><?php echo $row['destinazione']; ?></td>
-                            <td><?php echo $row['hpartenza']; ?></td>
-                            <td><?php echo $row['harrivo']; ?></td>
-                            <td> <?php
+                                <td><?php echo $row['destinazione']; ?></td>
+                                <td><?php echo $row['hpartenza']; ?></td>
+                                <td><?php echo $row['harrivo']; ?></td>
+                                </tr> <?php
 														if(isset($_SESSION['name'])!=NULL){
-								echo '<a  class="button" href="prenotazione.php"> PRENOTA </a>';    }
+								?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
+                                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a>; <?php }
 								else{
 								echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
 														}  
 													}
 
-						}}else{
-    $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'";
+						}
+                        
+                    }
+                    else{
+    $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'" ;
     $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
-
     while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
 		if($row['hpartenza']> $ora){?>
-                        <tr>
-                            <td><?php echo $row['codice']; ?></td> <?php
-    $codice=$row['codice'];
-    $_SESSION['codice'] = $codice; ?>
 
-                            <td><?php echo $row['partenza']; ?></td>
-                            <td><?php echo $row['destinazione']; ?></td>
-                            <td><?php echo $row['hpartenza']; ?></td>
-                            <td><?php echo $row['harrivo']; ?></td>
-                            <td> <?php
+                            <tr>
+                                <td><?php echo $row['codice']; ?></td> <?php
+                                $codice=$row['codice'];
+                                $_SESSION['codice'] = $codice; ?>
+                                <td><?php echo $row['partenza']; ?></td>
+                                <td><?php echo $row['destinazione']; ?></td>
+                                <td><?php echo $row['hpartenza']; ?></td>
+                                <td><?php echo $row['harrivo']; ?></td>
+                                <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
-      echo '<a  class="button" href="prenotazione.php"> PRENOTA </a>';    }
+                                ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
+                                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a>; <?php   }
       else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
-    }  }}                         ?> </td><?php
-
+    }  }
 }
+                    }
+                    ?> </td><?php
+
    ?>
-                    </tbody>
-        </form>
-        <footer class="bottom">
-            <table>
-                <tr>
-                    <td>
-                        <p>EasyRail &copy;</p>
-                        <p>Un progetto per LTW (Linguaggi e Tecnologie per il Web) - A.A. 2023/24 - Prof. Lorenzo
-                            Marconi</p>
-                    </td>
-                <tr>
-                    <td>Capitale Sociale 0&euro;. Fondatori: Mirelli&Scolamiero<p>Tutti i diritti riservati.</p>
-                    </td>
-                    <td colspan="">Sede legale Università La Sapienza - Edificio Marco Polo, Viale Scalo San Lorenzo,
-                        82, Roma</td>
-                </tr>
-            </table>
-        </footer>
+                        </tbody>
+                    </table>
+            </div>
+    </main>
 </body>
 
 </html>

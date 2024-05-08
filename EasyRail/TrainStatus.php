@@ -37,38 +37,33 @@
 </head>
 <body>
 <header class="topnav">
-			<nav>
-			<a class="titolo" href="HomePage.php">EasyRail</a>
-				<?php if(isset($_SESSION['name'])){?>
-					<div class="log dropdown">
-						<button class="dropbtn"><?= $_SESSION['name']?></button>
-						<div class="dropdown-content">
-							<?php if($_SESSION['name'] == 'Admin'){ ?>
-							<a href="Admin.php">Area Admin</a>
-							<a href="logout.php">Logout</a>
-							<?php }else{?>
-							<a href="profilo.php">Area Personale</a>
-							<a href="logout.php">Logout</a>
-							<?php } ?>
-						</div>
-					</div>
-					<?php }else{?>
-					<div class="log dropdown">
-						<button class="dropbtn">Accedi</button>
-					<div class="dropdown-content">
-						<a href="Login.html">Login</a>
-						<a href="Register.html">Registrati</a>
-					</div>
-				</div>
-				<?php }?>
-				<a class="active center" href="HomePage.php">Home</a>
+            <nav>
+            <a class="titolo" href="HomePage.php">EasyRail</a>
+                <?php if(isset($_SESSION['name'])){?>
+                <div class="log dropdown">
+                    <button class="dropbtn"><?= $_SESSION['name']?></button>
+                    <div class="dropdown-content">
+                        <a href="Admin.php">Area Admin</a>
+                        <a href="logout.php">Logout</a>
+                    </div>
+                </div>
+                <?php }else{?>
+                <div class="log dropdown">
+                    <button class="dropbtn">Accedi</button>
+                    <div class="dropdown-content">
+                        <a href="./Login.html">Login</a>
+                        <a href="Register.html">Registrati</a>
+                    </div>
+                </div>
+                <?php }?>
+                <a class="active center" href="HomePage.php">Home</a>
 				<a class="center" href="TrainStato.php">Stato treno</a>
-				<a class="center" href="FindTicket.html">Trova biglietto</a>
-			</nav>
-		</header>
+                <a class="center" href="FindTicket.html">Trova biglietto</a>
+            </nav>
+        </header>
 	<main>
 	<?php
-	$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
+	$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
 	if ($_POST==null) goto RETRY;
 	else {
 		$ct = $_POST["ct"];
@@ -101,9 +96,9 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		} else {
 		//Header del risultato
 		echo "<div class=train-status>";
-		echo "<div style=\"font-size: 24px;\">
-		EasyRail #$ct - " . date("d/m/Y");
-		echo "</div>";
+		echo "<table style=\"font-size: 24px; width: 90%;\"><tr>
+		<td>EasyRail #$ct</td>" . "<td style=\"text-align: right;\">" . date("d/m/Y") . "</td>";
+		echo "</tr></table>";
 		//Subheader
 		echo "<div style=\"border-bottom: solid 1px black; padding-bottom: 10px;\">";
 		echo "Da " .
@@ -113,9 +108,12 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		echo "</div>";
 		//Box blu stato treno
 		echo  "<p>Stato treno:";
-		if (date("H:i:s") < $tuple["hf0"]) {
+//		$ora = date("20:59:59");
+//		$ora = date("10:30:00");
+		$ora = date("H:i:s");
+		if ($ora < $tuple["hf0"]) {
 		echo "<span class=box-stato>NON PARTITO</span>";
-		} elseif (date("H:i:s") >= $tuple["hf5"]) {
+		} elseif ($ora >= $tuple["hf5"]) {
 			echo "<span class=box-stato>FINE CORSA</span>";
 		}
 		else echo "<span class=box-stato>IN VIAGGIO</span>";
@@ -131,7 +129,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 			if (preg_match("/\bf\d/", $index)) {
 				if ($value!="") {
 					$c++;
-					echo "<td>" . $tuple["f$i"] . "</td>";
+					echo "<td style=\"text-align: center;\">" . $tuple["f$i"] . "</td>";
 				}
 			$i++;
 			}
@@ -148,7 +146,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		foreach($tuple as $index => $value) {
 			if (preg_match("/\bhf\d/", $index)) {
 				if ($value!="") {
-					echo "<td>" . date("H:i", strtotime($tuple["hf$i"])) . "</td>";
+					echo "<td  style=\"text-align: right;\">" . date("H:i", strtotime($tuple["hf$i"])) . "</td>";
 				}
 			$i++;
 			}
@@ -169,28 +167,30 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		echo "<tr>
 				<th>Avanzamento</th>";
 		//Colorazione delle sezioni della barra orizzontale
-		$ora = date("H:i:s");
 		$lampeggiante = true;
 		for ($c = 0; $c < 6; $c++) {
-			$oraproxfermata = $tuple["hf$c"];
+			$orafermata = $tuple["hf$c"];
 			$n = $c - 1;
-			if ($n >= 0) $orafermataprec = $tuple["hf$n"];
-			if ($oraproxfermata!=NULL) {
+			for (; $n >= 0; $n--) {
+				if ($tuple["hf$n"] != NULL)
+					$orafermataprec = $tuple["hf$n"];
+					break;
+			}
+			if ($orafermata!=NULL) {
 				/*Lampeggiante*/
-				if ($lampeggiante && $ora < $oraproxfermata && $ora > $orafermataprec) {
-					if ($c==0) {
-						echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104); border-top-left-radius: 20px; border-bottom-left-radius: 20px;\"><img src=\"pictures/minitreno.png\">";
+				if ($lampeggiante && $ora < $orafermata && $n >= 0 && $ora >= $orafermataprec) {
+					echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104);";
+					if ($c==5) {
+						echo "border-top-right-radius: 20px; border-bottom-right-radius: 20px;\">";
 					}
-					elseif ($c==5) 
-						echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104); border-top-right-radius: 20px; border-bottom-right-radius: 20px;\"><img src=\"pictures/minitreno.png\">";
-					
 					else {
-						echo "<td class=\"horizontal-bar blinking\" style=\"background-color: rgb(16, 16, 104);\"><img src=\"pictures/minitreno.png\">";
+						echo "\">";
 					}
+					echo "<img src=\"pictures/minitreno.png\">";
 					$lampeggiante = false;
 				}
 				/*Grigio*/
-				elseif ($ora < $oraproxfermata) {
+				elseif ($ora < $orafermata) {
 					if ($c==0) {
 						echo "<td class=\"horizontal-bar\" style=\"background-color: rgb(200, 200, 200); border-top-left-radius: 20px; border-bottom-left-radius: 20px;\">";
 					}
@@ -202,12 +202,12 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 					}
 				}
 				/*Blu*/
-				elseif ($ora >= $oraproxfermata) {
+				elseif ($ora >= $orafermata) {
 					if ($c==0) {
-						echo "<td class=\"horizontal-bar\" style=\"background-color: rgb(16, 16, 104); border-top-left-radius: 20px; border-bottom-left-radius: 20px;\">&#10004;";
+						echo "<td class=\"horizontal-bar\" style=\"background-color: rgb(16, 16, 104); border-top-left-radius: 20px; border-bottom-left-radius: 20px;\">Partito &#10004;";
 					}
 					elseif ($c==5) {
-						echo "<td class=\"horizontal-bar\" style=\"background-color: rgb(16, 16, 104); border-top-right-radius: 20px; border-bottom-right-radius: 20px;\">&#10004;";
+						echo "<td class=\"horizontal-bar\" style=\"background-color: rgb(16, 16, 104); border-top-right-radius: 20px; border-bottom-right-radius: 20px;\">Arrivato &#10004;";
 					}
 					else {
 						echo "<td class=\"horizontal-bar\" style=\"background-color: rgb(16, 16, 104);\">&#10004;";
@@ -215,8 +215,8 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 				}
 			}
 		}
-						echo "</td>";
-					echo "</tr>";
+				echo "</td>";
+				echo "</tr>";
 				echo "</table>";
 			echo "</p>";
 		echo "</div>";

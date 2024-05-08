@@ -96,7 +96,8 @@ $_SESSION["stato"]='andata';
                                       <td><?php echo $row['harrivo']; ?></td>
                                       <td> <?php
                         if(isset($_SESSION['name'])!=NULL){
-                echo '<a  class="button" href="prenotazione.php"> PRENOTA </a>';    }
+                          ?> <a  class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
+                          &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a>;   <?php     }
                 else{
                 echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
               }                           
@@ -115,7 +116,8 @@ $_SESSION["stato"]='andata';
 							              <td><?php echo $row['harrivo']; ?></td>
                             <td> <?php
 							if(isset($_SESSION['name'])!=NULL){
-      echo '<a  class="button" href="prenotazione.php"> PRENOTA </a>';    }
+                ?> <a  class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
+                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a>;   <?php  }
       else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }                           }}?> </td><?php
