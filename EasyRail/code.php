@@ -26,12 +26,14 @@ else {
         $codice=$_POST['inputcodice'];
         $email=$_POST['inputemail2'];
         $codbiglietto=$_POST['inputcodbiglietto'];
+        $orariopart=$_post['inputhpartenza'];
+        $orarioarr=$_post['inputharrivo'];
         
 
 
-        $q1 = "insert into prenotazione values ($1,$2,$3)";
+        $q1 = "insert into prenotazione values ($1,$2,$3,$4,$5)";
         $data = pg_query_params($dbconn, $q1,
-            array($codice, $email,$codbiglietto));
+            array($codice, $email,$codbiglietto,$orariopart,$orarioarr));
             header('location: admin.php');
     }
     if(isset($_POST['inputcodice2']))
@@ -41,12 +43,14 @@ else {
         $destinazione=$_POST['inputarrivo'];
         $orariopart=$_POST['inputorariopart'];
         $orarioarr=$_POST['inputorarioarr'];
+        $economy=$_POST['inputeconomy'];
+        $prima=$_POST['inputprima'];
         
 
 
-        $q3 = "insert into treno values ($1,$2,$3,$4,$5)";
+        $q3 = "insert into treno values ($1,$2,$3,$4,$5,$6,$7)";
         $data = pg_query_params($dbconn, $q3,
-            array($codice, $partenza, $destinazione,$orariopart, $orarioarr));
+            array($codice, $partenza, $destinazione,$orariopart, $orarioarr,$economy,$prima));
             header('location: admin.php');
     }
     if(isset($_POST['inputcodice3']))
@@ -92,9 +96,12 @@ else {
         $destinazione=$_POST['inputarrivo'];
         $orariopart=$_POST['inputorariopart'];
         $orarioarr=$_POST['inputorarioarr'];
+        $economy=$_POST['inputeconomy'];
+        $prima=$_POST['inputprima'];
 
         $query = "UPDATE treno SET codice='$codice', partenza='$partenza', destinazione='$destinazione',
-        , hpartenza='$orariopart', harrivo='$orarioarr'  WHERE codice='$codice' and partenza='$partenza' and destinazione='$destinazione'";
+        , hpartenza='$orariopart', harrivo='$orarioarr', prezzoeconomy='$economy', prezzoprima='$prima'
+        WHERE codice='$codice' and partenza='$partenza' and destinazione='$destinazione'";
         $data = pg_query($dbconn,$query);
         header('location: shtreno.php');
     }
@@ -126,8 +133,10 @@ else {
         $codice=$_POST['inputcodice3'];
         $email=$_POST['inputemail'];
         $codbiglietto=$_POST['updatecodbiglietto'];
+        $orariopart=$_post['inputhpartenza'];
+        $orarioarr=$_post['inputharrivo'];
 
-        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto' WHERE codice='$codice'";
+        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr' WHERE codice='$codice'";
         $data = pg_query($dbconn,$query);
         header('location: shprenotazioni.php');
     }
@@ -157,7 +166,8 @@ else {
 
     if(isset($_POST['deletecodbiglietto'])){
         $codbiglietto=$_POST['deletecodbiglietto'];
-        $query="DELETE FROM prenotazione WHERE codbiglietto='$codbiglietto'";
+        $email=$_POST['email'];
+        $query="DELETE FROM prenotazione WHERE codbiglietto='$codbiglietto' and email='$email'";
         $result=pg_query($dbconn,$query);
         header('location: shprenotazioni.php');
     }

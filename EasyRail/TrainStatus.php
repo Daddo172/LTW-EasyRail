@@ -63,7 +63,7 @@
 	</header>
 	<main>
 	<?php
-	$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+	$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
 	if ($_POST==null) goto RETRY;
 	else {
 		$ct = $_POST["ct"];

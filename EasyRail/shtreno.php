@@ -60,6 +60,8 @@
                             <th>Destinazione</th>
                             <th>Orario Partenza</th>
                             <th>Orario Arrivo</th>
+                            <th>Prezzo Economy</th>
+                            <th>Prezzo Prima</th>
                             <th>Modifica</th>
                             <th>Cancella</th>
                         </tr>
@@ -77,6 +79,8 @@
                             <td><?php echo $row['destinazione']; ?></td>
                             <td><?php echo $row['hpartenza']; ?></td>
                             <td><?php echo $row['harrivo']; ?></td>
+                            <td><?php echo $row['prezzoeconomy']; ?></td>
+                            <td><?php echo $row['prezzoprima']; ?></td>
                             <td> 
                                 <a href="edit.php?codice=<?php echo $row['codice'];?>&partenza=<?php echo $row['partenza'];?>&
                                 destinazione=<?php echo $row['destinazione'];?>" class="btn btn-success">Modifica dati</a>

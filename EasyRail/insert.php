@@ -106,6 +106,18 @@
                             <td><input type="number" name="inputcodbiglietto" id="codbiglietto" required></td>
                         </p>
                     </tr>
+                    <tr>
+                        <p>
+                            <td><label for="hpartenza">Orario Partenza</label></td>
+                            <td><input type="time" name="inputhpartenza" id="codbiglietto" required></td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td><label for="harrivo">Orario Arrivo</label></td>
+                            <td><input type="time" name="inputharrivo" id="codbiglietto" required></td>
+                        </p>
+                    </tr>
                 </table>
                 <p>
                 <div style="text-align: center;">
@@ -231,6 +243,18 @@
                         <p>
                             <td><label for="orarioarr">orario arrivo </label></td>
                             <td><input type="time" name="inputorarioarr"  id="nome" required></td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td><label for="economy">Prezzo Economy</label></td>
+                            <td><input type="number" name="inputeconomy" id="economy" required></td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td><label for="prima">Prezzo Prima</label></td>
+                            <td><input type="number" name="inputprima" id="prima" required></td>
                         </p>
                     </tr>
                 </table>
