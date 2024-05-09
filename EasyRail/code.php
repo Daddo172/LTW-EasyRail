@@ -172,6 +172,13 @@ else {
         header('location: shprenotazioni.php');
     }
 
+    if(isset($_POST['deletebiglietto'])){
+        $codbiglietto=$_POST['deletecodbiglietto'];
+        $query="DELETE FROM prenotazione WHERE codbiglietto='$codbiglietto'";
+        $result=pg_query($dbconn,$query);
+        header('location: profilo.php');
+    }
+
     //DELETE PRENOTAZIONE AGGIUNGERE CODICE BIGLIETTO
 
 

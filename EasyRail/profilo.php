@@ -97,6 +97,7 @@ session_start();?>
                             <th>Orario di partenza</th>
                             <th>Orario di destinazione</th>
                             <th>Stato</th>
+                            <th>Cancella </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,8 +118,14 @@ session_start();?>
                             <td><?php echo $row2['destinazione']; ?></td>
                             <td><?php echo $row2['hpartenza']; ?></td>
                             <td><?php echo $row2['harrivo']; ?></td>
-                            <td><a class="button" href="trainstatus.php" value="Stato"> Stato </a></td>
-                </tr>
+                            <td><a class="button" href="trainstatus.php?codice=<?php echo $row['codice']; ?>" value="Stato"> Stato </a></td>
+                            <td>
+                                <form action="code.php" method="POST">
+                                    <input type="hidden" name=deletebiglietto value="<?php echo $codbiglietto; ?>">
+                                    <button type="submit" class="btn btn-danger">Cancella Prenotazione</button>
+                                </form>
+                            </td>
+                        </tr>
 					<?php                 
 					}
                 } 

@@ -64,9 +64,15 @@
 	<main>
 	<?php
 	$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
-	if ($_POST==null) goto RETRY;
+	session_start();
+	if ($_POST==null&&$_GET==NULL) goto RETRY;
 	else {
+		if($_POST==null){
+			$ct=$_GET["codice"];
+		}
+		else{
 		$ct = $_POST["ct"];
+	}
 		if (!is_numeric($ct)) goto RETRY;
 		$query = "SELECT * from trenoCompleto where codice=$1";
 		$result = pg_query_params($dbconn, $query, array($ct));
