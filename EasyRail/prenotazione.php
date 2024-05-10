@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php session_start();
+    $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
+	?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>EasyRail</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="stile.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
 	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
@@ -17,7 +20,6 @@
 		}
 	</style>
 </head>
-<body>
 <main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
 		<!--Barra superiore-->
 		<header class="topnav">
@@ -49,13 +51,12 @@
 				<a class="center" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
+		<body>
     <form>
 <?php
-    $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
-
     $stato= $_SESSION["stato"];
     $email = $_SESSION['email'];
-    $codice = $_SESSION['codice'];
+    $codice = $_GET['codice'];
     $arrivo = $_SESSION['arr'];
     $ritorno = $_SESSION['dataRit'];
     $partenza = $_SESSION['part'];
@@ -94,4 +95,5 @@
 ?>
 </form>
      </body>
+	</main>
      </html>

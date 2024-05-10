@@ -88,37 +88,29 @@ $_SESSION["stato"]='andata';
               while ($row = pg_fetch_array($res,NULL,PGSQL_ASSOC)){
                 if($row['hpartenza']> $ora&&$oggi == $ritorno){?>
                     <tr>
-                        <td><?php echo $row['codice']; ?></td> <?php
-              $codice=$row['codice'];
-              $_SESSION['codice'] = $codice; ?>
-
+                        <td><?php echo $row['codice']; ?></td>
                         <td><?php echo $row['partenza']; ?></td>
                         <td><?php echo $row['destinazione']; ?></td>
                         <td><?php echo $row['hpartenza']; ?></td>
                         <td><?php echo $row['harrivo']; ?></td>
                         <td> <?php
                         if(isset($_SESSION['name'])!=NULL){
-                          ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-                          &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a>; <?php     }
-                else{
+                            ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
+                            else{
                 echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
               }                           
             }else if($oggi != $ritorno) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
             { ?>
                 <tr>
-<td><?php echo $row['codice']; ?></td> <?php
-$codice=$row['codice'];
-$_SESSION['codice'] = $codice; 
-
-?><td><?php echo $row['partenza']; ?></td>
+<td><?php echo $row['codice']; ?></td>
+<td><?php echo $row['partenza']; ?></td>
 <td><?php echo $row['destinazione']; ?></td>
 <td><?php echo $row['hpartenza']; ?></td>
 <td><?php echo $row['harrivo']; ?></td>
 <td> <?php
 if(isset($_SESSION['name'])!=NULL){
-?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-&orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a> <?php }
-else{
+    ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
+    else{
 echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
             }
 
@@ -146,36 +138,29 @@ echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>'
     while ($row = pg_fetch_array($res,NULL,PGSQL_ASSOC)){
       if($row['hpartenza']> $ora&&$oggi == $andata){ ?>
                     <tr>
-                        <td><?php echo $row['codice']; ?></td> <?php
-    $codice=$row['codice'];
-    $_SESSION['codice'] = $codice; ?>
-
+                        <td><?php echo $row['codice']; ?></td>
                         <td><?php echo $row['partenza']; ?></td>
                         <td><?php echo $row['destinazione']; ?></td>
                         <td><?php echo $row['hpartenza']; ?></td>
                         <td><?php echo $row['harrivo']; ?></td>
                         <td> <?php
 							if(isset($_SESSION['name'])!=NULL){
-                ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a>; <?php  }
+								?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
       else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }
                              }else if($oggi != $andata) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
     { ?>
         <tr>
-<td><?php echo $row['codice']; ?></td> <?php
-$codice=$row['codice'];
-$_SESSION['codice'] = $codice; 
-
-?><td><?php echo $row['partenza']; ?></td>
+<td><?php echo $row['codice']; ?></td>
+<td><?php echo $row['partenza']; ?></td>
 <td><?php echo $row['destinazione']; ?></td>
 <td><?php echo $row['hpartenza']; ?></td>
 <td><?php echo $row['harrivo']; ?></td>
 <td> <?php
 if(isset($_SESSION['name'])!=NULL){
-?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-&orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a> <?php }
+    ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
+
 else{
 echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }

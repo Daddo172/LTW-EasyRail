@@ -120,9 +120,6 @@ else{
 								if($row['hpartenza']> $ora&&$oggi == $andata){?>
                             <tr>
                                 <td><?php echo $row['codice']; ?></td> <?php
-								$codice=$row['codice'];
-								$_SESSION['codice'] = $codice; 
-							
                             ?><td><?php echo $row['partenza']; ?></td>
                                 <td><?php echo $row['destinazione']; ?></td>
                                 <td><?php echo $row['hpartenza']; ?></td>
@@ -130,25 +127,21 @@ else{
                                 <td> <?php
 														if(isset($_SESSION['name'])!=NULL){
 								?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-                                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a> <?php }
+                                &orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
 								else{
 								echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
 														}  
 								}else if($oggi != $andata) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
                                                     { ?>
                                                         <tr>
-                                <td><?php echo $row['codice']; ?></td> <?php
-								$codice=$row['codice'];
-								$_SESSION['codice'] = $codice; 
-							
-                            ?><td><?php echo $row['partenza']; ?></td>
+                                <td><?php echo $row['codice']; ?></td>
+                                <td><?php echo $row['partenza']; ?></td>
                                 <td><?php echo $row['destinazione']; ?></td>
                                 <td><?php echo $row['hpartenza']; ?></td>
                                 <td><?php echo $row['harrivo']; ?></td>
                                 <td> <?php
 														if(isset($_SESSION['name'])!=NULL){
-								?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-                                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a> <?php }
+								?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
 								else{
 								echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
                                                     }
@@ -181,34 +174,26 @@ else{
 		if($row['hpartenza']> $ora&&$oggi==$andata){?>
 
                             <tr>
-                                <td><?php echo $row['codice']; ?></td> <?php
-                                $codice=$row['codice'];
-                                $_SESSION['codice'] = $codice; ?>
+                                <td><?php echo $row['codice']; ?></td>
                                 <td><?php echo $row['partenza']; ?></td>
                                 <td><?php echo $row['destinazione']; ?></td>
                                 <td><?php echo $row['hpartenza']; ?></td>
                                 <td><?php echo $row['harrivo']; ?></td>
                                 <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
-                                ?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-                                &orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a><?php   }
-      else{
+                              ?>  <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }  }else if($oggi != $andata) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
     { ?>
         <tr>
-<td><?php echo $row['codice']; ?></td> <?php
-$codice=$row['codice'];
-$_SESSION['codice'] = $codice; 
-
+<td><?php echo $row['codice']; ?></td>
 ?><td><?php echo $row['partenza']; ?></td>
 <td><?php echo $row['destinazione']; ?></td>
 <td><?php echo $row['hpartenza']; ?></td>
 <td><?php echo $row['harrivo']; ?></td>
 <td> <?php
         if(isset($_SESSION['name'])!=NULL){
-?> <a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>
-&orariodestinazione= <?php echo $row['harrivo']; ?>"> PRENOTA </a> <?php }
+?><a class="button" href="prenotazione.php?orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>"> PRENOTA </a> <?php }
 else{
 echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN PER PRENOTARE </a>';
     }
