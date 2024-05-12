@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyRail</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="stile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
     <link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
@@ -45,7 +46,7 @@
                 </div>
             </div>
             <?php }?>
-            <a class="active center" href="HomePage.php">Home</a>
+            <a  href="HomePage.php">Home</a>
             <a class="center" href="TrainStato.php">Stato treno</a>
         </nav>
     </header>
@@ -109,9 +110,9 @@ $_SESSION["stato"]='andata';
                                     <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN </a>';
     } ?> </td>
-                            </tr> <?php                      
+                            </tr></tbody><?php                      
             }else if($oggi != $ritorno) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
-            { ?>
+            { ?> <tbody>
                 <tr>
 <td><?php echo $row['codice']; ?></td>
 <td><?php echo $row['partenza']; ?></td>
@@ -205,9 +206,9 @@ $_SESSION["stato"]='andata';
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN </a>';
     } ?> </td>
                             </tr> <?php
-  }  else{
+  }  }}else{
     echo '<form><h1>non ci sono treni da prentoare <h1></form>';
-    }}}}?>
+    }}?>
                 </tbody>
     </form>
     </body>

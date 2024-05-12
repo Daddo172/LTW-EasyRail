@@ -20,39 +20,38 @@
     }
     </style>
 </head>
-
-<body>
     <main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
         <!--Barra superiore-->
         <header class="topnav">
-            <nav>
-            <a class="titolo" >EasyRail</a>
-                <?php if(isset($_SESSION['name'])){?>
-                <div class="log dropdown">
-                    <button class="dropbtn"><?= $_SESSION['name']?></button>
-                    <div class="dropdown-content">
-                        <a href="Admin.php">Area Admin</a>
-                        <a href="logout.php">Logout</a>
-                    </div>
-                </div>
-                <?php }else{?>
-                <div class="log dropdown">
-                    <button class="dropbtn">Accedi</button>
-                    <div class="dropdown-content">
-                        <a href="./Login.html">Login</a>
-                        <a href="Register.html">Registrati</a>
-                    </div>
-                </div>
-                <?php }?>
-                <a class="active center" href="HomePage.php">Home</a>
-				<a class="center" href="TrainStato.php">Stato treno</a>
-            </nav>
-        </header>
-
+			<nav>
+			<a class="titolo" >EasyRail</a>
+				<?php if(isset($_SESSION['name'])){?>
+					<div class="log dropdown">
+						<button class="dropbtn"><?= $_SESSION['name']?></button>
+						<div class="dropdown-content">
+							<?php if($_SESSION['name'] == 'Admin'){ ?>
+							<?php }else{?>
+							<a href="profilo.php">Area Personale</a>
+							<a href="logout.php">Logout</a>
+							<?php } ?>
+						</div>
+					</div>
+					<?php }else{?>
+					<div class="log dropdown">
+						<button class="dropbtn">Accedi</button>
+					<div class="dropdown-content">
+						<a href="Login.html">Login</a>
+						<a href="Register.html">Registrati</a>
+					</div>
+				</div>
+				<?php }?>
+				<a class="active center" href="Admin.php">Area Admin</a>
+				<a href="logout.php">  Logout</a>
+			</nav>
+		</header>
         <body>
-            <div class="card-body">
+            <div class="table-responsive-lg" style="width:100%;">
                 <table class="table table-bordered">
-                    
                     <thead>
                         <tr>
                             <th>Email</th>
@@ -75,9 +74,9 @@
                             <td><?php echo $row['nome']; ?></td>
                             <td><?php echo $row['cognome']; ?></td>
                             <td><?php echo  $row['paswd']; ?></td>
-                            <td> 
+                            <td><form>
                                 <a href="edit.php?email=<?php echo $row['email']; ?>" class="btn btn-success">Modifica dati</a>
-                            </td>
+                    </form></td>
                             <td> 
                                 <form action="code.php" method="POST">
                                     <input type="hidden" name=deleteemail value="<?php echo $row['email']; ?>">
@@ -90,6 +89,5 @@
                 </table>
             </div>
         </body>
-</body>
-
+    </main>
 </html>

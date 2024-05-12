@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyRail</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="stile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
     <link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
@@ -51,7 +52,7 @@
                     </div>
                 </div>
                 <?php }?>
-                <a class="active center" href="HomePage.php">Home</a>
+                <a  href="HomePage.php">Home</a>
                 <a class="center" href="TrainStato.php">Stato treno</a>
             </nav>
         </header>
@@ -89,8 +90,7 @@ $_SESSION['sconto'] = $sconto;
 
 
 //QUERYANDATA?>
-            <div class="card-body">
-                <table class="table table-bordered"><?php
+            <div class="card-body"><?php
 				if($_SESSION['dataRit']!= ''){
     echo '<br><br><a class="button" href="formrit.php" value="Ritorno"> Ritorno </a>';
     $_SESSION["stato"]='ritorno';
@@ -106,71 +106,71 @@ else{
 							$queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063";
 								$result=pg_query($queryand2); 
                                 if (pg_fetch_array($result, null, PGSQL_ASSOC)){?>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Codice</th>
-                                <th>Stazione di partenza</th>
-                                <th>Stazione di arrivo</th>
-                                <th>Orario di partenza</th>
-                                <th>Orario di arrivo</th>
-                                <th colspan="2">Prenotazione</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codice</th>
+                            <th>Stazione di partenza</th>
+                            <th>Stazione di arrivo</th>
+                            <th>Orario di partenza</th>
+                            <th>Orario di arrivo</th>
+                            <th colspan="2">Prenotazione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 								while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
 								if($row['hpartenza']> $ora&&$oggi == $andata){?>
-                            <tr>
-                                <td><?php echo $row['codice']; ?></td> <?php
-                            ?><td><?php echo $row['partenza']; ?></td>
-                                <td><?php echo $row['destinazione']; ?></td>
-                                <td><?php echo $row['hpartenza']; ?></td>
-                                <td><?php echo $row['harrivo']; ?></td>
-                                <td> <?php 
+
+                        <td><?php echo $row['codice']; ?></td>
+                        <td><?php echo $row['partenza']; ?></td>
+                        <td><?php echo $row['destinazione']; ?></td>
+                        <td><?php echo $row['hpartenza']; ?></td>
+                        <td><?php echo $row['harrivo']; ?></td>
+                        <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                         ECONOMY </a>
-                                    <?php }      else{
-      echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN</a>';
-    } ?> </td>
-    <td> <?php 
+                                href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                ECONOMY </a>
+                            <?php }      else{
+                                    echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN</a>';
+                                    } ?> </td>
+                        <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                        PRIMA </a>
-                                    <?php }      else{
+                                href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                PRIMA </a>
+                            <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN </a>';
     } ?> </td>
-                            </tr> <?php				}  
+                        <?php				}  
 								else if($oggi != $andata) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
                                                     { ?>
-                            <tr>
-                                <td><?php echo $row['codice']; ?></td>
-                                <td><?php echo $row['partenza']; ?></td>
-                                <td><?php echo $row['destinazione']; ?></td>
-                                <td><?php echo $row['hpartenza']; ?></td>
-                                <td><?php echo $row['harrivo']; ?></td>
-                                <td> <?php 
+                        <tr>
+                            <td><?php echo $row['codice']; ?></td>
+                            <td><?php echo $row['partenza']; ?></td>
+                            <td><?php echo $row['destinazione']; ?></td>
+                            <td><?php echo $row['hpartenza']; ?></td>
+                            <td><?php echo $row['harrivo']; ?></td>
+                            <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                         ECONOMY </a>
-                                    <?php }      else{
+                                    href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                    ECONOMY </a>
+                                <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN</a>';
     } ?> </td>
-    <td> <?php 
+                            <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                        PRIMA </a>
-                                    <?php }      else{
+                                    href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                    PRIMA </a>
+                                <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN </a>';
     } ?> </td>
-                            </tr> 
-                        </tbody>
-                    </table> <?php
+                        </tr>
+                    </tbody>
+                </table> <?php
                     }}}else{
                     echo '<form><h1>non ci sono treni da prentoare <h1></form>';
                 }
@@ -179,68 +179,68 @@ else{
     $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'" ;
     $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
     if (pg_fetch_array($result, null, PGSQL_ASSOC)){
-    ?><table>
-                        <thead>
-                            <tr>
-                                <th>Codice</th>
-                                <th>Stazione di partenza</th>
-                                <th>Stazione di arrivo</th>
-                                <th>Orario di partenza</th>
-                                <th>Orario di arrivo</th>
-                                <th colspan="2">Prenotazione</th>
-                            </tr>
-                        </thead>
-                        <tbody> <?php
+    ?><table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Codice</th>
+                            <th>Stazione di partenza</th>
+                            <th>Stazione di arrivo</th>
+                            <th>Orario di partenza</th>
+                            <th>Orario di arrivo</th>
+                            <th colspan="2">Prenotazione</th>
+                        </tr>
+                    </thead>
+                    <tbody> <?php
     while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
 		if($row['hpartenza']> $ora&&$oggi==$andata){?>
 
-                            <tr>
-                                <td><?php echo $row['codice']; ?></td>
-                                <td><?php echo $row['partenza']; ?></td>
-                                <td><?php echo $row['destinazione']; ?></td>
-                                <td><?php echo $row['hpartenza']; ?></td>
-                                <td><?php echo $row['harrivo']; ?></td>
-                                <td> <?php 
+                        <tr>
+                            <td><?php echo $row['codice']; ?></td>
+                            <td><?php echo $row['partenza']; ?></td>
+                            <td><?php echo $row['destinazione']; ?></td>
+                            <td><?php echo $row['hpartenza']; ?></td>
+                            <td><?php echo $row['harrivo']; ?></td>
+                            <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                        ECONOMY </a>
-                                    <?php }      else{
+                                    href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                    ECONOMY </a>
+                                <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN</a>';
     } ?> </td>
-                                <td> <?php 
+                            <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                        PRIMA </a>
-                                    <?php }      else{
+                                    href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                    PRIMA </a>
+                                <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN </a>';
     } ?> </td>
-                            </tr> <?php }else if($oggi != $andata) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
+                        </tr> <?php }else if($oggi != $andata) //FARE CONTROLLO IF (GIORNO DIVERSO DA OGGI MOSTRA TUTTO)
     { ?>
-                            <tr>
-                                <td><?php echo $row['codice']; ?></td>
-                                <td><?php echo $row['partenza']; ?></td>
-                                <td><?php echo $row['destinazione']; ?></td>
-                                <td><?php echo $row['hpartenza']; ?></td>
-                                <td><?php echo $row['harrivo']; ?></td>
-                                <td> <?php 
+                        <tr>
+                            <td><?php echo $row['codice']; ?></td>
+                            <td><?php echo $row['partenza']; ?></td>
+                            <td><?php echo $row['destinazione']; ?></td>
+                            <td><?php echo $row['hpartenza']; ?></td>
+                            <td><?php echo $row['harrivo']; ?></td>
+                            <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                        ECONOMY </a>
-                                    <?php }      else{
+                                    href="pagamento.php?prezzo=<?php echo $row['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                    ECONOMY </a>
+                                <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN</a>';
     } ?> </td>
-                                <td> <?php 
+                            <td> <?php 
 							if(isset($_SESSION['name'])!=NULL){
                               ?> <a class="button"
-                                        href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
-                                        PRIMA </a>
-                                    <?php }      else{
+                                    href="pagamento.php?prezzo=<?php echo $row['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                    PRIMA </a>
+                                <?php }      else{
       echo '<a  class="button" href="HomePage.php"> EFFETTUA LOGIN </a>';
     } ?> </td>
-                            </tr> <?php
+                        </tr> <?php
                             }
                             }
                             }else{
@@ -248,8 +248,8 @@ else{
                                 <h1>non ci sono treni da prentoare <h1>
                             </form>';
                             }}?> </td>
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
 
             </div>
     </main>

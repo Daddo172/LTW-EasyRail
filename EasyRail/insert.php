@@ -53,7 +53,7 @@
         <main>
             <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;">
                 <div class="formhead">INSERISCI DATI UTENTE</div>
-                <table>
+                <table style="margin-left: auto;margin-right: auto;">
                     <tr>
                         <p>
                             <td><label for="nome">Nome </label></td>
@@ -87,7 +87,7 @@
             </form>
             <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;">
                 <div class="formhead">INSERISCI DATI PRENOTAZIONI</div>
-                <table>
+                <table style="margin-left: auto;margin-right: auto;">
                     <tr>
                         <p>
                             <td><label for="codice">Codice </label></td>
@@ -127,7 +127,7 @@
             </form>
             <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;">
                 <div class="formhead">INSERSICI DATI TRENI</div>
-                <table>
+                <table style="margin-left: auto;margin-right: auto;">
                     <tr>
                         <p>
                             <td><label for="codice">codice</label></td>
@@ -215,46 +215,46 @@
             </form>
             <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;">
                         <div class="formhead">INSERISCI DATI VIAGGI</div>
-                        <table>
+                        <table style="margin-left: auto;margin-right: auto;">
                     <tr>
                         <p>
                             <td><label for="codice">codice </label></td>
-                            <td><input type="text" name="inputcodice2"  id="nome" required></td>
+                            <td><input type="text" style="width:80%;" name="inputcodice2"  id="nome" required></td>
                         </p>
                     </tr><tr>
                         <p>
                             <td><label for="partenza">partenza </label></td>
-                            <td><input type="text" name="inputpartenza"  id="nome" required></td>
+                            <td><input type="text" style="width:80%;" name="inputpartenza"  id="nome" required></td>
                         </p>
                     </tr>
 					<tr>
                         <p>
                             <td><label for="destinazione">destinazione </label></td>
-                            <td><input type="text" name="inputarrivo"  id="nome" required></td>
+                            <td><input type="text" style="width:80%;" name="inputarrivo"  id="nome" required></td>
                         </p>
                     </tr>
 					<tr>
                         <p>
                             <td><label for="orariopart">orario partenza </label></td>
-                            <td><input type="time" name="inputorariopart"  id="nome" required></td>
+                            <td><input type="time" style="width:80%;" name="inputorariopart"  id="nome" required></td>
                         </p>
                     </tr>
 					<tr>
                         <p>
                             <td><label for="orarioarr">orario arrivo </label></td>
-                            <td><input type="time" name="inputorarioarr"  id="nome" required></td>
+                            <td><input type="time" style="width:80%;" name="inputorarioarr"  id="nome" required></td>
                         </p>
                     </tr>
                     <tr>
                         <p>
                             <td><label for="economy">Prezzo Economy</label></td>
-                            <td><input type="number" name="inputeconomy" id="economy" required></td>
+                            <td><input type="number" style="width:80%;" name="inputeconomy" id="economy" required></td>
                         </p>
                     </tr>
                     <tr>
                         <p>
                             <td><label for="prima">Prezzo Prima</label></td>
-                            <td><input type="number" name="inputprima" id="prima" required></td>
+                            <td><input type="number" style="width:80%;" name="inputprima" id="prima" required></td>
                         </p>
                     </tr>
                 </table>

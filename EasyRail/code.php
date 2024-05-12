@@ -131,12 +131,12 @@ else {
     if(isset($_POST['updatecodbiglietto']))
     {
         $codice=$_POST['inputcodice3'];
-        $email=$_POST['inputemail'];
+        $email=$_POST['inputemail2'];
         $codbiglietto=$_POST['updatecodbiglietto'];
         $orariopart=$_post['inputhpartenza'];
         $orarioarr=$_post['inputharrivo'];
 
-        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr' WHERE codice='$codice'";
+        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr' WHERE codice='$codice' and email='$email'";
         $data = pg_query($dbconn,$query);
         header('location: shprenotazioni.php');
     }

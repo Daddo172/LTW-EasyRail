@@ -20,86 +20,82 @@
     }
     </style>
 </head>
+<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+    <!--Barra superiore-->
+    <header class="topnav">
+			<nav>
+			<a class="titolo" >EasyRail</a>
+				<?php if(isset($_SESSION['name'])){?>
+					<div class="log dropdown">
+						<button class="dropbtn"><?= $_SESSION['name']?></button>
+						<div class="dropdown-content">
+							<?php if($_SESSION['name'] == 'Admin'){ ?>
+							<?php }else{?>
+							<a href="profilo.php">Area Personale</a>
+							<a href="logout.php">Logout</a>
+							<?php } ?>
+						</div>
+					</div>
+					<?php }else{?>
+					<div class="log dropdown">
+						<button class="dropbtn">Accedi</button>
+					<div class="dropdown-content">
+						<a href="Login.html">Login</a>
+						<a href="Register.html">Registrati</a>
+					</div>
+				</div>
+				<?php }?>
+				<a class="active center" href="Admin.php">Area Admin</a>
+				<a href="logout.php">  Logout</a>
+			</nav>
+		</header>
 
-<body>
-    <main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
-        <!--Barra superiore-->
-        <header class="topnav">
-            <nav>
-            <a class="titolo" >EasyRail</a>
-                <?php if(isset($_SESSION['name'])){?>
-                <div class="log dropdown">
-                    <button class="dropbtn"><?= $_SESSION['name']?></button>
-                    <div class="dropdown-content">
-                        <a href="profilo.php"></a>
-                        <a href="logout.php">Logout</a>
-                    </div>
-                </div>
-                <?php }else{?>
-                <div class="log dropdown">
-                    <button class="dropbtn">Accedi</button>
-                    <div class="dropdown-content">
-                        <a href="./Login.html">Login</a>
-                        <a href="Register.html">Registrati</a>
-                    </div>
-                </div>
-                <?php }?>
-                <a class="active center" href="HomePage.php">Home</a>
-				<a class="center" href="TrainStato.php">Stato treno</a>
-            </nav>
-        </header>
-
-        <body>
-            <div class="card-body">
-                <?php $query="SELECT * FROM prenotazione";
+    <body>
+        <div class="table-responsive-lg" style="width:100%;">
+            <?php $query="SELECT * FROM prenotazione";
                     $result=pg_query($query); 
-                    if (pg_fetch_array($result, null, PGSQL_ASSOC)){
                         ?>
-                    
-                <table class="table table-bordered">
-                    
-                    <thead>
-                        <tr>
-                            <th>Codice</th>
-                            <th>Email</th>
-                            <th>Codice Biglietto</th>
-                            <th>Orario Partenza</th>
-                            <th>Orario Arrivo</th>
-                            <th>Modifica</th>
-                            <th>Cancella</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Codice</th>
+                        <th>Email</th>
+                        <th>Codice Biglietto</th>
+                        <th>Orario Partenza</th>
+                        <th>Orario Arrivo</th>
+                        <th>Modifica</th>
+                        <th>Cancella</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                 
                     
-                    while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC))
-                    {?>
-                        <tr>
-                            <td><?php echo $row['codice']; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['codbiglietto']; ?></td>
-                            <td><?php echo $row['hpartenza']; ?></td>
-                            <td><?php echo $row['harrivo']; ?></td>
-                            <td> 
-                                <a href="edit.php?codbiglietto=<?php echo $row['codbiglietto']; ?>" class="btn btn-success">Modifica dati</a>
-                            </td>
-                            <td> 
-                                <form action="code.php" method="POST">
-                                    <input type="hidden" name=deletecodbiglietto value="<?php echo $row['codbiglietto']; ?>">
-                                    <input type="hidden" name=email value="<?php echo $row['email']; ?>">
-                                    <button type="submit" class="btn btn-danger">Cancella dati</button>
-                                </form>
-                            </td>
-                        </tr><?php
+                    while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){?>
+                    <tr>
+                        <td><?php echo $row['codice']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['codbiglietto']; ?></td>
+                        <td><?php echo $row['hpartenza']; ?></td>
+                        <td><?php echo $row['harrivo']; ?></td>
+                        <td><form action="">
+                            <a href="edit.php?codbiglietto=<?php echo $row['codbiglietto']; ?>"
+                                class="btn btn-success">Modifica dati</a>
+                        </form></td>
+                        <td>
+                            <form action="code.php" method="POST">
+                                <input type="hidden" name=deletecodbiglietto
+                                    value="<?php echo $row['codbiglietto']; ?>">
+                                <input type="hidden" name=email value="<?php echo $row['email']; ?>">
+                                <button type="submit" class="btn btn-danger">Cancella dati</button>
+                            </form>
+                        </td>
+                    </tr><?php
                     }  ?>
-                    </tbody> 
-                </table>
-                <?php }else{
-                    echo '<form><h1>non ci sono prenotazioni <h1></form>';
-                } ?>
-            </div>
-        </body>
-</body>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</main>
 
 </html>
