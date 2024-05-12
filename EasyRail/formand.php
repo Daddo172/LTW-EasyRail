@@ -65,12 +65,14 @@ $arrivo = $_SESSION['arr'];
 $ritorno = $_SESSION['dataRit'];
 $partenza = $_SESSION['part'];
 $andata = $_SESSION['dataAnd'];
+$sconto=$_SESSION['sconto'];
 }
 else{
 $partenza = $_POST['part'];
 $arrivo = $_POST['arr'];
 $andata = $_POST['dataAnd'];
 $ritorno = ($_POST['dataRit']);
+$sconto =$_POST['cs'];
 }
 
 if(isset($_SESSION['name'])){
@@ -82,6 +84,7 @@ $_SESSION['part'] = $partenza;
 $_SESSION['dataAnd'] = $andata;
 $_SESSION['arr'] = $arrivo;
 $_SESSION['dataRit'] = $ritorno;
+$_SESSION['sconto'] = $sconto;
 
 
 

@@ -77,7 +77,11 @@
                                     </p>
                                     <p class="mb-0">
                                         <span class="fw-bold">Prezzo:</span>
-                                        <?php $prezzo= $_GET['prezzo'] ?>
+                                        <?php $prezzo= $_GET['prezzo']; 
+                                        if($_SESSION['sconto'] == 'LTW24'){
+                                            $sconto = ($prezzo/100) * 20;
+                                            $prezzo= $prezzo - $sconto;
+                                        }?>
                                         <span class="c-green">€ <?php echo $prezzo ?></span>
                                     </p>
                                     <p class="mb-0">Testo!</p>
