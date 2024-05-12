@@ -399,3 +399,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	padding: 5px 8px 5px 8px;
 	margin-left: 8px;
 }
+
+.form-2{
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	text-align: left;
+	border-style: solid 0px; border-radius: 16px;
+	background-color: white;
+	min-width: fit-content;
+	max-width: 500px;
+	padding: 16px;
+}

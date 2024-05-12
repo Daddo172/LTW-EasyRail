@@ -85,7 +85,7 @@
                 </table>
             </div>
         </form>
-
+        <div class="form-2">
             <h1>Treni Prenotati</h1>
             <div class="card-body">
                 
@@ -110,7 +110,6 @@
 					$codbiglietto= $row['codbiglietto'];
                     $orariopart= $row['hpartenza'];
                     $orariodest= $row['harrivo'];
-                    echo $orariopart;
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
                     $result2=pg_query($query2);                          
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
@@ -137,6 +136,7 @@
                 ?>
                     </tbody>
                 </table>
+            </div>
             </div>
         <br>
         <footer class="bottom">

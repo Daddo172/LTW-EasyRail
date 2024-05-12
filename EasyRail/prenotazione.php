@@ -61,8 +61,11 @@
     $ritorno = $_SESSION['dataRit'];
     $partenza = $_SESSION['part'];
     $andata = $_SESSION['dataAnd'];
-        $q1="select * from prenotazione where email= $1 and codice = $2";
-        $result=pg_query_params($dbconn, $q1, array($email,$codice));
+
+	$hpartenza= $_GET['orariopartenza'];
+	$harrivo= $_GET['orariodestinazione'];
+        $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4";
+        $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo));
         //controlla se esiste
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo'Hai già prenotato';
@@ -78,10 +81,8 @@
 		$result=pg_query($dbconn,$query1);
 		$row=pg_num_rows($result);
 		$row= 1000 + $row;
-		$orariopartenza=$_GET['orariopartenza'];
-        $orariodestinazione=$_GET['orariodestinazione'];
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5)";
-        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$orariopartenza,$orariodestinazione));
+        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo));
         echo 'prenotazione completata!';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);
