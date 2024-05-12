@@ -126,7 +126,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		echo "</p>";
 		//Tabella con tutti i dati + barra
 		echo "<p>";
-		echo "<table style=\"width: 100%; text-align: left;\">";
+		echo "<table style=\"max width: 60%; text-align: left;\">";
 		$i = 0; $c = 0;
 		echo "<tr>";
 		echo "<th>Fermata</th>";
@@ -135,7 +135,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 			if (preg_match("/\bf\d/", $index)) {
 				if ($value!="") {
 					$c++;
-					echo "<td style=\"text-align: center;\">" . $tuple["f$i"] . "</td>";
+					echo "<td style=\" text-align: center;\">" . $tuple["f$i"] . "</td>";
 				}
 			$i++;
 			}

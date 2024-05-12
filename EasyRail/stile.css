@@ -13,7 +13,7 @@ body {
 .topnav {
 	text-align: center;
 	position: sticky; top: 0;
-	min-width: 420px;
+	min-width: 100%;
 	background-color: rgb(16, 16, 104);
 	border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
 	z-index: 10;
@@ -48,10 +48,9 @@ form {
 	margin: 0 auto;
 	margin-top: 50px;
 	margin-bottom: 40px;
-	text-align: left;
 	border-style: solid 0px; border-radius: 16px;
 	background-color: white;
-	min-width: fit-content;
+	min-width: 90%;
 	max-width: 500px;
 	padding: 16px;
 }

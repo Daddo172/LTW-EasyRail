@@ -111,7 +111,7 @@ unset($_SESSION['stato']);
 	
 	<!--Form Cerca viaggio-->	
 	<div style="text-align: center;">
-		<form action="formand.php" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="min-width: 666px; max-width: 666px; margin-bottom: 90px;">
+		<form action="formand.php" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p>
 				<label for="part">Da</label>
@@ -131,8 +131,8 @@ unset($_SESSION['stato']);
 				</datalist>
 			</p>
 			<p>
-				<table><tr>
-					<td style="padding: 0px 10px 0px 7px;">Andata e ritorno</td>
+				<table style="margin-left: auto;margin-right: auto;"><tr>
+					<td >Andata e ritorno</td>
 					<td><input onclick="ritornoOnOff()" class="checkbox" type="checkbox" id="onOff" name="onOff">
 					<label for="onOff" class="toggle"></label></td>
 				</tr></table>

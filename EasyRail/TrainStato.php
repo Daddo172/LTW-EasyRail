@@ -39,9 +39,10 @@
 			</nav>
 		</header>
 	<main>
-		<form action="TrainStatus.php" method="post" style="margin-top: 60px auto 60px auto;">
+		<form action="TrainStatus.php" method="post" style="margin-top: 60px auto 60px auto;min-width: 70%;">
 			<div class="formhead">Visualizza informazioni</div>
-			<table style="margin: 20px 0 20px 0;">
+			<table style="margin: 20px 0 20px 0;margin-left: auto;
+    margin-right: auto;">
 				<tr>
 					<p>
 					<td><label for="ct">Codice treno </label></td>
