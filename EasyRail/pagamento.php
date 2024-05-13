@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
     <link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="funzioni.js"></script>
     <style>
     input {
         margin: 0;
@@ -47,7 +48,7 @@
                     </div>
                 </div>
                 <?php }?>
-                <a  href="HomePage.php">Home</a>
+                <a class="center" href="HomePage.php">Home</a>
                 <a class="center" href="TrainStato.php">Stato treno</a>
             </nav>
         </header>
@@ -73,7 +74,7 @@
                             <div class="row">
                                 <div class="col-lg-5 mb-lg-0 mb-3">
                                     <p class="h4 mb-0">Resoconto</p>
-                                    <p class="mb-0"><span class="fw-bold">Prodotto:</span><span class="c-green"> Treno </span>
+                                    <p class="mb-0"><span class="fw-bold">Prodotto:</span><span class="c-green"> Biglietto </span>
                                     </p>
                                     <p class="mb-0">
                                         <span class="fw-bold">Prezzo:</span>
@@ -87,38 +88,41 @@
                                     <p class="mb-0">Testo!</p>
                                 </div>
                                 <div class="col-lg-7">
-                                    <form action="" class="form">
+                                    <form action="" class="form" onsubmit="return validaCarta();">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form__div">
-                                                    <label for="" class="form__label">Numero Carta</label>
-                                                    <input type="number" class="form-control" maxlength="21" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" placeholder="0000-0000-0000-0000" required>
+                                                    <label for="" class="form__label">Nome e Cognome del titolare</label>
+                                                    <input type="text" class="form-control" maxlength="40" placeholder="nome e cognome" pattern="([A-Za-z]+)( [A-Za-z]+)+" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <label for="carta" class="form__label">Numero Carta</label>
+                                                    <input id="carta" oninput="validaCarta()" type="number" class="form-control" placeholder="inserire numero carta" required>
+                                                    <div id="messaggioCarta" style="color: rgb(200, 0, 0);"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-6">
                                                 <div class="form__div">
-                                                    <label for="" class="form__label">Scadenza</label>
-                                                    <input type="text" class="form-control" maxlength="7" pattern="\d{1,2}\/\d{1,2}\/\d{2,4}" placeholder="MM/YY" required>
+                                                    <label for="scad" class="form__label">Scadenza</label>
+                                                    <input id="scad" type="month" class="form-control" placeholder="mm/yyyy" required>
                                                 </div>
                                             </div>
 
                                             <div class="col-6">
                                                 <div class="form__div">
-                                                    <label for="" class="form__label"> CVV</label>
-                                                    <input type="password" maxlength="3" class="form-control" placeholder="***" required>
+                                                    <label for="cvv" class="form__label">CVV</label>
+                                                    <input id="cvv" type="password" class="form-control" pattern="\d\d\d\d*" placeholder="codice di 3 o 4 cifre" required>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="form__div">
-                                                    <label for="" class="form__label">Nome Carta</label>
-                                                    <input type="text" class="form-control" placeholder="ROSSI MARIO" required>
-<br>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
+                                            <div class="col-12" style="margin-top: 24px;">
+                                                <input class="btn btn-primary w-100" type="submit" value="Acquista">
+                                                <!--
                                                 <a class="btn btn-primary w-100" href="prenotazione.php?orariopartenza=<?php echo $_GET['orariopartenza'];?>&orariodestinazione= 
-                                                <?php echo $_GET['orariodestinazione']; ?>&codice= <?php echo $_GET['codice']; ?>">Invia Pagamento</a>
+                                                <?php echo $_GET['orariodestinazione']; ?>&codice= <?php echo $_GET['codice']; ?>">Acquista</a>
+                                                -->
                                             </div>
                                         </div>
                                     </form>

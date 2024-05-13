@@ -119,6 +119,7 @@ unset($_SESSION['stato']);
 				<button onclick="swap()" class="swap" type="button">&rlarr;</button>
 				<label for="arr">A</label>
 				<input list="stazioni" name="arr" id="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
+				<div id="messaggioStz" style="color: rgb(200, 0, 0);"></div>
 
 				<datalist id="stazioni">
 					<option value="Bologna Centrale"></option>
@@ -167,6 +168,7 @@ unset($_SESSION['stato']);
 					</table>
 				</div>
 			</div>
+			<div id="messaggioPass" style="color: rgb(200, 0, 0);"></div>
 			<p>
 				<label for="cs">Codice sconto (opzionale) </label>
 				<input class="cs" type="text" name="cs" id="cs" style="width: 160px;">

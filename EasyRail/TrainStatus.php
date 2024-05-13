@@ -90,7 +90,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 				</tr>
 				<tr>
 					<td></td>
-					<td style=\"color: rgb(160, 0, 0);\">Treno non trovato, inserisci un altro codice</td>
+					<td style=\"color: rgb(200, 0, 0);\">Treno non trovato, inserisci un altro codice</td>
 				</tr>
 			</table>
 			<p>

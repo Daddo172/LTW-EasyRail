@@ -19,9 +19,11 @@ function validaStz() {
 			c++;
 	}
 	if (c<2) {
-		alert("Inserire stazioni di partenza e di destinazione valide");
+		document.getElementById("messaggioStz").innerHTML = "inserire stazioni di partenza e di destinazione valide"
 		return false;
 	}
+	else
+	document.getElementById("messaggioStz").innerHTML = "";
 	return true;
 }
 
@@ -55,6 +57,8 @@ $(function() {
 	$("#dataAnd").attr("min", minDate);
 	$("#dataRit").attr("min", minDate);
 	$("#dataAnd").attr("value", minDate);
+	var minMonth = year + '-' + month;
+	$("#scad").attr("min", minMonth);
 });
 
 //Gestione date
@@ -105,8 +109,21 @@ function validaPass() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
 	if (parseInt(adt.value) + parseInt(yng.value) == 0) {
-		alert("Inserire almeno un passeggero");
+		document.getElementById("messaggioPass").innerHTML = "inserire almeno un passeggero";		return false;
 		return false;
 	}
+	else
+	document.getElementById("messaggioPass").innerHTML = "";
+	return true;
+}
+
+function validaCarta() {
+	var carta = document.getElementById("carta");
+	if (carta.value.length != 15 && carta.value.length != 16) {
+		document.getElementById("messaggioCarta").innerHTML = "inserire un numero di carta valido";
+		return false;
+	}
+	else
+		document.getElementById("messaggioCarta").innerHTML = "";
 	return true;
 }

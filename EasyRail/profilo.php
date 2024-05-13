@@ -48,7 +48,7 @@
                 </div>
             </div>
             <?php }?>
-            <a class="active center" href="HomePage.php">Home</a>
+            <a class="center" href="HomePage.php">Home</a>
             <a class="center" href="TrainStato.php">Stato treno</a>
         </nav>
     </header>
