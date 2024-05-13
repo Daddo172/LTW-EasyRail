@@ -406,7 +406,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	text-align: left;
 	border-style: solid 0px; border-radius: 16px;
 	background-color: white;
-	min-width: fit-content;
+	min-width: 60%;
 	max-width: 500px;
 	padding: 16px;
 }

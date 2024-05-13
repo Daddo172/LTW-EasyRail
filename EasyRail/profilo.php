@@ -54,9 +54,10 @@
     </header>
 
     <body>
+        <div class="form-2">
         <form>
-            <h1>Informazioni Utente</h1>
-            <div class="card-body">
+            <h1 style="text-align:center;">Informazioni Utente</h1>
+            <div class="table-responsive-lg" style="width:100%;">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -83,13 +84,15 @@
                 ?>
                     </tbody>
                 </table>
+                
             </div>
         </form>
-        <div class="form-2">
-            <h1>Treni Prenotati</h1>
-            <div class="card-body">
+        </div>
+        <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
+            <h1 style="text-align:center;">Treni Prenotati</h1>
+            <div class="table-responsive-lg">
                 
-                <table style="width:100%" class="table table-bordered">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Codice</th>
@@ -119,8 +122,8 @@
                             <td><?php echo $row2['destinazione']; ?></td>
                             <td><?php echo $row2['hpartenza']; ?></td>
                             <td><?php echo $row2['harrivo']; ?></td>
-                            <td><a class="button" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
-                                    value="Stato"> Stato </a></td>
+                            <td><form><a class="button" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
+                                    value="Stato"> Stato </a></form></td>
                             <td>
                                 <form action="code.php" method="POST">
                                     <input type="hidden" name=deletecodbiglietto2 value="<?php echo $row['codbiglietto']; ?>">
@@ -137,8 +140,9 @@
                     </tbody>
                 </table>
             </div>
-            </div>
+        </div>
         <br>
+        </body>
         <footer class="bottom">
             <table>
                 <tr>
@@ -155,7 +159,6 @@
                 </tr>
             </table>
         </footer>
-    </body>
-</main>
 
+</main>
 </html>
