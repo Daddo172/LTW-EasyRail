@@ -52,7 +52,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar 
             <form>
                 <h1 style="text-align:center;" >INSERISCI DATI NEI DATABASE</h1>
 				<div style="text-align:center;">
-				<a  class=button href="shutente.php">Inserisci i dati</a></div>
+				<a  class=button href="insert.php">Inserisci i dati</a></div>
                 <?php
                 ?>
             </form>

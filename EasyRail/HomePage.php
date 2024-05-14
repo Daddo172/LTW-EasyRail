@@ -7,6 +7,7 @@ unset($_SESSION['stato']);
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>EasyRail</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="stile.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
 	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
@@ -113,14 +114,14 @@ unset($_SESSION['stato']);
 	<div style="text-align: center;">
 		<form action="formand.php" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
-			<p>
+			<p><div class="table-responsive-lg">
 				<label for="part">Da</label>
 				<input list="stazioni" name="part" id="part" maxlength="27" placeholder=" inserisci stazione di partenza">
 				<button onclick="swap()" class="swap" type="button">&rlarr;</button>
 				<label for="arr">A</label>
 				<input list="stazioni" name="arr" id="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
 				<div id="messaggioStz" style="color: rgb(200, 0, 0);"></div>
-
+				</div>
 				<datalist id="stazioni">
 					<option value="Bologna Centrale"></option>
 					<option value="Firenze Santa Maria Novella"></option>

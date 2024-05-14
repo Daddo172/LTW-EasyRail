@@ -54,7 +54,7 @@
         </header>
         <main>
         <div class="container">
-        <div class="row">
+        <div class="row" style="width:100%;">
             <div class="col-12 mt-4">
                 <div class="card p-3">
                     <p class="mb-0 fw-bold h4">Pagamento</p>
@@ -88,7 +88,7 @@
                                     <p class="mb-0">Testo!</p>
                                 </div>
                                 <div class="col-lg-7">
-                                    <form action="" class="form" onsubmit="return validaCarta();">
+                                    <form action="prenotazione.php" class="form" onsubmit="return validaCarta();">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form__div">
@@ -118,10 +118,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-12" style="margin-top: 24px;">
-                                                <input class="btn btn-primary w-100" type="submit" value="Acquista">
+                                                <input class="btn btn-primary w-100" type="submit"  value="Acquista"></input>
                                                 <!--
                                                 <a class="btn btn-primary w-100" href="prenotazione.php?orariopartenza=<?php echo $_GET['orariopartenza'];?>&orariodestinazione= 
-                                                <?php echo $_GET['orariodestinazione']; ?>&codice= <?php echo $_GET['codice']; ?>">Acquista</a>
+                                                <?php echo $_GET['orariodestinazione']; ?>&codice= <?php echo $_GET['codice']; ?>">
                                                 -->
                                             </div>
                                         </div>

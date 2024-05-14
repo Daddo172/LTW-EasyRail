@@ -117,7 +117,7 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		</form>";
 		} else {
 		//Header del risultato
-		echo "<div class=train-status>";
+		echo "<div class=train-status >";
 		echo "<table style=\"font-size: 24px; width: 90%;\"><tr>
 		<td>EasyRail #$ct</td>" . "<td style=\"text-align: right;\">" . date("d/m/Y") . "</td>";
 		echo "</tr></table>";
