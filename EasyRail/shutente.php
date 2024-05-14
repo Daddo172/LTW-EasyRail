@@ -67,6 +67,7 @@
                 
                     $query="SELECT * FROM utente";
                     $result=pg_query($query);
+                    if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
                     while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC))
                     {?>
                         <tr>
@@ -84,8 +85,15 @@
                                 </form>
                             </td>
                         </tr><?php
-                    }  ?>
-                    </tbody> 
+                    }}else{ ?>
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <td>NULL</td>  
+                    <td>NULL</td>  
+                    <?php } ?>
+                  </tbody> 
                 </table>
             </div>
         </body>

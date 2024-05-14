@@ -70,7 +70,7 @@
                 <tbody>
                     <?php 
                 
-                    
+                if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
                     while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){?>
                     <tr>
                         <td><?php echo $row['codice']; ?></td>
@@ -91,7 +91,15 @@
                             </form>
                         </td>
                     </tr><?php
-                    }  ?>
+                    }}else{ ?>
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <td>NULL</td>  
+                    <td>NULL</td>
+                    <td>NULL</td>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
