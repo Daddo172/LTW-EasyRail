@@ -40,7 +40,7 @@
 			</nav>
 		</header>
 	<main>
-		<form action="TrainStatus.php" method="post" style="margin-top: 60px auto 60px auto;min-width: 70%;">
+		<form action="TrainStatus.php" method="post" style="margin-top: 60px auto 60px auto;min-width: 20%;">
 			<div class="formhead">Visualizza informazioni</div>
 			<table style="margin: 20px 0 20px 0;margin-left: auto;
     margin-right: auto;">

@@ -88,13 +88,13 @@
             </div>
         </form>
         </div>
-        <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
+        <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;padding:16px;">
             <h1 style="text-align:center;">Treni Prenotati</h1>
             <div class="table-responsive-lg">
                 
-                <table class="table table-bordered">
+                <table  style="border-collapse:collapse;"class="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr padding:0>
                             <th>Codice</th>
                             <th>Partenza</th>
                             <th>Destinazione</th>
@@ -104,7 +104,7 @@
                             <th>Cancella </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         <?php  $query="SELECT * FROM prenotazione WHERE email='$email'";
                         $result=pg_query($query);
                 while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){  
@@ -116,19 +116,19 @@
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
                     $result2=pg_query($query2);                          
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
-                        <tr>
+                        <tr >
                             <td><?php echo $row['codice']; ?></td>
                             <td><?php echo $row2['partenza']; ?></td>
                             <td><?php echo $row2['destinazione']; ?></td>
                             <td><?php echo $row2['hpartenza']; ?></td>
                             <td><?php echo $row2['harrivo']; ?></td>
-                            <td><form><a class="button" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
+                            <td><form style="margin-top: 0px;"><a class="button" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
                                     value="Stato"> Stato </a></form></td>
                             <td>
-                                <form action="code.php" method="POST">
+                                <form action="code.php" style="margin-top: -10px;"method="POST">
                                     <input type="hidden" name=deletecodbiglietto2 value="<?php echo $row['codbiglietto']; ?>">
                                     <input type="hidden" name=email value="<?php echo $row['email']; ?>">
-                                    <button type="submit" class="btn btn-danger">Cancella dati</button>
+                                    <button type="submit" class="btn btn-danger">Cancella Prenotazione</button>
                                 </form>
                             </td>
                         </tr>

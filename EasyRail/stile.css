@@ -410,5 +410,4 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	background-color: white;
 	min-width: 60%;
 	max-width: 500px;
-	padding: 16px;
 }
