@@ -95,7 +95,7 @@
                             </form>
                         </td>
                     </tr><?php
-                    }} ?>
+                    }}else{ ?>
                     <td>NULL</td>
                     <td>NULL</td>
                     <td>NULL</td>
@@ -105,6 +105,7 @@
                     <td>NULL</td>  
                     <td>NULL</td>
                     <td>NULL</td>
+                    <?php } ?>
                 </tbody>
 
             </table>
