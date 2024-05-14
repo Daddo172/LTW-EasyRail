@@ -107,6 +107,7 @@
                     <tbody >
                         <?php  $query="SELECT * FROM prenotazione WHERE email='$email'";
                         $result=pg_query($query);
+                        if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){    
                 while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){  
                     $codice= $row['codice'];
                     $email=$row['email'];
@@ -114,7 +115,7 @@
                     $orariopart= $row['hpartenza'];
                     $orariodest= $row['harrivo'];
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
-                    $result2=pg_query($query2);                          
+                    $result2=pg_query($query2);                      
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
                         <tr >
                             <td><?php echo $row['codice']; ?></td>
@@ -132,8 +133,16 @@
                                 </form>
                             </td>
                         </tr>
-                        <?php                 
+                        <?php  }               
 					}
+                }else{
+                    echo "<td>NULL</td>";
+                    echo "<td>NULL</td>";
+                    echo "<td>NULL</td>";
+                    echo "<td>NULL</td>";
+                    echo "<td>NULL</td>";
+                    echo "<td>NULL</td>";
+                    echo "<td>NULL</td>";
                 } 
 				
                 ?>
