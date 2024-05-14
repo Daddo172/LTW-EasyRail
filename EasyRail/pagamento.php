@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php session_start();?>
+<?php session_start();
+    $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
+    ?>
 <html lang="en">
 
 <head>
@@ -53,6 +55,28 @@
             </nav>
         </header>
         <main>
+            <?php 
+                $email = $_SESSION['email'];
+                $codice = $_GET['codice'];
+                $hpartenza= $_GET['orariopartenza'];
+                $harrivo= $_GET['orariodestinazione'];
+                $_SESSION['codice'] = $codice;
+                $_SESSION['orariopartenza'] = $hpartenza;
+                $_SESSION['orariodestinazione'] = $harrivo;
+            $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4";
+        $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo));
+        //controlla se esiste
+        if (pg_fetch_array($result, null, PGSQL_ASSOC)){
+            header("location:prenotazione.php");
+                if($stato != 'ritorno'){
+                    echo '<div style="text-align:center;"><a class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
+                }else{
+					unset($_SESSION['stato']);
+                    echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
+                }
+            }
+            
+            ?>
         <div class="container">
         <div class="row" style="width:100%;">
             <div class="col-12 mt-4">

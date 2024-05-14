@@ -100,7 +100,7 @@ $_SESSION['sconto'] = $sconto;
                         $oggi= date("Y-m-d");
 						if($data == $andata)
 						{
-							$queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063";
+							$queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
 								$result=pg_query($queryand2); 
                                 if (pg_fetch_array($result, null, PGSQL_ASSOC)){?>
     <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
@@ -179,7 +179,7 @@ $_SESSION['sconto'] = $sconto;
                 }
                 }
                     else{
-    $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'" ;
+    $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%' ORDER BY hpartenza" ;
     $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
     if (pg_fetch_array($result, null, PGSQL_ASSOC)){
     ?> <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">

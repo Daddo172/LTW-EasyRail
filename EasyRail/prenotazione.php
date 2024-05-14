@@ -56,14 +56,14 @@
 <?php
     $stato= $_SESSION["stato"];
     $email = $_SESSION['email'];
-    $codice = $_GET['codice'];
+    $codice = $_SESSION['codice'];
     $arrivo = $_SESSION['arr'];
     $ritorno = $_SESSION['dataRit'];
     $partenza = $_SESSION['part'];
     $andata = $_SESSION['dataAnd'];
 
-	$hpartenza= $_GET['orariopartenza'];
-	$harrivo= $_GET['orariodestinazione'];
+	$hpartenza= $_SESSION['orariopartenza'];
+	$harrivo= $_SESSION['orariodestinazione'];
         $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4";
         $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo));
         //controlla se esiste

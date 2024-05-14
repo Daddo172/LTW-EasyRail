@@ -70,7 +70,7 @@ $_SESSION["stato"]='andata';
 						$ora= date("H:i:s");
                         $oggi= date("Y-m-d");
 						if($data == $ritorno){
-              $queryrit ="select * from treno where destinazione like '$partenza' and partenza like '$arrivo' and codice >= 1050 and codice <=1063";
+              $queryrit ="select * from treno where destinazione like '$partenza' and partenza like '$arrivo' and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
               $res=pg_query($queryrit) or die ('Query failed: ' . pg_last_error());    
               if (pg_fetch_array($res, null, PGSQL_ASSOC)){ ?>
     <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
@@ -146,7 +146,7 @@ $_SESSION["stato"]='andata';
         }}}else{
         echo '<form><h1>non ci sono treni da prentoare <h1></form>';
     }}else{
-    $queryrit ="select * from treno where destinazione like '$partenza' and partenza like '$arrivo'";
+    $queryrit ="select * from treno where destinazione like '$partenza' and partenza like '$arrivo' ORDER BY hpartenza";
     $res=pg_query($queryrit) or die ('Query failed: ' . pg_last_error()); 
     if (pg_fetch_array($res, null, PGSQL_ASSOC)){
       ?><div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
