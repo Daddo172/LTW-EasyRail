@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +12,14 @@
 <body>
 <header class="topnav">
 			<nav>
-			<a class="titolo" href="HomePage.php">EasyRail</a>
+				<a class="titolo" href="HomePage.php">EasyRail</a>
 				<?php if(isset($_SESSION['name'])){?>
 					<div class="log dropdown">
 						<button class="dropbtn"><?= $_SESSION['name']?></button>
 						<div class="dropdown-content">
-							<?php if($_SESSION['name'] == 'Admin'){ ?>
-							<a href="Admin.php">Area Admin</a>
-							<a href="logout.php">Logout</a>
+							<?php if($_SESSION['name'] == 'Admin'){ 
+								header("location:Admin.php");?>
+							
 							<?php }else{?>
 							<a href="profilo.php">Area Personale</a>
 							<a href="logout.php">Logout</a>

@@ -68,12 +68,12 @@
         $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo));
         //controlla se esiste
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
-                echo'Hai già prenotato';
+                echo'<h1>HAI GIÀ EFFETTUATO LA PRENOTAZIONE DI QUESTO TRENO</h1> <BR>';
                 if($stato != 'ritorno'){
-                    echo '<a class="button" href="HomePage.php" value="Ritorno"> Torna HomepAge </a>';
+                    echo '<div style="text-align:center;"><a class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
                 }else{
 					unset($_SESSION['stato']);
-                    echo '<a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a>';
+                    echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
                 }
             }
         else{
@@ -83,13 +83,13 @@
 		$row= 1000 + $row;
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5)";
         $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo));
-        echo 'prenotazione completata!';
+		echo'<h1>PRENOTAZIONE EFFETTUATA CORRETTAMENTE!</h1> <BR>';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);
-            echo '<a class="button" href="HomePage.php" value="Ritorno"> Torna HomepAge </a>';
+            echo '<div style="text-align:center;"><a class="button" href="HomePage.php"  value="Ritorno"> Torna HomepAge </a></div>';
         }else{
 
-            echo '<a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a>';
+            echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
         }
 
         }

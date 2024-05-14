@@ -84,7 +84,7 @@ $_SESSION["stato"]='andata';
                             <th>Stazione di arrivo</th>
                             <th>Orario di partenza</th>
                             <th>Orario di arrivo</th>
-                            <th colspan="2">Prenotazione</th>
+                            <th colspan="2" class="text-center">Prenotazione</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -159,7 +159,7 @@ $_SESSION["stato"]='andata';
                         <th>Stazione di arrivo</th>
                         <th>Orario di partenza</th>
                         <th>Orario di arrivo</th>
-                        <th colspan="2">Prenotazione</th>
+                        <th colspan="2" class="text-center">Prenotazione</th>
                     </tr>
                 </thead>
                 <tbody> <?php

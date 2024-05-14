@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,24 +49,38 @@
 	</style>
 </head>
 <body>
-	<header class="topnav">
-		<nav>	
-			<a class="titolo" href="HomePage.html" ALT="EasyRail">EasyRail</a>
-			<div class="log dropdown">
-				<button class="dropbtn">Accedi</button>
-				<div class="dropdown-content">
-					<a href="Login.html">Login</a>
-					<a href="Register.html">Registrati</a>
+<header class="topnav">
+			<nav>
+				<a class="titolo" href="HomePage.php">EasyRail</a>
+				<?php if(isset($_SESSION['name'])){?>
+					<div class="log dropdown">
+						<button class="dropbtn"><?= $_SESSION['name']?></button>
+						<div class="dropdown-content">
+							<?php if($_SESSION['name'] == 'Admin'){ 
+								header("location:Admin.php");?>
+							
+							<?php }else{?>
+							<a href="profilo.php">Area Personale</a>
+							<a href="logout.php">Logout</a>
+							<?php } ?>
+						</div>
+					</div>
+					<?php }else{?>
+					<div class="log dropdown">
+						<button class="dropbtn">Accedi</button>
+					<div class="dropdown-content">
+						<a href="Login.html">Login</a>
+						<a href="Register.html">Registrati</a>
+					</div>
 				</div>
-			</div>
-			<a class="center" href="HomePage.html">Home</a>
-			<a class="active center" href="TrainStatus.html">Stato treno</a>
-		</nav>
-	</header>
+				<?php }?>
+				<a class="center" href="HomePage.php">Home</a>
+				<a class="active center" href="TrainStato.php">Stato treno</a>
+			</nav>
+		</header>
 	<main>
 	<?php
 	$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
-	session_start();
 	if ($_POST==null&&$_GET==NULL) goto RETRY;
 	else {
 		if($_POST==null){
