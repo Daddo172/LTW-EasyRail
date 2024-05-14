@@ -112,15 +112,17 @@ unset($_SESSION['stato']);
 	
 	<!--Form Cerca viaggio-->	
 	<div style="text-align: center;">
-		<form action="formand.php" style="min-width:45%;" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
+		<form action="formand.php" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p><div class="table-responsive-lg">
-				<label for="part">Da</label>
-				<input list="stazioni" name="part" id="part" maxlength="27" placeholder=" inserisci stazione di partenza">
-				<button onclick="swap()" class="swap" type="button">&rlarr;</button>
-				<label for="arr">A</label>
-				<input list="stazioni" name="arr" id="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
-				<div id="messaggioStz" style="color: rgb(200, 0, 0);"></div>
+					<label for="part">Da</label>
+					<input list="stazioni" name="part" id="part" maxlength="27" placeholder=" inserisci stazione di partenza">
+					<button onclick="swap()" class="swap" type="button">&rlarr;</button>
+					<div style="display: inline-block; margin-top: 10px;">
+					<label for="arr">A</label>
+					<input list="stazioni" name="arr" id="arr" maxlength="27" placeholder=" inserisci stazione di arrivo">
+					</div>
+					<div id="messaggioStz" style="color: rgb(200, 0, 0);"></div>
 				</div>
 				<datalist id="stazioni">
 					<option value="Bologna Centrale"></option>
@@ -132,18 +134,20 @@ unset($_SESSION['stato']);
 					<option value="Venezia Santa Lucia"></option>
 				</datalist>
 			</p>
-			<p>
+			<div>
 				<table style="margin-left: auto;margin-right: auto;"><tr>
-					<td >Andata e ritorno</td>
+					<td>Andata e ritorno</td>
 					<td><input onclick="ritornoOnOff()" class="checkbox" type="checkbox" id="onOff" name="onOff">
 					<label for="onOff" class="toggle"></label></td>
 				</tr></table>
-			</p>
+			</div>
 			<p>
 				<label for="dataAnd">Andata</label>
-				<input oninput="vincoliDate()" type="date" name="dataAnd" id="dataAnd" style="width: 160px;">
-				<label for="dataRit" id="lr" style="margin-left: 24px;" >Ritorno</label>
-				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px; opacity: 0.5;" >
+				<input oninput="vincoliDate()" type="date" name="dataAnd" id="dataAnd" style="width: 160px; margin-right: 0px;">
+				<span style="display: inline-block; margin-top: 4px;">
+				<label for="dataRit" id="lr" style="margin-left: 0px; opacity: 0.5;">Ritorno</label>
+				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px; opacity: 0.5;">
+				</span>
 			</p>
 			<label name="pass">Passeggeri (massimo: 10)</label>
 			<div class="dropdown" style="padding: 5px; border: solid 1px gray; border-radius: 5px; background-color: rgb(224, 224, 224);">
@@ -170,7 +174,7 @@ unset($_SESSION['stato']);
 				</div>
 			</div>
 			<div id="messaggioPass" style="color: rgb(200, 0, 0);"></div>
-			<p>
+			<p style="margin-top: 4px;">
 				<label for="cs">Codice sconto (opzionale) </label>
 				<input class="cs" type="text" name="cs" id="cs" style="width: 160px;">
 			</p>
