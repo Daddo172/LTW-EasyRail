@@ -32,8 +32,9 @@ else {
   icon: "error",
   html: `<b>L'email  <?= $_POST['InputEmail']?> è già utilizzata</b>`,
   focusConfirm: false,
-  confirmButtonText: `
-    <a style="color:white" href="Register.html" class="fa fa-thumbs-up">Riprova!</a>`
+  confirmButtonText: `Riprova!`
+}).then(function() {
+    window.location = "Register.html";
 });
 
                     </script>
@@ -55,8 +56,9 @@ else {
   icon: "success",
   html: `<b>Effettua il login per iniziare ad utilizzare il sito!</b>`,
   focusConfirm: false,
-  confirmButtonText: `
-    <a style="color:white" href="Login.html" class="fa fa-thumbs-up">Loggati!</a>`
+  confirmButtonText: `Loggati!`
+}).then(function() {
+    window.location = "Login.html";
 });
 
                     </script> <?php

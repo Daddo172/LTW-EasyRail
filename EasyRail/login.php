@@ -28,7 +28,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar 
   icon: "error",
   html: `<b>Non sembra che ti sia registrato</b>`,
   focusConfirm: false,
-  confirmButtonText: `<a style="color:white" href="Register.html" class="fa fa-thumbs-up">Registrati!</a>`
+  confirmButtonText: `Registrati!`
+}).then(function() {
+    window.location = "Register.html";
 });
 
                     </script> <?php                }
@@ -44,9 +46,11 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar 
   icon: "error",
   html: `<b>La password e' sbagliata!</b>`,
   focusConfirm: false,
-  confirmButtonText: `
-    <a style="color:white" href="Login.html" class="fa fa-thumbs-up">Riprova!</a>`
-});
+  confirmButtonText:'Riprova!'
+  
+}).then(function() {
+    window.location = "Login.html";
+});;
 
                     </script> <?php                     }
                     else {

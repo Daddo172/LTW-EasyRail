@@ -60,6 +60,8 @@
                 $codice = $_GET['codice'];
                 $hpartenza= $_GET['orariopartenza'];
                 $harrivo= $_GET['orariodestinazione'];
+                $partenza=$_SESSION['part'];
+                $arrivo=$_SESSION['arr'];
                 $_SESSION['codice'] = $codice;
                 $_SESSION['orariopartenza'] = $hpartenza;
                 $_SESSION['orariodestinazione'] = $harrivo;
@@ -109,7 +111,12 @@
                                         }?>
                                         <span class="c-green">€ <?php echo $prezzo ?></span>
                                     </p>
-                                    <p class="mb-0">Testo!</p>
+                                    <p class="mb-0">Pagamento in corso per il treno con il codice: <?php echo $codice ?>.</p>
+                                    <br>
+                                    <p class="mb-0">In partenza dalla stazione di: <?php echo $partenza ?> </p>
+                                    <p>alle ore: <?php echo $hpartenza ?>.</p>
+                                    <p class="mb-0">Con destinazione alla stazione di: <?php echo $arrivo ?> </p>
+                                    <p>alle ore: <?php echo $harrivo ?></p>
                                 </div>
                                 <div class="col-lg-7">
                                     <form action="prenotazione.php" class="form" onsubmit="return validaCarta();">
