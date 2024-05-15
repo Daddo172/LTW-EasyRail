@@ -49,6 +49,7 @@
 	</style>
 </head>
 <body>
+<div style="min-width: fit-content;">
 <header class="topnav">
 			<nav>
 				<a class="titolo" href="HomePage.php">EasyRail</a>
@@ -80,7 +81,7 @@
 		</header>
 	<main>
 	<?php
-	$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
+	$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
 	if ($_POST==null&&$_GET==NULL) goto RETRY;
 	else {
 		if($_POST==null){
@@ -118,8 +119,8 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 		} else {
 		//Header del risultato
 		echo "<div class=train-status >";
-		echo "<table style=\"font-size: 24px; width: 90%;\"><tr>
-		<td>EasyRail #$ct</td>" . "<td style=\"text-align: right;\">" . date("d/m/Y") . "</td>";
+		echo "<table style=\"font-size: 24px; width: 100%;\"><tr>
+		<td>EasyRail #$ct del " . date("d/m/Y") . "</td>";
 		echo "</tr></table>";
 		//Subheader
 		echo "<div style=\"border-bottom: solid 1px black; padding-bottom: 10px;\">";
@@ -246,5 +247,6 @@ RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-t
 	}
 	?>
 	</main>
+</div>
 </body>
 </html>
