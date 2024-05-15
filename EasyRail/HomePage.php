@@ -112,7 +112,7 @@ unset($_SESSION['stato']);
 	
 	<!--Form Cerca viaggio-->	
 	<div style="text-align: center;">
-		<form action="formand.php" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
+		<form action="formand.php" style="min-width:45%;" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p><div class="table-responsive-lg">
 					<label for="part">Da</label>
