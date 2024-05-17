@@ -55,7 +55,7 @@
         </nav>
     </header>
     <?php
-    $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
+    $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
 
 //PRENDO TUTTI I DATI DEL FORM
 if(isset($_SESSION['stato'])!=NULL){
