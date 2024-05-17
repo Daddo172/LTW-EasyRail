@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
-     $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
- session_start();?>
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432"); session_start();?>
 <html lang="en">
 
 <head>

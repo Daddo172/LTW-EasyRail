@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
 session_start();
-$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");?>
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -20,7 +20,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar 
 	</style>
 </head>
 <body>
-	<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+	<main>
 		<!--Barra superiore-->
 		<header class="topnav">
 			<nav>

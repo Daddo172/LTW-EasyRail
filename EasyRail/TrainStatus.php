@@ -81,8 +81,7 @@
 		</header>
 	<main>
 	<?php
-	$dbconn = pg_connect("host=localhost dbname=EasyRail_2 user=daddo password=biar port=5432");
-	if ($_POST==null&&$_GET==NULL) goto RETRY;
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");	if ($_POST==null&&$_GET==NULL) goto RETRY;
 	else {
 		if($_POST==null){
 			$ct=$_GET["codice"];
