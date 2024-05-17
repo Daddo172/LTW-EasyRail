@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS prenotazione (
     harrivo time without time zone NOT NULL,
 	CONSTRAINT prenotazione_pkey PRIMARY KEY(codbiglietto),
     FOREIGN KEY (email) REFERENCES utente(email)
-    FOREIGN KEY (codice) REFERENCES treno(codice)
 );
 
 /*Tabella per visualizzare completamente un treno nello Stato Treno*/
