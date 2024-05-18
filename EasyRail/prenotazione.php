@@ -81,8 +81,12 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		$result=pg_query($dbconn,$query1);
 		$row=pg_num_rows($result);
 		$row= 1000 + $row;
-		$query = "insert into prenotazione values ($2,$1,$3,$4,$5)";
-        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo));
+		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
+		if($stato != 'ritorno'){
+        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$andata));
+		}else{
+			$data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$ritorno));
+		}
 		echo'<h1>PRENOTAZIONE EFFETTUATA CORRETTAMENTE!</h1> <BR>';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);

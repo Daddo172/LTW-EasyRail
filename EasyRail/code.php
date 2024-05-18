@@ -3,8 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
 }
 else {
-    $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
-}
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");}
 
     if(isset($_POST['inputnome']))
     {
@@ -15,7 +14,7 @@ else {
         
 
 
-        $q2 = "insert into utente values ($1,$2,$3,$4)";
+        $q2 = "INSERT into utente values ($1,$2,$3,$4)";
         $data = pg_query_params($dbconn, $q2,
             array($email, $nome, $cognome, $password));
             header('location: admin.php');
@@ -26,14 +25,15 @@ else {
         $codice=$_POST['inputcodice'];
         $email=$_POST['inputemail2'];
         $codbiglietto=$_POST['inputcodbiglietto'];
-        $orariopart=$_post['inputhpartenza'];
-        $orarioarr=$_post['inputharrivo'];
+        $orariopart=$_POST['inputhpartenza'];
+        $orarioarr=$_POST['inputharrivo'];
+        $datapartenza=$_POST['inputdatapartenza'];
         
 
 
-        $q1 = "insert into prenotazione values ($1,$2,$3,$4,$5)";
+        $q1 = "INSERT into prenotazione values ($1,$2,$3,$4,$5,$6)";
         $data = pg_query_params($dbconn, $q1,
-            array($codice, $email,$codbiglietto,$orariopart,$orarioarr));
+            array($codice, $email,$codbiglietto,$orariopart,$orarioarr,$datapartenza));
             header('location: admin.php');
     }
     if(isset($_POST['inputcodice2']))
@@ -133,10 +133,11 @@ else {
         $codice=$_POST['inputcodice3'];
         $email=$_POST['inputemail2'];
         $codbiglietto=$_POST['updatecodbiglietto'];
-        $orariopart=$_post['inputhpartenza'];
-        $orarioarr=$_post['inputharrivo'];
+        $orariopart=$_POST['inputhpartenza'];
+        $orarioarr=$_POST['inputharrivo'];
+        $datapartenza=$POST['inputdatapartenza'];
 
-        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr' WHERE codice='$codice' and email='$email'";
+        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr', DataPartenza='$datapartenza' WHERE codbiglietto='$codbiglietto' and email='$email'";
         $data = pg_query($dbconn,$query);
         header('location: shprenotazioni.php');
     }

@@ -62,6 +62,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         <th>Codice Biglietto</th>
                         <th>Orario Partenza</th>
                         <th>Orario Arrivo</th>
+                        <th>Data Partenza</th>
                         <th>Modifica</th>
                         <th>Cancella</th>
                     </tr>
@@ -77,6 +78,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         <td><?php echo $row['codbiglietto']; ?></td>
                         <td><?php echo $row['hpartenza']; ?></td>
                         <td><?php echo $row['harrivo']; ?></td>
+                        <td><?php echo $row['DataPartenza']; ?></td>
                         <td><form action="">
                             <a href="edit.php?codbiglietto=<?php echo $row['codbiglietto']; ?>"
                                 class="btn btn-success">Modifica dati</a>

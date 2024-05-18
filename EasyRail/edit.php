@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();
-    $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
-?>
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");?>
 <html lang="en">
 
 <head>
@@ -340,6 +339,12 @@
                                         id="nome" required></td>
                             </p>
                         </tr>
+                        <tr>
+                        <p>
+                            <td><label for="datapartenza">Data Partenza</label></td>
+                            <td><input type="date" name="inputdatapartenza" value="<?php echo $row['DataPartenza']; ?>" id=datapartenza required></td>
+                        </p>
+                    </tr>
                     </table>
                     <p>
                     <div style="text-align: center;">

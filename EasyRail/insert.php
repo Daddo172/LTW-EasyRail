@@ -116,6 +116,12 @@
                             <td><input type="time" name="inputharrivo" id="codbiglietto" required></td>
                         </p>
                     </tr>
+                    <tr>
+                        <p>
+                            <td><label for="datapartenza">Data Partenza</label></td>
+                            <td><input type="date" name="inputdatapartenza" id="datapartenza" required></td>
+                        </p>
+                    </tr>
                 </table>
                 <p>
                 <div style="text-align: center;">

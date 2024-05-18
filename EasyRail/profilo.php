@@ -99,6 +99,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <th>Destinazione</th>
                             <th>Orario di partenza</th>
                             <th>Orario di destinazione</th>
+                            <th>Data Partenza</th>
                             <th>Stato</th>
                             <th>Cancella </th>
                         </tr>
@@ -112,6 +113,8 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 					$codbiglietto= $row['codbiglietto'];
                     $orariopart= $row['hpartenza'];
                     $orariodest= $row['harrivo'];
+                    $datapartenza=$row['DataPartenza'];
+                    $oggi= date("Y-m-d");
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
                     $result2=pg_query($query2);
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
@@ -121,8 +124,14 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <td><?php echo $row2['destinazione']; ?></td>
                             <td><?php echo $row2['hpartenza']; ?></td>
                             <td><?php echo $row2['harrivo']; ?></td>
-                            <td><form style="margin-top: 0px;"><a class="button" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
+                            <td><?php echo $row['DataPartenza']; ?></td>
+                            <?php if($oggi != $datapartenza){ ?> <td><form style="margin-top: 0px;" ><a class="button" style="pointer-events: none;cursor: default;opacity:70%;" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
+                                    value="Stato"> Stato </a></form></td> <?php
+                            }else{ ?>
+                                <td><form style="margin-top: 0px;"><a class="button"  href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
                                     value="Stato"> Stato </a></form></td>
+                            <?php
+                            } ?>
                             <td>
                                 <form action="code.php" style="margin-top: -10px;"method="POST">
                                     <input type="hidden" name=deletecodbiglietto2 value="<?php echo $row['codbiglietto']; ?>">
