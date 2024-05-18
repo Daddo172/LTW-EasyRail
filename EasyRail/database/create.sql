@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS prenotazione (
     codbiglietto integer,
     hpartenza time without time zone NOT NULL,
     harrivo time without time zone NOT NULL,
+    DataPartenza date,
 	CONSTRAINT prenotazione_pkey PRIMARY KEY(codbiglietto),
     FOREIGN KEY (email) REFERENCES utente(email)
 );
