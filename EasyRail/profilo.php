@@ -91,7 +91,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             <h1 style="text-align:center;">Treni Prenotati</h1>
             <div class="table-responsive-lg">
                 
-                <table  style="border-collapse:collapse;"class="table table-bordered">
+                <table  style="border-collapse:collapse;height:50px;"class="table table-bordered">
                     <thead>
                         <tr padding:0>
                             <th>Codice</th>
@@ -105,16 +105,15 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     </thead>
                     <tbody >
                         <?php  $query="SELECT * FROM prenotazione WHERE email='$email'";
-                        $result=pg_query($query);
-                        if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){    
-                while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){  
+                        $result=pg_query($query); 
+                while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){ 
                     $codice= $row['codice'];
                     $email=$row['email'];
 					$codbiglietto= $row['codbiglietto'];
                     $orariopart= $row['hpartenza'];
                     $orariodest= $row['harrivo'];
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
-                    $result2=pg_query($query2);                      
+                    $result2=pg_query($query2);
                     while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
                         <tr >
                             <td><?php echo $row['codice']; ?></td>
@@ -132,18 +131,8 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                 </form>
                             </td>
                         </tr>
-                        <?php  }               
-					}
-                }else{
-                    echo "<td>NULL</td>";
-                    echo "<td>NULL</td>";
-                    echo "<td>NULL</td>";
-                    echo "<td>NULL</td>";
-                    echo "<td>NULL</td>";
-                    echo "<td>NULL</td>";
-                    echo "<td>NULL</td>";
-                } 
-				
+                        <?php  } }          
+
                 ?>
                     </tbody>
                 </table>

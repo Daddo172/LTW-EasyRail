@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();
-    $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
-    ?>
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");    ?>
 <html lang="en">
 
 <head>
@@ -55,7 +54,8 @@
             </nav>
         </header>
         <main>
-            <?php 
+            
+            <?php //CARICAMENTO CON ROTELLINA
                 $email = $_SESSION['email'];
                 $codice = $_GET['codice'];
                 $hpartenza= $_GET['orariopartenza'];
@@ -105,18 +105,26 @@
                                     <p class="mb-0">
                                         <span class="fw-bold">Prezzo:</span>
                                         <?php $prezzo= $_GET['prezzo']; 
+                                        $pass=$_SESSION['pass'];
+
                                         if($_SESSION['sconto'] == 'LTW24'){
                                             $sconto = ($prezzo/100) * 20;
                                             $prezzo= $prezzo - $sconto;
-                                        }?>
+                                        }
+                                        $prezzo=$prezzo * $pass; ?>
                                         <span class="c-green">€ <?php echo $prezzo ?></span>
                                     </p>
+                                    
                                     <p class="mb-0">Pagamento in corso per il treno con il codice: <?php echo $codice ?>.</p>
                                     <br>
                                     <p class="mb-0">In partenza dalla stazione di: <?php echo $partenza ?> </p>
-                                    <p>alle ore: <?php echo $hpartenza ?>.</p>
+                                    <p>alle ore: <?php 
+                                    $datapartenza=new DateTime($hpartenza);
+                                    echo $datapartenza->format("H:i"); ?>.</p>
                                     <p class="mb-0">Con destinazione alla stazione di: <?php echo $arrivo ?> </p>
-                                    <p>alle ore: <?php echo $harrivo ?></p>
+                                    <p>alle ore:<?php 
+                                    $datarrivo=new DateTime($harrivo);
+                                    echo $datarrivo->format("H:i"); ?>.</p>
                                 </div>
                                 <div class="col-lg-7">
                                     <form action="prenotazione.php" class="form" onsubmit="return validaCarta();">

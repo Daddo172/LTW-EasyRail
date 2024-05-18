@@ -65,7 +65,6 @@ $_SESSION["stato"]='andata';
     <div class="form-2" style="	background: rgb(200, 200, 200);text-align:center;">
         <a class="button" href="formand.php" value="Ritorno"> Visualizza i treni di Andata </a>
     </div> <?php
-        ?> <h1 style="text-align:center;color:black;">TRENI PRENOTABILI:</h1><?php
         $data = '2024-06-08';
 		$ora= date("H:i:s");
         $oggi= date("Y-m-d");
@@ -76,6 +75,8 @@ $_SESSION["stato"]='andata';
                         <div class="table-responsive-lg" style="border:5px outset;">
                             <table class="table table-bordered">
                                 <thead>
+                                <h1 style="text-align:center;color:black;">TRENI PRENOTABILI:</h1>
+
                                     <tr>
                                         <th>Codice</th>
                                         <th>Stazione di partenza</th>
@@ -175,7 +176,7 @@ $_SESSION["stato"]='andata';
                 </div>
             </div> <?php
                             
-                            }//PRENDE TRENI UNO SI E UNO
+                            }
                             else{
             $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza" ;
             $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
@@ -184,6 +185,8 @@ $_SESSION["stato"]='andata';
                 <div class="table-responsive-lg" style="border:5px outset;">
                     <table class="table table-bordered">
                         <thead>
+                        <h1 style="text-align:center;color:black;">TRENI PRENOTABILI:</h1>
+
                             <tr>
                                 <th>Codice</th>
                                 <th>Stazione di partenza</th>
