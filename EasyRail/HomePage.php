@@ -115,7 +115,6 @@ unset($_SESSION['stato']);
 		<form action="formand.php" style="min-width:45%;" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p><div class="table-responsive-lg">
-				<span class="ricercherecenti">&#128338; Ricerche recenti <span style="font-size: 10px;">&#9660;</span></span><br>
 					<label for="part">Da</label>
 					<input list="stazioni" name="part" id="part" maxlength="27" placeholder=" inserisci stazione di partenza">
 					<button onclick="swap()" class="swap" type="button">&rlarr;</button>
@@ -135,8 +134,33 @@ unset($_SESSION['stato']);
 					<option value="Venezia Santa Lucia"></option>
 				</datalist>
 			</p>
+			<!--Ricerche recenti-->
+			<button type="button" class="ricercherecenti" onclick=visualizza()> &#128338; Ricerche recenti <span style="font-size: 10px;">&#9660;</span>
+				<?php
+				$i = 3;
+				$esistenti = 0;
+				echo "<div class=\"risultato\" id=\"risultato\" hidden>";
+				while($i >= 1) {
+					if (isset($_COOKIE["part$i"])) {
+						$id = "r" . $esistenti;
+						echo "<div class=\"ricerca\" id=$id onclick=compila($id)>";
+						echo $_COOKIE["part$i"] . " &rarr; " . $_COOKIE["arr$i"];
+						echo "</div>";
+						$esistenti++;
+					}
+					$i--;
+				}
+				if ($esistenti==0){
+					echo "<div style=\"padding: 10px; white-space: nowrap;\">
+						Nessuna ricerca recente
+						</div>";
+				}
+				echo "</div>";
+				?>
+			</button>
+			<p></p>
 			<div>
-				<table style="margin-left: auto;margin-right: auto;"><tr>
+				<table style="margin-left: auto; margin-right: auto;"><tr>
 					<td>Andata e ritorno</td>
 					<td><input onclick="ritornoOnOff()" class="checkbox" type="checkbox" id="onOff" name="onOff">
 					<label for="onOff" class="toggle"></label></td>

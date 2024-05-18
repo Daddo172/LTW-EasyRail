@@ -7,6 +7,25 @@ function swap() {
 	stzArr.value = temp;
 }
 
+//Visualizza ricerche recenti
+function visualizza() {
+	var contenuto = document.getElementById("risultato");
+	if(contenuto.hidden==true)
+		contenuto.hidden=false;
+	else
+		contenuto.hidden=true;
+}
+
+//Carica ricerca recente cliccata
+function compila(id) {
+	var re = /\u2192/u;
+	var arr = id.innerHTML.split(re);
+	var part = arr[0].trim();
+	var arr = arr[1].trim();
+	document.getElementById("part").value = part;
+	document.getElementById("arr").value = arr;
+}
+
 //Controllo validità stazioni inserite
 function validaStz() {
 	var stzPart = document.getElementById("part").value;
@@ -33,12 +52,14 @@ function ritornoOnOff() {
 	if (document.getElementById("onOff").checked) {
 		document.getElementById("lr").style.opacity = "1";
 		rit.style.opacity = "1";
-		rit.disabled= false;
+		rit.readOnly = false;
+		rit.disabled = false;
 	}
 	else {
 		rit.value="";
 		document.getElementById("lr").style.opacity = "0.5";
 		rit.style.opacity = "0.5";
+		rit.readOnly = true;
 		rit.disabled = true;
 	}
 }
@@ -104,7 +125,6 @@ function addYng() {
 	var yng = document.getElementById("yng");
 	if (parseInt(adt.value) + parseInt(yng.value) < 10) yng.value++;
 }
-
 function validaPass() {
 	var adt = document.getElementById("adt");
 	var yng = document.getElementById("yng");
@@ -117,6 +137,13 @@ function validaPass() {
 	return true;
 }
 
+//Funzione per cancellare i messaggi di errore alla pressione del tasto Cancella
+function cancellaErr() {
+	document.getElementById("messaggioStz").innerHTML = "";
+	document.getElementById("messaggioPass").innerHTML = "";
+}
+
+//Funzione per controllare la "validità" della carta
 function validaCarta() {
 	var carta = document.getElementById("carta");
 	if (carta.value.length != 15 && carta.value.length != 16) {

@@ -15,7 +15,7 @@ body {
 	position: sticky; top: 0;
 	min-width: 420px;
 	background-color: rgb(16, 16, 104);
-	border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
 	z-index: 10;
 }
 a {
@@ -65,7 +65,19 @@ form {
 	background-color: rgb(240, 240, 240);
 	border: solid 1px gray;
 	border-radius: 8px;
+	position: static;
+	display: inline-block;
 	cursor: pointer;
+}
+
+.ricerca {
+	padding: 10px;
+	white-space: nowrap;
+	border-radius: 5px;
+	z-index: 1;
+}
+.ricerca:hover {
+	background-color: rgb(200, 200, 200);
 }
 label {
 	padding: 10px 10px 0px 10px;
@@ -145,13 +157,13 @@ input {
 /*Parte inferiore*/
 footer {
 	text-align: left;
-	border-top-left-radius: 12px; border-top-right-radius: 12px;
+	border-top-left-radius: 10px; border-top-right-radius: 10px;
 	width: 100%;
 	margin-top: auto;
 	background-color: white;
 	padding: 20px 40px 20px 40px;
 }
-/*Dropdown su Accedi e Dropdown2 su Visualizza passeggeri*/
+/*Dropdown su Accedi, Visualizza passeggeri(dropdown2), Ricerche recenti*/
 .dropdown {
 	position: relative;
 	display: inline-block;
@@ -160,7 +172,6 @@ footer {
 .dropbtn {
 	background-color: white;
 	display: inline-block;
-	height: 0px;
 	color: black;
 	font-size: 16px;
 	border: none;
@@ -169,12 +180,12 @@ footer {
 	display: none;
 	position: absolute;
 	left: 0;
+	top: 60px;
 	background-color: #f9f9f9;
 	min-width: 100%;
-	padding-top: 20px;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
 	z-index: 1;
 }
 .dropdown-content a{
@@ -193,7 +204,7 @@ footer {
 	display: none;
 	position: absolute;
 	left: -160px;
-	top: 37px;
+	top: 36px;
 	padding: 12px;
 	border-radius: 10px;
 	background-color: #f9f9f9;
@@ -201,7 +212,7 @@ footer {
 	max-width: max-content;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
 	z-index: 1;
 }
 .dropdown:hover .dropdown-content2 {
