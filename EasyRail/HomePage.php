@@ -115,6 +115,7 @@ unset($_SESSION['stato']);
 		<form action="formand.php" style="min-width:45%;" method="post" onsubmit="return (validaStz() && validaPass());" autocomplete="off" name="form" id="form" style="margin-bottom: 90px;">
 			<div class="formhead">Cerca viaggio</div> 
 			<p><div class="table-responsive-lg">
+				<span class="ricercherecenti">&#128338; Ricerche recenti <span style="font-size: 10px;">&#9660;</span></span><br>
 					<label for="part">Da</label>
 					<input list="stazioni" name="part" id="part" maxlength="27" placeholder=" inserisci stazione di partenza">
 					<button onclick="swap()" class="swap" type="button">&rlarr;</button>
@@ -143,22 +144,22 @@ unset($_SESSION['stato']);
 			</div>
 			<p>
 				<label for="dataAnd">Andata</label>
-				<input oninput="vincoliDate()" type="date" name="dataAnd" id="dataAnd" style="width: 160px; margin-right: 0px;">
+				<input type="date" name="dataAnd" id="dataAnd" oninput="vincoliDate()" max="2024-08-31" style="width: 160px; margin-right: 0px;">
 				<span style="display: inline-block; margin-top: 4px;">
 				<label for="dataRit" id="lr" style="margin-left: 0px; opacity: 0.5;">Ritorno</label>
-				<input oninput="vincoliDate()" type="date" name="dataRit" id="dataRit" style="width: 160px; opacity: 0.5;">
+				<input type="date" name="dataRit" id="dataRit" oninput="vincoliDate()" max="2024-08-31" readonly disabled style="width: 160px; opacity: 0.5;">
 				</span>
 			</p>
 			<label name="pass">Passeggeri (massimo: 10)</label>
-			<div class="dropdown" style="padding: 5px; border: solid 1px gray; border-radius: 5px; background-color: rgb(224, 224, 224);">
-				<button class="dropbtn" type="button" name="pass" id="pass" style="background-color: rgb(224, 224, 224);">Visualizza</button>
-				<div class="dropdown-content2" style="padding: 12px; border-radius: 10px;">
+			<div class="dropdown" style="padding: 5px; border: solid 1px gray; border-radius: 8px; background-color: rgb(224, 224, 224);">
+				<button class="dropbtn" type="button" name="pass" id="pass" style="background-color: rgb(224, 224, 224); cursor: default;">Visualizza <span style="font-size: 11px;">&#9660;</span></button>
+				<div class="dropdown-content2">
 					<table>
 						<tr>
 							<td><label for="adt">Adulti</label></td>
 							<td>
 								<button type="button" onclick="subAdt()" class="addSubPass">-</button>
-								<input type="number" name="adt" id="adt" readonly value="0" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;" required>
+								<input type="number" name="adt" id="adt" readonly value="1" style="width: 50px; border: hidden; background-color: rgb(224, 224, 224); text-align: center;" required>
 								<button type="button" onclick="addAdt()" class="addSubPass">+</button>
 							</td>
 						</tr>
@@ -181,7 +182,7 @@ unset($_SESSION['stato']);
 			<p>
 				<div style="text-align: center;">
 				<input class="button" type="submit" value="Cerca" id="cerca">
-				<input class="button" type="reset" value="Cancella" id="cancella">
+				<input class="button" type="reset" value="Cancella" id="cancella" onclick="cancellaErr()">
 				</div>
 			<p>
 		</form>

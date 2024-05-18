@@ -60,6 +60,13 @@ form {
 	border-bottom-style: solid; border-width: 1px;
 	padding: 0px 0px 16px 0px;
 }
+.ricercherecenti {
+	padding: 5px;
+	background-color: rgb(240, 240, 240);
+	border: solid 1px gray;
+	border-radius: 8px;
+	cursor: pointer;
+}
 label {
 	padding: 10px 10px 0px 10px;
 }
@@ -187,6 +194,8 @@ footer {
 	position: absolute;
 	left: -160px;
 	top: 37px;
+	padding: 12px;
+	border-radius: 10px;
 	background-color: #f9f9f9;
 	min-width: min-content;
 	max-width: max-content;
