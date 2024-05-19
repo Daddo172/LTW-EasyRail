@@ -18,41 +18,47 @@ unset($_SESSION['stato']);
 			margin: 0;
 			width: 240px;
 		}
+		main {
+			background: url(pictures/back3.jpg) space;
+			background-size: cover;
+			background-position: top;
+		}
 	</style>
 </head>
 <body>
-	<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
-		<!--Barra superiore-->
-		<header class="topnav">
-			<nav>
-				<a class="titolo" href="HomePage.php">EasyRail</a>
-				<?php if(isset($_SESSION['name'])){?>
-					<div class="log dropdown">
-						<button class="dropbtn"><?= $_SESSION['name']?></button>
-						<div class="dropdown-content">
-							<?php if($_SESSION['name'] == 'Admin'){ 
-								header("location:Admin.php");?>
-							
-							<?php }else{?>
-							<a href="profilo.php">Area Personale</a>
-							<a href="logout.php">Logout</a>
-							<?php } ?>
-						</div>
-					</div>
-					<?php }else{?>
-					<div class="log dropdown">
-						<button class="dropbtn">Accedi</button>
+	<!--Barra superiore-->
+	<header class="topnav">
+		<nav>
+			<a class="titolo" href="HomePage.php">EasyRail</a>
+			<?php if(isset($_SESSION['name'])){?>
+				<div class="log dropdown">
+					<button class="dropbtn"><?= $_SESSION['name']?></button>
 					<div class="dropdown-content">
-						<a href="Login.html">Login</a>
-						<a href="Register.html">Registrati</a>
+						<?php if($_SESSION['name'] == 'Admin'){ 
+							header("location:Admin.php");?>
+						
+						<?php }else{?>
+						<a href="profilo.php">Area Personale</a>
+						<a href="logout.php">Logout</a>
+						<?php } ?>
 					</div>
 				</div>
-				<?php }?>
-				<a class="active center" href="HomePage.php">Home</a>
-				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
-			</nav>
-		</header>
+				<?php }else{?>
+				<div class="log dropdown">
+					<button class="dropbtn">Accedi</button>
+				<div class="dropdown-content">
+					<a href="Login.html">Login</a>
+					<a href="Register.html">Registrati</a>
+				</div>
+			</div>
+			<?php }?>
+			<a class="active center" href="HomePage.php">Home</a>
+			<a class="center" style="margin-right: 1%;" href="TrainStato.php">Stato treno</a>
+		</nav>
+	</header>
 
+	<main>
+	
 	<!--Carousel di messaggi promozionali/codici sconto-->
 	<div class="carousel-container">
 		<div class="carousel my-carousel carousel--translate">
@@ -211,10 +217,9 @@ unset($_SESSION['stato']);
 			<p>
 		</form>
 	</div>
-	</main>
 
 	<!--Parte inferiore-->
-	<footer class="bottom">
+	<footer>
 		<table>
 			<tr>
 				<td>
@@ -227,5 +232,6 @@ unset($_SESSION['stato']);
 			</tr>
 		</table>
 	</footer>
+	</main>
 </body>
 </html>
