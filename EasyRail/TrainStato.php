@@ -36,14 +36,13 @@
 				</div>
 				<?php }?>
 				<a class="center" href="HomePage.php">Home</a>
-				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
+				<a class="active center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
 	<main>
 		<form action="TrainStatus.php" method="post" style="margin: 60px auto 60px auto; min-width: 200px;">
 			<div class="formhead">Visualizza informazioni</div>
-			<table style="margin: 20px 0 20px 0;margin-left: auto;
-    margin-right: auto;">
+			<table style="margin: 20px 0 20px 0; margin-left: auto; margin-right: auto;">
 				<tr>
 					<p>
 					<td><label for="ct">Codice treno </label></td>
