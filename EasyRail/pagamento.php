@@ -122,7 +122,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                     $datapartenza=new DateTime($hpartenza);
                                     echo $datapartenza->format("H:i"); ?>.</p>
                                     <p class="mb-0">Con destinazione alla stazione di: <?php echo $arrivo ?> </p>
-                                    <p>alle ore:<?php 
+                                    <p>alle ore: <?php 
                                     $datarrivo=new DateTime($harrivo);
                                     echo $datarrivo->format("H:i"); ?>.</p>
                                 </div>

@@ -57,7 +57,8 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     $email = $_SESSION['email'];
     $codice = $_SESSION['codice'];
     $arrivo = $_SESSION['arr'];
-    $ritorno = $_SESSION['dataRit'];
+	if($_SESSION["stato"]=='ritorno'){
+    $ritorno = $_SESSION['dataRit'];}
     $partenza = $_SESSION['part'];
     $andata = $_SESSION['dataAnd'];
 	//TOGLIERE SECONDI
@@ -93,7 +94,6 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 			echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
 			echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
         }else{
-
             echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
         }
 

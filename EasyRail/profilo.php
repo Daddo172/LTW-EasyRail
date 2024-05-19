@@ -10,6 +10,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="stile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="funzioni.js"></script>
@@ -136,7 +137,12 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                 <form action="code.php" style="margin-top: -10px;"method="POST">
                                     <input type="hidden" name=deletecodbiglietto2 value="<?php echo $row['codbiglietto']; ?>">
                                     <input type="hidden" name=email value="<?php echo $row['email']; ?>">
-                                    <button type="submit" class="btn btn-danger">Cancella Prenotazione</button>
+                                    <button type="submit" onclick="showAlert()" class="btn btn-danger">Cancella Prenotazione</button>
+                                    <script>
+                                    function showAlert() {
+                                        alert ("Cancellazione effettuata correttamente");
+                                    }
+                                    </script>
                                 </form>
                             </td>
                         </tr>
