@@ -58,26 +58,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             <?php //CARICAMENTO CON ROTELLINA
                 $email = $_SESSION['email'];
                 $codice = $_GET['codice'];
-                //CODICE,HPARTENZA,HARRIVO,DATA
-            if($_SESSION["stato"]!= 'andata'){
-                $codicetemp = $_GET['codice'];
-                $hpartenzatemp= $_GET['orariopartenza'];
-                $harrivotemp= $_GET['orariodestinazione'];
-                $datapartenzatemp=$_SESSION['dataAnd'];
-
-                $_SESSION['codicetemp'] = $codicetemp;
-                $_SESSION['hpartenzatemp'] = $hpartenzatemp;
-                $_SESSION['harrivotemp'] = $harrivotemp;
-                $_SESSION['datapartenzatemp'] = $datapartenzatemp;
-            }
-
                 $hpartenza= $_GET['orariopartenza'];
                 $harrivo= $_GET['orariodestinazione'];
                 $partenza=$_SESSION['part'];
                 $arrivo=$_SESSION['arr'];
-                $prezzoora= $_GET['prezzo'];
-                $_SESSION['prezzo'] = $prezzoora + $_SESSION['prezzo'];
-                $prezzo=$_SESSION['prezzo'];
                 $_SESSION['codice'] = $codice;
                 $_SESSION['orariopartenza'] = $hpartenza;
                 $_SESSION['orariodestinazione'] = $harrivo;
@@ -89,15 +73,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                 if($_SESSION["stato"]!= 'ritorno'){
                     echo '<div style="text-align:center;"><a class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
                 }else{
-
+                    $_SESSION["stato"]='ritorno';
                     echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
                 }
-            }
-
-            if($_SESSION["stato"]!= 'andata'){
-                header("location:formrit.php");      
-            }else{
-                unset($_SESSION['prezzo']);     
             }
             
             ?>
@@ -126,7 +104,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                     </p>
                                     <p class="mb-0">
                                         <span class="fw-bold">Prezzo:</span>
-                                        <?php  
+                                        <?php $prezzo= $_GET['prezzo']; 
                                         $pass=$_SESSION['pass'];
 
                                         if($_SESSION['sconto'] == 'LTW24'){
@@ -137,34 +115,25 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                         <span class="c-green">€ <?php echo $prezzo ?></span>
                                     </p>
                                     
-                                    <p class="mb-0">Pagamento in corso per il treno di andata con il codice: <?php echo $_SESSION['codicetemp'] ?>.</p>
+                                    <p class="mb-0">Pagamento in corso per EasyRail n.<?php echo $codice ?>.</p>
                                     <br>
-                                    <p class="mb-0">In partenza dalla stazione di: <?php echo $partenza ?> </p>
-                                    <p>alle ore: <?php 
-                                    $datapartenza=new DateTime($_SESSION['hpartenzatemp']);
-                                    echo $datapartenza->format("H:i"); ?>.</p>
-                                    <p class="mb-0">Con destinazione alla stazione di: <?php echo $arrivo ?> </p>
-                                    <p>alle ore: <?php 
-                                    $datarrivo=new DateTime($_SESSION['harrivotemp']);
-                                    echo $datarrivo->format("H:i"); ?>.</p>
-                                    <p class="mb-0">Pagamento in corso per il treno di ritorno con il codice: <?php echo $codice ?>.</p>
-                                    <br>
-                                    <p class="mb-0">In partenza dalla stazione di: <?php echo $arrivo ?> </p>
+                                    <p class="mb-0">Partenza: <?php echo $partenza ?> </p>
                                     <p>alle ore: <?php 
                                     $datapartenza=new DateTime($hpartenza);
                                     echo $datapartenza->format("H:i"); ?>.</p>
-                                    <p class="mb-0">Con destinazione alla stazione di: <?php echo $partenza ?> </p>
+                                    <p class="mb-0">Destinazione: <?php echo $arrivo ?> </p>
                                     <p>alle ore: <?php 
                                     $datarrivo=new DateTime($harrivo);
                                     echo $datarrivo->format("H:i"); ?>.</p>
                                 </div>
                                 <div class="col-lg-7">
-                                    <form action="prenotazione.php" class="form" onsubmit="return validaCarta();">
+                                    <form action="prenotazione.php" class="form" onsubmit="return validaCarta() && validaNC() && validaCVC();">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form__div">
                                                     <label for="" class="form__label">Nome e Cognome del titolare</label>
-                                                    <input type="text" class="form-control" maxlength="40" placeholder="nome e cognome" pattern="([A-Za-z]+)( [A-Za-z]+)+" required>
+                                                    <input id="nc" oninput="validaNC()" type="text" class="form-control" maxlength="40" placeholder="nome e cognome"required>
+				                            	    <div id="messaggioNC" style="color: rgb(200, 0, 0);"></div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -184,8 +153,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 
                                             <div class="col-6">
                                                 <div class="form__div">
-                                                    <label for="cvv" class="form__label">CVV</label>
-                                                    <input id="cvv" type="password" class="form-control" pattern="\d\d\d\d*" placeholder="codice di 3 o 4 cifre" required>
+                                                    <label for="" class="form__label">CVC</label>
+                                                    <input id="cvc" oninput="validaCVC()" type="number" class="form-control" placeholder="codice di 3 o 4 cifre" required>
+                                                    <div id="messaggioCVC" style="color: rgb(200, 0, 0);"></div>
                                                 </div>
                                             </div>
                                             <div class="col-12" style="margin-top: 24px;">
