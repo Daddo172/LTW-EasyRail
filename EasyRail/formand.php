@@ -70,6 +70,7 @@ else{
 $partenza = $_POST['part'];
 $arrivo = $_POST['arr'];
 $andata = $_POST['dataAnd'];
+if(isset($_POST['dataRit']))
 $ritorno = $_POST['dataRit'];
 $sconto =$_POST['cs'];
 $pass=$_POST['adt'] + $_POST['yng'];
@@ -130,12 +131,7 @@ while($i <= 3) {
 
 
 //QUERYANDATA 
-if($_SESSION['dataRit']!= ''){
-    ?> <div class="form-2" style="	background: rgb(200, 200, 200);text-align:center;">
-        <a class="button" href="formrit.php" value="Ritorno"> Visualizza i treni per il Ritorno </a>
-    </div>
-
-    <?php
+if(isset($_SESSION['dataRit'])){
 $_SESSION["stato"]='ritorno';
 }else{
 $_SESSION["stato"]='andata';}

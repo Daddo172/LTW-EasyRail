@@ -61,10 +61,7 @@ $ritorno = $_SESSION['dataRit'];
 $partenza = $_SESSION['part'];
 $andata = $_SESSION['dataAnd'];
 $_SESSION["stato"]='andata';
-//QUERYANDATA ?>
-     <div class="form-2" style="	background: rgb(200, 200, 200);text-align:center;">
-        <a class="button" href="formand.php" value="Ritorno"> Visualizza i treni di Andata </a>
-    </div> <?php
+
         $data = '2024-06-08';
 		$ora= date("H:i:s");
         $oggi= date("Y-m-d");

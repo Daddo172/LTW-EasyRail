@@ -58,10 +58,26 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             <?php //CARICAMENTO CON ROTELLINA
                 $email = $_SESSION['email'];
                 $codice = $_GET['codice'];
+                //CODICE,HPARTENZA,HARRIVO,DATA
+            if($_SESSION["stato"]!= 'andata'){
+                $codicetemp = $_GET['codice'];
+                $hpartenzatemp= $_GET['orariopartenza'];
+                $harrivotemp= $_GET['orariodestinazione'];
+                $datapartenzatemp=$_SESSION['dataAnd'];
+
+                $_SESSION['codicetemp'] = $codicetemp;
+                $_SESSION['hpartenzatemp'] = $hpartenzatemp;
+                $_SESSION['harrivotemp'] = $harrivotemp;
+                $_SESSION['datapartenzatemp'] = $datapartenzatemp;
+            }
+
                 $hpartenza= $_GET['orariopartenza'];
                 $harrivo= $_GET['orariodestinazione'];
                 $partenza=$_SESSION['part'];
                 $arrivo=$_SESSION['arr'];
+                $prezzoora= $_GET['prezzo'];
+                $_SESSION['prezzo'] = $prezzoora + $_SESSION['prezzo'];
+                $prezzo=$_SESSION['prezzo'];
                 $_SESSION['codice'] = $codice;
                 $_SESSION['orariopartenza'] = $hpartenza;
                 $_SESSION['orariodestinazione'] = $harrivo;
@@ -73,9 +89,15 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                 if($_SESSION["stato"]!= 'ritorno'){
                     echo '<div style="text-align:center;"><a class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
                 }else{
-                    $_SESSION["stato"]='ritorno';
+
                     echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
                 }
+            }
+
+            if($_SESSION["stato"]!= 'andata'){
+                header("location:formrit.php");      
+            }else{
+                unset($_SESSION['prezzo']);     
             }
             
             ?>
@@ -104,7 +126,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                     </p>
                                     <p class="mb-0">
                                         <span class="fw-bold">Prezzo:</span>
-                                        <?php $prezzo= $_GET['prezzo']; 
+                                        <?php  
                                         $pass=$_SESSION['pass'];
 
                                         if($_SESSION['sconto'] == 'LTW24'){
@@ -115,13 +137,23 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                         <span class="c-green">€ <?php echo $prezzo ?></span>
                                     </p>
                                     
-                                    <p class="mb-0">Pagamento in corso per il treno con il codice: <?php echo $codice ?>.</p>
+                                    <p class="mb-0">Pagamento in corso per il treno di andata con il codice: <?php echo $_SESSION['codicetemp'] ?>.</p>
                                     <br>
                                     <p class="mb-0">In partenza dalla stazione di: <?php echo $partenza ?> </p>
                                     <p>alle ore: <?php 
-                                    $datapartenza=new DateTime($hpartenza);
+                                    $datapartenza=new DateTime($_SESSION['hpartenzatemp']);
                                     echo $datapartenza->format("H:i"); ?>.</p>
                                     <p class="mb-0">Con destinazione alla stazione di: <?php echo $arrivo ?> </p>
+                                    <p>alle ore: <?php 
+                                    $datarrivo=new DateTime($_SESSION['harrivotemp']);
+                                    echo $datarrivo->format("H:i"); ?>.</p>
+                                    <p class="mb-0">Pagamento in corso per il treno di ritorno con il codice: <?php echo $codice ?>.</p>
+                                    <br>
+                                    <p class="mb-0">In partenza dalla stazione di: <?php echo $arrivo ?> </p>
+                                    <p>alle ore: <?php 
+                                    $datapartenza=new DateTime($hpartenza);
+                                    echo $datapartenza->format("H:i"); ?>.</p>
+                                    <p class="mb-0">Con destinazione alla stazione di: <?php echo $partenza ?> </p>
                                     <p>alle ore: <?php 
                                     $datarrivo=new DateTime($harrivo);
                                     echo $datarrivo->format("H:i"); ?>.</p>

@@ -61,12 +61,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     $ritorno = $_SESSION['dataRit'];}
     $partenza = $_SESSION['part'];
     $andata = $_SESSION['dataAnd'];
-
-	if($_SESSION["stato"] != 'andata'){
-		$data = $_SESSION['dataRit'];}else{
-			$data=$_SESSION['dataAnd'];
-		}
-	//TOGLIERE SECONDI
+	$data = $_SESSION['dataRit'];
 	$hpartenza= $_SESSION['orariopartenza'];
 	$harrivo= $_SESSION['orariodestinazione'];
         $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4";
@@ -89,6 +84,18 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		$row= 1000 + $row;
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
         $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$data));
+		$query1="select * from prenotazione";
+		if(isset($_SESSION['codicetemp'])){
+			$codicetemp = $_SESSION['codicetemp'];
+			$hpartenzatemp= $_SESSION['hpartenzatemp'];
+			$harrivotemp= $_SESSION['harrivotemp'];
+			$datapartenzatemp=$_SESSION['datapartenzatemp'];
+		$result=pg_query($dbconn,$query1);
+		$row=pg_num_rows($result);
+		$row= 1000 + $row;
+		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
+        $data = pg_query_params($dbconn, $query, array($email, $codicetemp,$row,$hpartenzatemp,$harrivotemp,$datapartenzatemp));
+		}
 		echo'<h1>PRENOTAZIONE EFFETTUATA CORRETTAMENTE!</h1> <BR>';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);
