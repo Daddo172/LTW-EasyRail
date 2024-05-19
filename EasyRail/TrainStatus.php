@@ -96,7 +96,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		//Rimostra form ma stavolta con messaggio di errore
 		if ($tuple==false) {
 RETRY:	?>
-		<form action="TrainStatus.php" method="post" style="margin-top: 60px auto 60px auto;">
+		<form action="TrainStatus.php" method="post" onsubmit="return validaCT();" style="margin-top: 60px auto 60px auto;">
 			<div class="formhead">Visualizza informazioni</div>
 			<table style="margin-top: 20px; margin-left: auto; margin-right: auto;">
 				<tr>

@@ -143,6 +143,31 @@ function cancellaErr() {
 	document.getElementById("messaggioPass").innerHTML = "";
 }
 
+//Funzione per controllare la validità del codice treno
+function validaCT() {
+	var re = new RegExp("[1-9][0-9]*");
+	if (!re.test(document.getElementById("ct").value)) {
+		document.getElementById("messaggioCT").innerHTML = "inserire un codice valido";
+		return false;
+	}
+	else
+		document.getElementById("messaggioCT").innerHTML = "";
+	return true;
+}
+
+//Pagamento
+//Funzione per controllare la validità del nome
+function validaNC() {
+	var re = new RegExp("^([A-Za-z]+)( [A-Za-z]+)+$");
+	if (!re.test(document.getElementById("nc").value)) {
+		document.getElementById("messaggioNC").innerHTML = "inserire un nome valido";
+		return false;
+	}
+	else
+		document.getElementById("messaggioNC").innerHTML = "";
+	return true;
+}
+
 //Funzione per controllare la "validità" della carta
 function validaCarta() {
 	var carta = document.getElementById("carta");
@@ -152,5 +177,17 @@ function validaCarta() {
 	}
 	else
 		document.getElementById("messaggioCarta").innerHTML = "";
+	return true;
+}
+
+//Funzione per controllare la "validità" del CVC
+function validaCVC() {
+	var re = new RegExp("^[0-9]{3,4}$");
+	if (!re.test(document.getElementById("cvc").value)) {
+		document.getElementById("messaggioCVC").innerHTML = "inserire un CVC valido";
+		return false;
+	}
+	else
+		document.getElementById("messaggioCVC").innerHTML = "";
 	return true;
 }
