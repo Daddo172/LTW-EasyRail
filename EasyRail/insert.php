@@ -49,7 +49,7 @@
 			</nav>
 		</header>
         <main>
-            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;">
+            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
                 <div class="formhead">INSERISCI DATI UTENTE</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -83,7 +83,7 @@
                 </div>
                 <p>
             </form>
-            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;">
+            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
                 <div class="formhead">INSERISCI DATI PRENOTAZIONI</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -129,7 +129,7 @@
                 </div>
                 <p>
             </form>
-            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;">
+            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
                 <div class="formhead">INSERSICI DATI TRENI</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -217,7 +217,7 @@
                 </div>
                 <p>
             </form>
-            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;">
+            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
                         <div class="formhead">INSERISCI DATI VIAGGI</div>
                         <table style="margin-left: auto;margin-right: auto;">
                     <tr>

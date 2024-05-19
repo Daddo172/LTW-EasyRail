@@ -70,10 +70,11 @@
                 <tbody>
                     <?php 
                 
-                    $query="SELECT * FROM treno";
+                    $query="SELECT * FROM treno order by codice";
                     $result=pg_query($query);
-                    if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
-                    while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC))
+                    $check=pg_num_rows($result);
+                    if($check >0){
+                    while($row = pg_fetch_array($result))
                     {?>
                     <tr>
                         <td><?php echo $row['codice']; ?></td>
@@ -83,13 +84,13 @@
                         <td><?php echo $row['harrivo']; ?></td>
                         <td><?php echo $row['prezzoeconomy']; ?></td>
                         <td><?php echo $row['prezzoprima']; ?></td>
-                        <td><form>
+                        <td><form style="margin-top: -15px;">
                             <a href="edit.php?codice=<?php echo $row['codice'];?>&partenza=<?php echo $row['partenza'];?>&
                                 destinazione=<?php echo $row['destinazione'];?>" class="btn btn-success">Modifica
                                 dati</a>
                     </form></td>
                         <td>
-                            <form action="code.php" method="POST">
+                            <form style="margin-top: -15px;" action="code.php" method="POST">
                                 <input type="hidden" name=deletecodice value="<?php echo $row['codice']; ?>">
                                 <button type="submit" class="btn btn-danger">Cancella dati</button>
                             </form>

@@ -78,10 +78,11 @@
                 <tbody>
                     <?php 
                 
-                    $query="SELECT * FROM trenocompleto";
+                    $query="SELECT * FROM trenocompleto order by codice";
                     $result=pg_query($query);
-                    if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
-                    while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC))
+                    $check=pg_num_rows($result);
+                    if($check >0){
+                    while($row = pg_fetch_array($result))
                     {?>
                     <tr>
                         <td><?php echo $row['codice']; ?></td>
@@ -97,7 +98,7 @@
                         <td><?php echo $row['hf3']; ?></td>
                         <td><?php echo $row['hf4']; ?></td>
                         <td><?php echo $row['hf5']; ?></td>
-                        <td><form>
+                        <td><form style="margin-top: -15px;">
                             <a href="edit.php?codice=<?php echo $row['codice']; ?>&fermata=<?php echo $row['f0']; ?>"
                                 class="btn btn-success">Modifica dati</a>
                     </form</td>

@@ -67,19 +67,20 @@
                 
                     $query="SELECT * FROM utente";
                     $result=pg_query($query);
-                    if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
-                    while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC))
+                    $check=pg_num_rows($result);
+                    if($check >0){
+                    while($row = pg_fetch_array($result))
                     {?>
                         <tr>
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo $row['nome']; ?></td>
                             <td><?php echo $row['cognome']; ?></td>
                             <td><?php echo  $row['paswd']; ?></td>
-                            <td><form>
+                            <td><form style="margin-top: -15px;">
                                 <a href="edit.php?email=<?php echo $row['email']; ?>" class="btn btn-success">Modifica dati</a>
                     </form></td>
                             <td> 
-                                <form action="code.php" method="POST">
+                                <form style="margin-top: -15px;" action="code.php" method="POST">
                                     <input type="hidden" name=deleteemail value="<?php echo $row['email']; ?>">
                                     <button type="submit" class="btn btn-danger">Cancella dati</button>
                                 </form>

@@ -52,7 +52,8 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     <body>
         <div class="table-responsive-lg" style="width:100%;">
             <?php $query="SELECT * FROM prenotazione";
-                    $result=pg_query($query); 
+                    $result=pg_query($query);
+                    
                         ?>
             <table class="table table-bordered">
                 <thead>
@@ -69,9 +70,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                 </thead>
                 <tbody>
                     <?php 
-                
-                if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
-                    while($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){?>
+                $check=pg_num_rows($result);
+                    if($check >0){ 
+                    while($row = pg_fetch_array($result)){?>
                     <tr>
                         <td><?php echo $row['codice']; ?></td>
                         <td><?php echo $row['email']; ?></td>
@@ -79,14 +80,13 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         <td><?php echo $row['hpartenza']; ?></td>
                         <td><?php echo $row['harrivo']; ?></td>
                         <td><?php echo $row['DataPartenza']; ?></td>
-                        <td><form action="">
+                        <td><form style="margin-top: -15px;">
                             <a href="edit.php?codbiglietto=<?php echo $row['codbiglietto']; ?>"
                                 class="btn btn-success">Modifica dati</a>
                         </form></td>
                         <td>
-                            <form action="code.php" method="POST">
-                                <input type="hidden" name=deletecodbiglietto
-                                    value="<?php echo $row['codbiglietto']; ?>">
+                            <form style="margin-top: -15px;" action="code.php" method="POST">
+                                <input type="hidden" name=deletecodbiglietto value="<?php echo $row['codbiglietto']; ?>">
                                 <input type="hidden" name=email value="<?php echo $row['email']; ?>">
                                 <button type="submit" class="btn btn-danger">Cancella dati</button>
                             </form>
@@ -98,6 +98,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     <td>NULL</td>
                     <td>NULL</td>
                     <td>NULL</td>  
+                    <td>NULL</td>
                     <td>NULL</td>
                     <td>NULL</td>
                     <?php } ?>
