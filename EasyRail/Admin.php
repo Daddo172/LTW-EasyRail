@@ -49,35 +49,35 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 				<a href="logout.php">  Logout</a>
 			</nav>
 		</header>
-            <form style="min-width:30%">
+            <form style="min-width:30%;max-width:30%;">
                 <h1 style="text-align:center;" >INSERISCI DATI NEI DATABASE</h1>
 				<div style="text-align:center;">
 				<a  class=button href="insert.php">Inserisci i dati</a></div>
                 <?php
                 ?>
             </form>
-            <form style="min-width:30%">
+            <form style="min-width:30%;max-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE UTENTE</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shutente.php">Visualizza i dati</a></div>
                 <?php
                 ?>
             </form>
-			<form style="min-width:30%">
+			<form style="min-width:30%;max-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE TRENI</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shtrenocompleto.php">Visualizza i dati</a></div>
                 <?php
                 ?>
             </form>
-			<form style="min-width:30%">
+			<form style="min-width:30%;max-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE VIAGGI</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shtreno.php">Visualizza i dati</a></div>
                 <?php
                 ?>
             </form>
-			<form style="min-width:30%">
+			<form style="min-width:30%;max-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE PRENOTAZIONI</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shprenotazioni.php">Visualizza i dati</a></div>
