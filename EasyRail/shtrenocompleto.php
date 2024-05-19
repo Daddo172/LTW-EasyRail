@@ -22,7 +22,7 @@
 </head>
 
 
-<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+<main>
     <!--Barra superiore-->
     <header class="topnav">
 			<nav>
