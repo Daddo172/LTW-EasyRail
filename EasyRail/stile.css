@@ -15,7 +15,6 @@ body {
 	position: sticky; top: 0;
 	min-width: 420px;
 	background-color: rgb(16, 16, 104);
-	border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
 	z-index: 10;
 }
 a {
@@ -25,17 +24,17 @@ a {
 .titolo {
 	font-size: 30px; font-weight: bold; font-style: italic;
 	float: left;
-	padding: 10px 3% 15px 1.5%;
+	padding: 10px 1.5% 14px 1%;
 }
 .center {
 	display: inline-block;
-	padding: 22px 1.2% 22px 1.2%;
+	padding: 23px 1.2% 23px 1.2%;
 }
 .log {
 	float: right;
 	background-color: white;
 	color: rgb(16, 16, 104);
-	padding: 21px 1.6% 22px 1.6%;
+	padding: 22px 1.6% 22px 1.6%;
 }
 a.center:hover:not(.active), a.log:hover:not(.active) {
 	text-decoration: underline;
@@ -43,7 +42,7 @@ a.center:hover:not(.active), a.log:hover:not(.active) {
 .active {
 	background-color: rgb(0, 140, 255);
 }
-/*Form per inserimento dati*/
+/*Form per inserimento dati viaggio*/
 form {
 	margin: 0 auto;
 	margin-top: 50px;
@@ -65,11 +64,9 @@ form {
 	background-color: rgb(240, 240, 240);
 	border: solid 1px gray;
 	border-radius: 8px;
-	position: static;
 	display: inline-block;
 	cursor: pointer;
 }
-
 .ricerca {
 	padding: 10px;
 	white-space: nowrap;
@@ -167,7 +164,6 @@ footer {
 .dropdown {
 	position: relative;
 	display: inline-block;
-	border-bottom-right-radius: 10px;
 }
 .dropbtn {
 	background-color: white;
@@ -390,6 +386,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .carousel__slide:nth-of-type(1), .carousel--thumb .carousel__indicators .carousel__indicator:nth-of-type(1) {
 	background-image: url("pictures/carousel1.png");
 	background-size: cover;
+	background-position: center;
 }
 .carousel__slide:nth-of-type(2), .carousel--thumb .carousel__indicators .carousel__indicator:nth-of-type(2) {
 	background-position: center;
