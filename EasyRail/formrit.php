@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start();  ?>
+<?php session_start(); 
+unset($_SESSION['temp']); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -60,7 +61,14 @@ $arrivo = $_SESSION['arr'];
 $ritorno = $_SESSION['dataRit'];
 $partenza = $_SESSION['part'];
 $andata = $_SESSION['dataAnd'];
+$harrivotemp = $_SESSION['harrivotemp'] ;
 $_SESSION["stato"]='andata';
+echo $_SESSION["stato"];
+echo $_SESSION['harrivotemp'];
+echo $_SESSION["dataAnd"];
+echo $_SESSION["dataRit"];
+echo $_SESSION["temp"];
+
 
         $data = '2024-06-08';
 		$ora= date("H:i:s");
@@ -86,10 +94,15 @@ $_SESSION["stato"]='andata';
                                 <tbody>
                                     <?php
                                     if($oggi != $ritorno){
-                                        $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
-                                        $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
-                                        if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
-                                        while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
+                                        if($ritorno == $andata){
+                                            $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
+                                            }else{
+                                            $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
+                                            }                                        
+                                            $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
+                                            $check=pg_num_rows($result);
+                                            if($check >0){
+                                        while ($row = pg_fetch_array($result)){
                                                               ?>
                                                     <tr>
                                                         <td><?php echo $row['codice']; ?></td>
@@ -125,10 +138,15 @@ $_SESSION["stato"]='andata';
                                                                }
                                                             }
                                         if($oggi==$ritorno){
+                                            if($ritorno == $andata){
+                                            $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
+                                            }else{
                                             $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
+                                            }
                                             $result2=pg_query($queryand2) or die ('Query failed: ' . pg_last_error()); 
-                                            if(pg_fetch_array($result2,NULL,PGSQL_ASSOC)){
-                                            while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){
+                                            $check=pg_num_rows($result2);
+                                            if($check >0){
+                                            while ($row2 = pg_fetch_array($result2)){
                                 
                                                                 if($row2['hpartenza']> $ora&&$oggi == $ritorno){ ?>
                                                     <tr>
@@ -173,9 +191,13 @@ $_SESSION["stato"]='andata';
                 </div>
             </div> <?php
                             
-                            }
+        }
                             else{
-            $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza" ;
+                                if($ritorno == $andata){
+                                    $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
+                                    }else{
+                                    $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza";
+                                    }
             $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
         
             ?> <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
@@ -196,10 +218,15 @@ $_SESSION["stato"]='andata';
                         <tbody> <?php 
             //RICERCA IN DATA DIVERSA DA QUELLA ODIERNA
             if($oggi != $ritorno){
-                $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza" ;
+                if($ritorno == $andata){
+                    $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
+                    }else{
+                    $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza";
+                    }
                 $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
-                if(pg_fetch_array($result,NULL,PGSQL_ASSOC)){
-                while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){
+                $check=pg_num_rows($result);
+                        if($check >0){
+                while ($row = pg_fetch_array($result)){
                                       ?>
                             <tr>
                                 <td><?php echo $row['codice']; ?></td>
@@ -235,11 +262,15 @@ $_SESSION["stato"]='andata';
                                        }
                                     }
                 if($oggi==$ritorno){
-                    $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza" ;
+                    if($ritorno == $andata){
+                        $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
+                        }else{
+                        $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' ORDER BY hpartenza";
+                        }
                     $result2=pg_query($queryand2) or die ('Query failed: ' . pg_last_error()); 
-                    if(pg_fetch_array($result2,NULL,PGSQL_ASSOC)){
-                    while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){
-        
+                    $check=pg_num_rows($result2);
+                        if($check >0){
+                    while ($row2 = pg_fetch_array($result2)){
                                         if($row2['hpartenza']> $ora&&$oggi == $ritorno){ ?>
                             <tr>
                                 <td><?php echo $row2['codice']; ?></td>

@@ -56,16 +56,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     $stato= $_SESSION["stato"];
     $email = $_SESSION['email'];
     $codice = $_SESSION['codice'];
-    $arrivo = $_SESSION['arr'];
-	if($_SESSION["stato"] != 'andata'){
-    $ritorno = $_SESSION['dataRit'];}
-    $partenza = $_SESSION['part'];
-    $andata = $_SESSION['dataAnd'];
-	$data = $_SESSION['dataRit'];
 	$hpartenza= $_SESSION['orariopartenza'];
 	$harrivo= $_SESSION['orariodestinazione'];
-        $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4";
-        $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo));
+        $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4 and datapartenza=$5";
+        $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo,$_SESSION['dataAnd']));
         //controlla se esiste
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DI QUESTO TRENO</h1> <BR>';
@@ -79,23 +73,22 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             }
         else{
 		$query1="select * from prenotazione";
+		//QUERY PRENOTAZIONE ANDATA
 		$result=pg_query($dbconn,$query1);
 		$row=pg_num_rows($result);
 		$row= 1000 + $row;
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
-        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$data));
-		$query1="select * from prenotazione";
-		if(isset($_SESSION['codicetemp'])){
-			$codicetemp = $_SESSION['codicetemp'];
-			$hpartenzatemp= $_SESSION['hpartenzatemp'];
-			$harrivotemp= $_SESSION['harrivotemp'];
-			$datapartenzatemp=$_SESSION['datapartenzatemp'];
+        $data = pg_query_params($dbconn, $query, array($email,$_SESSION['codicetemp'],$row,$_SESSION['hpartenzatemp'],$_SESSION['harrivotemp'],$_SESSION['datapartenzatemp']));
+		//QUERY PRENOTAZIONE RITORNO
+		if(isset($_SESSION['ok'])){
+			unset($_SESSION['ok']);
 		$result=pg_query($dbconn,$query1);
 		$row=pg_num_rows($result);
 		$row= 1000 + $row;
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
-        $data = pg_query_params($dbconn, $query, array($email, $codicetemp,$row,$hpartenzatemp,$harrivotemp,$datapartenzatemp));
+        $data = pg_query_params($dbconn, $query, array($email,$_SESSION['codice'],$row,$_SESSION['orariopartenza'],$_SESSION['orariodestinazione'],$_SESSION['datapartenza']));
 		}
+		
 		echo'<h1>PRENOTAZIONE EFFETTUATA CORRETTAMENTE!</h1> <BR>';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php session_start(); 
 unset($_SESSION['stato']);
+unset($_SESSION['dataRit']);
 ?>
 <html lang="en">
 <head>

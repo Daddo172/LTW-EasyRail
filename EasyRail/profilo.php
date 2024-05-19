@@ -116,7 +116,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 					$codbiglietto= $row['codbiglietto'];
                     $orariopart= $row['hpartenza'];
                     $orariodest= $row['harrivo'];
-                    $datapartenza=$row['DataPartenza'];
+                    $datapartenza=$row['datapartenza'];
                     $oggi= date("Y-m-d");
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
                     $result2=pg_query($query2);
@@ -127,7 +127,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <td><?php echo $row2['destinazione']; ?></td>
                             <td><?php echo $row2['hpartenza']; ?></td>
                             <td><?php echo $row2['harrivo']; ?></td>
-                            <td><?php echo $row['DataPartenza']; ?></td>
+                            <td><?php echo $row['datapartenza']; ?></td>
                             <?php if($oggi != $datapartenza){ ?> <td><form style="margin-top: 0px;" ><a class="button" style="pointer-events: none;cursor: default;opacity:70%;" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
                                     value="Stato"> Stato </a></form></td> <?php
                             }else{ ?>
