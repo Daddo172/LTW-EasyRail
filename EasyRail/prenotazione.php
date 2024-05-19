@@ -47,7 +47,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 				</div>
 				<?php }?>
 				<a class="center" href="HomePage.php">Home</a>
-				<a class="center" href="TrainStato.php">Stato treno</a>
+				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
 		<body>
@@ -57,10 +57,15 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     $email = $_SESSION['email'];
     $codice = $_SESSION['codice'];
     $arrivo = $_SESSION['arr'];
-	if($_SESSION["stato"]=='ritorno'){
+	if($_SESSION["stato"] != 'andata'){
     $ritorno = $_SESSION['dataRit'];}
     $partenza = $_SESSION['part'];
     $andata = $_SESSION['dataAnd'];
+
+	if($_SESSION["stato"] != 'andata'){
+		$data = $_SESSION['dataRit'];}else{
+			$data=$_SESSION['dataAnd'];
+		}
 	//TOGLIERE SECONDI
 	$hpartenza= $_SESSION['orariopartenza'];
 	$harrivo= $_SESSION['orariodestinazione'];
@@ -73,7 +78,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
 					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
                 }else{
-					unset($_SESSION['stato']);
+					$_SESSION["stato"]='ritorno';
                     echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
                 }
             }
@@ -83,11 +88,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		$row=pg_num_rows($result);
 		$row= 1000 + $row;
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
-		if($stato != 'ritorno'){
-        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$andata));
-		}else{
-			$data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$ritorno));
-		}
+        $data = pg_query_params($dbconn, $query, array($email, $codice,$row,$hpartenza,$harrivo,$data));
 		echo'<h1>PRENOTAZIONE EFFETTUATA CORRETTAMENTE!</h1> <BR>';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);

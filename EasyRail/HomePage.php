@@ -49,7 +49,7 @@ unset($_SESSION['stato']);
 				</div>
 				<?php }?>
 				<a class="active center" href="HomePage.php">Home</a>
-				<a class="center" href="TrainStato.php">Stato treno</a>
+				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
 

@@ -50,7 +50,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                 </div>
                 <?php }?>
                 <a class="center" href="HomePage.php">Home</a>
-                <a class="center" href="TrainStato.php">Stato treno</a>
+                <a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
             </nav>
         </header>
         <main>
@@ -70,10 +70,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         //controlla se esiste
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
             header("location:prenotazione.php");
-                if($stato != 'ritorno'){
+                if($_SESSION["stato"]!= 'ritorno'){
                     echo '<div style="text-align:center;"><a class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
                 }else{
-					unset($_SESSION['stato']);
+                    $_SESSION["stato"]='ritorno';
                     echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
                 }
             }

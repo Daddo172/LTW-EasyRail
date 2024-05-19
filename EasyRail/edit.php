@@ -47,7 +47,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             </div>
             <?php }?>
             <a class="active center" href="HomePage.php">Home</a>
-            <a class="center" href="TrainStato.php">Stato treno</a>
+            <a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
         </nav>
     </header>
 

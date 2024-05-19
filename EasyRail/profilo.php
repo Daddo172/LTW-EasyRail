@@ -49,7 +49,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             </div>
             <?php }?>
             <a class="center" href="HomePage.php">Home</a>
-            <a class="center" href="TrainStato.php">Stato treno</a>
+            <a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
         </nav>
     </header>
 
@@ -108,7 +108,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     <tbody >
                         <?php  $query="SELECT * FROM prenotazione WHERE email='$email'";
                         $result=pg_query($query); 
-                while ($row = pg_fetch_array($result,NULL,PGSQL_ASSOC)){ 
+                        $check=pg_num_rows($result);
+                        if($check >0){
+                while ($row = pg_fetch_array($result)){ 
                     $codice= $row['codice'];
                     $email=$row['email'];
 					$codbiglietto= $row['codbiglietto'];
@@ -118,8 +120,8 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     $oggi= date("Y-m-d");
                     $query2="SELECT * FROM treno WHERE codice='$codice' AND hpartenza='$orariopart' AND harrivo='$orariodest'";
                     $result2=pg_query($query2);
-                    while ($row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC)){ ?>
-                        <tr >
+                    $row2 = pg_fetch_array($result2,NULL,PGSQL_ASSOC) ?>
+                        <tr>
                             <td><?php echo $row['codice']; ?></td>
                             <td><?php echo $row2['partenza']; ?></td>
                             <td><?php echo $row2['destinazione']; ?></td>
@@ -138,6 +140,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                     <input type="hidden" name=deletecodbiglietto2 value="<?php echo $row['codbiglietto']; ?>">
                                     <input type="hidden" name=email value="<?php echo $row['email']; ?>">
                                     <button type="submit" onclick="showAlert()" class="btn btn-danger">Cancella Prenotazione</button>
+
                                     <script>
                                     function showAlert() {
                                         alert ("Cancellazione effettuata correttamente");
@@ -146,7 +149,16 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                 </form>
                             </td>
                         </tr>
-                        <?php  } }          
+                        <?php  }}else{echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                                echo'<td>NULL</td>';
+                                                            }
+
 
                 ?>
                     </tbody>
