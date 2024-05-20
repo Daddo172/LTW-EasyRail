@@ -428,3 +428,32 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	max-width: 500px;
 	padding: 16px;
 }
+
+.save-btn{
+	font-size:22px;
+	color: #fff;
+	background: darkblue;
+	width:250px;
+	height: 60px;
+	cursor: pointer;
+	border-radius: 3px;
+	display:grid;
+	place-content: center;
+}
+.loader{
+	pointer-events: none;
+	width: 30px;
+	height:30px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: white;
+	animation: an1 1s ease infinite;
+}
+@keyframes an1{
+	0%{
+		transform: rotate(0turn);
+	}
+	100%{
+		transform: rotate(1turn);
+	}
+}

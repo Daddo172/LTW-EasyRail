@@ -50,40 +50,46 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 			</nav>
 		</header>
 		<!-- Diversi Form per l'inserimento e la visualizzazione dei dati -->
-            <form style="min-width:30%;max-width:30%;">
+		
+			<div style="text-align:center;"></div>
+            <form style="min-width:30%;margin-left: auto;margin-right: auto;">
                 <h1 style="text-align:center;" >INSERISCI DATI NEI DATABASE</h1>
 				<div style="text-align:center;">
 				<a  class=button href="insert.php">Inserisci i dati</a></div>
-                <?php
-                ?>
-            </form>
-            <form style="min-width:30%;max-width:30%;">
+				
+            </form><table style="width:100%;">
+				<tr><td style="width:50%;">
+            <form>
                 <h1 style="text-align:center;">VISUALIZZA DATABASE UTENTE</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shutente.php">Visualizza i dati</a></div>
                 <?php
                 ?>
             </form>
-			<form style="min-width:30%;max-width:30%;">
+					</td><td>
+			<form style="min-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE TRENI</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shtrenocompleto.php">Visualizza i dati</a></div>
                 <?php
                 ?>
             </form>
-			<form style="min-width:30%;max-width:30%;">
+					</td></tr><tr><td>
+			<form style="min-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE VIAGGI</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shtreno.php">Visualizza i dati</a></div>
                 <?php
                 ?>
             </form>
-			<form style="min-width:30%;max-width:30%;">
+					</td><td>
+			<form style="min-width:30%;">
                 <h1 style="text-align:center;">VISUALIZZA DATABASE PRENOTAZIONI</h1>
 				<div style="text-align:center;">
 				<a  class=button href="shprenotazioni.php">Visualizza i dati</a></div>
                 <?php
                 ?>
-            </form>
+            </form></td></tr>
+			</table>
 </body>
 </html>

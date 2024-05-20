@@ -219,23 +219,38 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                                 </div>
                                             </div>
                                             <div class="col-12" style="margin-top: 24px;">
-                                                <input class="btn btn-primary w-100" type="submit"  value="Acquista"></input>
+                                                
                                                 <!--
                                                 <a class="btn btn-primary w-100" href="prenotazione.php?orariopartenza=<?php echo $_GET['orariopartenza'];?>&orariodestinazione= 
                                                 <?php echo $_GET['orariodestinazione']; ?>&codice= <?php echo $_GET['codice']; ?>">
                                                 -->
                                             </div>
                                         </div>
-                                    </form>
+                                        <button class="save-btn" type="button">
+                                        Acquista
+                                    </button>
+                                    <script>
+                                                    save_btn = document.querySelector(".save-btn");
+
+                                                    save_btn.onclick = function(){
+                                                        this.innerHTML="<div class='loader'></div>";
+                                                    setTimeout(() =>{
+                                                        var firstName = 'John'; 
+                                                            this.innerHTML="Conferma Pagamento";
+                                                            this.style="background:darkblue;color: white;";
+                                                            save_btn.setAttribute('type', 'submit');
+                                                        }, 2000);}
+                                                </script>
                                 </div>
-                            </div>
+                            </form> 
+                            </div> 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-            
+           
         </main>
 </body>
 

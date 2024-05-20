@@ -51,9 +51,10 @@
         <main>
         <!--Diversi form per inserire i dati nel Database-->
         <table style="width:100%;">
-            <tr><td style="position:relative;top:0%;">
+            <tr><td>
+                <div style="height: 450px;">
             <form action="code.php" method="post" style="min-width:30%;">
-                <div class="formhead">INSERISCI DATI UTENTE</div>
+                            <div class="formhead">INSERISCI DATI UTENTE</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
                         <p>
@@ -84,10 +85,11 @@
                 <div style="text-align: center;">
                     <input class="button" type="submit" value="Inserisci" id="inserisci">
                 </div>
-                <p>
+                <p></div>
             </form>
-            </td><td>
-            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;">
+            </td><td height="50">
+                <div style="height: 450px;">
+            <form action="code.php" method="post" style="">
                 <div class="formhead">INSERISCI DATI PRENOTAZIONI</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -131,10 +133,11 @@
                 <div style="text-align: center;">
                     <input class="button" type="submit" value="Inserisci" id="inserisci">
                 </div>
-                <p>
+                <p></div>
             </form>
             </td></tr>
-            <tr><td>
+            <tr><td height="50">
+                <div style="height: 450px;">
             <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;">
                 <div class="formhead">INSERSICI DATI TRENI</div>
                 <table style="margin-left: auto;margin-right: auto;">
@@ -221,9 +224,10 @@
                 <div style="text-align: center;">
                     <input class="button" type="submit" value="Inserisci" id="inserisci">
                 </div>
-                <p>
+                <p></div>
             </form>
             </td><td>
+                <div style="height: 450px;">
             <form action="code.php" method="POST" style="float:top;min-width:30%;">
                         <div class="formhead">INSERISCI DATI VIAGGI</div>
                         <table style="margin-left: auto;margin-right: auto;">
@@ -273,7 +277,7 @@
                         <div style="text-align: center;">
                             <input class="button" type="submit" value="Inserisci" id="inserisci">
                         </div>
-                        <p>
+                        <p></div>
                     </form>
                     </td></tr>
                     </table>
