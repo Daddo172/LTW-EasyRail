@@ -53,23 +53,32 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		<body>
     <form>
 <?php
+//Prendo tutti i dati utili dalle diverse variabili di sessioni
+//imposto le diverse variabili di stato
     $stato= $_SESSION["stato"];
     $email = $_SESSION['email'];
-    $codice = $_SESSION['codice'];
-	$hpartenza= $_SESSION['orariopartenza'];
-	$harrivo= $_SESSION['orariodestinazione'];
+    $codicetemp = $_SESSION['codicetemp'];
+	$hpartenzatemp= $_SESSION['hpartenzatemp'];
+	$harrivotemp= $_SESSION['harrivotemp'];
+	$datapartenzatemp = $_SESSION['datapartenzatemp'];
         $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4 and datapartenza=$5";
-        $result=pg_query_params($dbconn, $q1, array($email,$codice,$hpartenza,$harrivo,$_SESSION['dataAnd']));
-        //controlla se esiste
+        $result=pg_query_params($dbconn, $q1, array($email,$codicetemp,$hpartenzatemp,$harrivotemp,$datapartenzatemp));
+		if(isset($_SESSION['ok'])){
+		$q2="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4 and datapartenza=$5";
+        $result2=pg_query_params($dbconn, $q2, array($email, $_SESSION['codice'], $_SESSION['orariopartenza'],$_SESSION['orariodestinazione'],$_SESSION['datapartenza']));
+		}
+
+        //controlla se il treno di andata si trova nel DB
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
-                echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DI QUESTO TRENO</h1> <BR>';
-                if($stato != 'ritorno'){
+                echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI ANDATA</h1> <BR>';
                     echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
 					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
-                }else{
-					$_SESSION["stato"]='ritorno';
-                    echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
-                }
+            }
+			//controlla se il treno di ritorno si trova nel DB
+			else if (pg_fetch_array($result2, null, PGSQL_ASSOC)){
+                echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI RITORNO</h1> <BR>';
+                    echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
+					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
             }
         else{
 		$query1="select * from prenotazione";
@@ -88,7 +97,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		$query = "insert into prenotazione values ($2,$1,$3,$4,$5,$6)";
         $data = pg_query_params($dbconn, $query, array($email,$_SESSION['codice'],$row,$_SESSION['orariopartenza'],$_SESSION['orariodestinazione'],$_SESSION['datapartenza']));
 		}
-		
+		//Mostra diversi bottoni/messaggio di conferma
 		echo'<h1>PRENOTAZIONE EFFETTUATA CORRETTAMENTE!</h1> <BR>';
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);
@@ -99,7 +108,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         }
 
         }
-?>
+		unset($_SESSION['stato']);?>
 </form>
      </body>
 	</main>

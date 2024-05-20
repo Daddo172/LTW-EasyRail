@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start();
-unset($_SESSION['temp']);  ?>
+unset($_SESSION['temp']); 
+unset($_SESSION['ok']); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -56,9 +57,9 @@ unset($_SESSION['temp']);  ?>
         </nav>
     </header>
     <?php
-    $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
-
-//PRENDO TUTTI I DATI DEL FORM
+//connessione DB
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+//Prendo tutti i dati utili dal form/imposto le diverse variabili di stato
 if(isset($_SESSION['stato'])!=NULL){
 $arrivo = $_SESSION['arr'];
 if(isset($_POST['dataRit']))
@@ -133,18 +134,18 @@ while($i <= 3) {
 
 
 
-//QUERYANDATA 
+//Imposto lo stato della ricerca
 if(isset($_POST['dataRit'])){
 $_SESSION["stato"]='ritorno';
 }else{
 $_SESSION["stato"]='andata';
 $_SESSION["temp"] ='solo';
 }
-echo $_SESSION["temp"];
-echo $_SESSION['stato'];
+//Variabili da confrontare per i diversi controlli
 $data = '2024-06-08';
 $ora= date("H:i:s");
 $oggi= date("Y-m-d");
+//Controllo se la data è quella dei potenziamenti infrastrutturali
 if($data == $andata)
 {?>
     <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
@@ -164,6 +165,8 @@ if($data == $andata)
                 </thead>
                 <tbody>
                     <?php
+
+//Controllo se la data è diversa da quella odierna
 if($oggi != $andata){
 $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
 $result=pg_query($queryand);
@@ -204,6 +207,7 @@ if($check >0){
             echo'<td>NULL</td>';
             echo'<td>NULL</td>';
            }}
+//Controllo se la data è quella odierna
 if($oggi==$andata){
 $queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
 $result2=pg_query($queryand2) or die ('Query failed: ' . pg_last_error()); 
@@ -251,6 +255,7 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
             </table>
         </div>
     </div> <?php
+//Controllo se la data è diversa da quella dei potenziamenti infrastrutturali
 }else{
 ?> <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
         <div class="table-responsive-lg" style="border:5px outset;">
@@ -270,7 +275,7 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                     </tr>
                 </thead>
                 <tbody> <?php 
-//RICERCA IN DATA DIVERSA DA QUELLA ODIERNA
+//Controllo se la data è diversa da quella odierna
 if($oggi != $andata){
 $queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%' ORDER BY hpartenza" ;
 $result=pg_query($queryand) or die ('Query failed: ' . pg_last_error()); 
@@ -311,6 +316,7 @@ echo'<td>NULL</td>';
 echo'<td>NULL</td>';
 echo'<td>NULL</td>';
 }}
+//Controllo se la data è quella odierna
 if($oggi==$andata){
 $queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%' ORDER BY hpartenza" ;
 $result2=pg_query($queryand2) or die ('Query failed: ' . pg_last_error()); 

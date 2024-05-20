@@ -52,7 +52,9 @@ unset($_SESSION['temp']); ?>
         </nav>
     </header>
     <?php 
-$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");//PRENDO TUTTI I DATI DEL FORM
+//connessione DB
+$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+//Prendo tutti i dati utili dal form/imposto le diverse variabili di stato
 if(isset($_SESSION['name'])){
   $nome = $_SESSION['name'];
   $email = $_SESSION['email'];
@@ -63,16 +65,11 @@ $partenza = $_SESSION['part'];
 $andata = $_SESSION['dataAnd'];
 $harrivotemp = $_SESSION['harrivotemp'] ;
 $_SESSION["stato"]='andata';
-echo $_SESSION["stato"];
-echo $_SESSION['harrivotemp'];
-echo $_SESSION["dataAnd"];
-echo $_SESSION["dataRit"];
-echo $_SESSION["temp"];
-
-
+//Variabili da confrontare per i diversi controlli
         $data = '2024-06-08';
 		$ora= date("H:i:s");
         $oggi= date("Y-m-d");
+//Controllo se la data è quella dei potenziamenti infrastrutturali
  if($data == $ritorno)
     {
         ?>    <div class="form-2" style="width:80%;margin-left: auto;margin-right: auto;">
@@ -93,7 +90,9 @@ echo $_SESSION["temp"];
                                 </thead>
                                 <tbody>
                                     <?php
+                                    //Controllo se la data del treno di ritorno è diversa da quella odierna
                                     if($oggi != $ritorno){
+                                        //Controllo se la data del treno di andata è uguale a quella di ritorno
                                         if($ritorno == $andata){
                                             $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
                                             }else{
@@ -137,7 +136,9 @@ echo $_SESSION["temp"];
                                                                 echo'<td>NULL</td>';
                                                                }
                                                             }
+                                        //Controllo se la data del treno di ritorno è uguale a quella odierna
                                         if($oggi==$ritorno){
+                                            //Controllo se la data del treno di andata è uguale a quella di ritorno
                                             if($ritorno == $andata){
                                             $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%'  and codice >= 1050 and codice <=1063 and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
                                             }else{
@@ -191,8 +192,9 @@ echo $_SESSION["temp"];
                 </div>
             </div> <?php
                             
-        }
+        }//Controllo se la data non è quella dei potenziamenti infrastrutturali
                             else{
+                                //Controllo se la data del treno di andata è uguale a quella di ritorno
                                 if($ritorno == $andata){
                                     $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
                                     }else{
@@ -216,8 +218,9 @@ echo $_SESSION["temp"];
                             </tr>
                         </thead>
                         <tbody> <?php 
-            //RICERCA IN DATA DIVERSA DA QUELLA ODIERNA
+            //Controllo se la data non è quella dei potenziamenti infrastrutturali
             if($oggi != $ritorno){
+                //Controllo se la data del treno di andata è uguale a quella di ritorno
                 if($ritorno == $andata){
                     $queryand ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' and hpartenza >= '$harrivotemp' ORDER BY hpartenza";
                     }else{
@@ -261,6 +264,7 @@ echo $_SESSION["temp"];
                                         echo'<td>NULL</td>';
                                        }
                                     }
+                //Controllo se la data del treno di ritorno  è uguale a quella odierna
                 if($oggi==$ritorno){
                     if($ritorno == $andata){
                         $queryand2 ="select * from treno where partenza like '%$arrivo%' and destinazione like '%$partenza%' and hpartenza >= '$harrivotemp' ORDER BY hpartenza";

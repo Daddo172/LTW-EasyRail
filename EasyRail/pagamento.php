@@ -56,10 +56,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         <main>
             
             <?php //CARICAMENTO CON ROTELLINA
+//Prendo tutti i dati utili dal form/imposto le diverse variabili di stato
                 $email = $_SESSION['email'];
                 $codice = $_GET['codice'];
-
-                //CODICE,HPARTENZA,HARRIVO,DATA
                 $codicetemp = $_GET['codice'];
                 $hpartenzatemp= $_GET['orariopartenza'];
                 $harrivotemp= $_GET['orariodestinazione'];
@@ -98,27 +97,25 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         
                     } 
                     
-        //controlla se esiste 
-                $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4";
-                $result=pg_query_params($dbconn, $q1, array($email,$codicetemp,$hpartenzatemp,$harrivotemp));
-
+        
+                $q1="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4 and datapartenza=$5";
+                $result=pg_query_params($dbconn, $q1, array($email,$codicetemp,$hpartenzatemp,$harrivotemp,$datapartenzatemp));
+        //controlla se il treno richiesto per la prenotazione già si trova nel DB
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
             header("location:prenotazione.php");
-                if($_SESSION["stato"]!= 'ritorno'){
                     echo '<div style="text-align:center;"><a class="button"  href="HomePage.php" value="andata"> Torna HomepAge </a></div>';
-                }else{
-
-                    echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
-                }
             }
-
+        else{
+            //Attraverso lo stato reindirizzo alla pagina corretta
             if($_SESSION["stato"]!= 'andata'){
                 header("location:formrit.php");      
             }else{
                 unset($_SESSION['prezzo']);     
-            }
+            }}
             
-            ?>
+            //Div con informazioni sulla prenotazione corrente e 
+            //form con inserimento dati del metodo di pagamento
+            ?>  
         <div class="container">
         <div class="row" style="width:100%;">
             <div class="col-12 mt-4">
