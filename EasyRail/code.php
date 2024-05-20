@@ -3,8 +3,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
 }
 else {
+//Connessione DB
 $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");}
 
+//Controlli su diversi valori inviati da un form della fase di inserimento nella pagina insert.php
     if(isset($_POST['inputnome']))
     {
         $email=$_POST['inputemail'];
@@ -77,6 +79,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             header('location: admin.php');
     }
 
+//Controlli su diversi valori inviati da un form della fase di modifica dati nella pagina edit.php
     if(isset($_POST['updateemail']))
     {
         $email=$_POST['updateemail'];
@@ -137,13 +140,12 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         $orarioarr=$_POST['inputharrivo'];
         $datapartenza=$POST['inputdatapartenza'];
 
-        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr', DataPartenza='$datapartenza' WHERE codbiglietto='$codbiglietto' and email='$email'";
+        $query = "UPDATE prenotazione SET codice='$codice', email='$email', codbiglietto='$codbiglietto',hpartenza='$orariopart' , harrivo ='$orarioarr', datapartenza='$datapartenza' WHERE codbiglietto='$codbiglietto' and email='$email'";
         $data = pg_query($dbconn,$query);
         header('location: shprenotazioni.php');
     }
 
-    //UPDATE PRENOTAZIONE AGGIUNGERE CODICE BIGLIETTO
-
+//Controlli su diversi valori inviati da un form quando viene cliccato il bottone per la cancellazione dei dati
     if(isset($_POST['deleteemail'])){
         $email=$_POST['deleteemail'];
         $query="DELETE FROM utente WHERE email='$email'";
@@ -180,8 +182,4 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         $result=pg_query($dbconn,$query);
         header('location: profilo.php');
     }
-
-    //DELETE PRENOTAZIONE AGGIUNGERE CODICE BIGLIETTO
-
-
 ?>

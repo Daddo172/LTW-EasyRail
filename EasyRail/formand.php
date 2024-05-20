@@ -316,6 +316,7 @@ echo'<td>NULL</td>';
 echo'<td>NULL</td>';
 echo'<td>NULL</td>';
 }}
+
 //Controllo se la data è quella odierna
 if($oggi==$andata){
 $queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%' ORDER BY hpartenza" ;

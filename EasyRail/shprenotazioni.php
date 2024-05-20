@@ -45,7 +45,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 				</div>
 				<?php }?>
 				<a class="active center" href="Admin.php">Area Admin</a>
-				<a href="logout.php">  Logout</a>
+				<a href="logout.php" style="margin-right: 1%;">  Logout</a>
 			</nav>
 		</header>
 
@@ -70,6 +70,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                 </thead>
                 <tbody>
                     <?php 
+                    //Controllo se la query ha dato dei valori
                 $check=pg_num_rows($result);
                     if($check >0){ 
                     while($row = pg_fetch_array($result)){?>
@@ -79,7 +80,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         <td><?php echo $row['codbiglietto']; ?></td>
                         <td><?php echo $row['hpartenza']; ?></td>
                         <td><?php echo $row['harrivo']; ?></td>
-                        <td><?php echo $row['DataPartenza']; ?></td>
+                        <td><?php echo $row['datapartenza']; ?></td>
                         <td><form style="margin-top: -15px;">
                             <a href="edit.php?codbiglietto=<?php echo $row['codbiglietto']; ?>"
                                 class="btn btn-success">Modifica dati</a>

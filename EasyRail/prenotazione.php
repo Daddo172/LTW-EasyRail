@@ -19,7 +19,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		}
 	</style>
 </head>
-<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+<main>
 		<!--Barra superiore-->
 		<header class="topnav">
 			<nav>
@@ -66,17 +66,16 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		if(isset($_SESSION['ok'])){
 		$q2="select * from prenotazione where email= $1 and codice = $2 and hpartenza=$3 and harrivo=$4 and datapartenza=$5";
         $result2=pg_query_params($dbconn, $q2, array($email, $_SESSION['codice'], $_SESSION['orariopartenza'],$_SESSION['orariodestinazione'],$_SESSION['datapartenza']));
+		if (pg_fetch_array($result2, null, PGSQL_ASSOC) && isset($_SESSION['ok'])){
+			echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI RITORNO</h1> <BR>';
+				echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
+				echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
+		}
 		}
 
         //controlla se il treno di andata si trova nel DB
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
                 echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI ANDATA</h1> <BR>';
-                    echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
-					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
-            }
-			//controlla se il treno di ritorno si trova nel DB
-			else if (pg_fetch_array($result2, null, PGSQL_ASSOC)){
-                echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI RITORNO</h1> <BR>';
                     echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
 					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
             }

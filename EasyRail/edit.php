@@ -19,7 +19,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     }
     </style>
 </head>
-<main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
+<main>
     <!--Barra superiore-->
     <header class="topnav">
         <nav>
@@ -52,7 +52,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     </header>
 
     <body>
-        <?php if(isset($_GET['email'])){ ?>
+
+        <?php
+        //Controllo con diversi IF che sia richiesta la modifica di un dato database attraverso una variabile(UTENTE)
+        if(isset($_GET['email'])){ ?>
             <DIV style="width:100%">
             <div class="table-responsive-lg" style="width:100%;">
                 <?php        
@@ -104,7 +107,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     ?>
             </div>
         </div>
-        <?php if(isset($_GET['partenza'])){ ?>
+        <?php 
+                //Controllo con diversi IF che sia richiesta la modifica di un dato database attraverso una variabile(VIAGGI)
+        if(isset($_GET['partenza'])){ ?>
             <DIV style="width:100%">
             <div class="card-body">
                 <?php        
@@ -122,7 +127,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <p>
                                 <td><label for="codice">codice </label></td>
                                 <td><input type="text" name="updatecodice" value="<?php echo $row['codice'];?>"
-                                        id="nome" readonly></td>
+                                        id="nome"  disabled></td>
                             </p>
                         </tr>
                         <tr>
@@ -156,13 +161,13 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         <tr>
                             <p>
                                 <td><label for="economy">Prezzo Economy</label></td>
-                                <td><input type="number" name="inputeconomy" id="economy" required></td>
+                                <td><input type="number" name="inputeconomy" id="economy" value="<?php echo $row['prezzoeconomy'];?>" required></td>
                             </p>
                         </tr>
                         <tr>
                             <p>
                                 <td><label for="prima">Prezzo Prima</label></td>
-                                <td><input type="number" name="inputprima" id="prima" required></td>
+                                <td><input type="number" name="inputprima" id="prima" value="<?php echo $row['prezzoprima'];?>" required></td>
                             </p>
                         </tr>
                     </table>
@@ -177,7 +182,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     ?>
             </div>
         </div>
-        <?php if(isset($_GET['codice']) && isset($_GET['fermata'])){ ?>
+        <?php 
+                //Controllo con diversi IF che sia richiesta la modifica di un dato database attraverso una variabile(TRENI)
+        if(isset($_GET['codice']) && isset($_GET['fermata'])){ ?>
             <DIV style="width:100%">
             <div class="card-body">
                 <?php        
@@ -292,7 +299,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                     ?>
             </div>
         </div>
-        <?php if(isset($_GET['codbiglietto'])){ ?>
+        <?php 
+        
+        //Controllo con diversi IF che sia richiesta la modifica di un dato database attraverso una variabile(PRENOTAZIONI)
+        if(isset($_GET['codbiglietto'])){ ?>
         <DIV style="width:100%">
             <div class="card-body">
                 <?php        
@@ -342,7 +352,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                         <tr>
                         <p>
                             <td><label for="datapartenza">Data Partenza</label></td>
-                            <td><input type="date" name="inputdatapartenza" value="<?php echo $row['DataPartenza']; ?>" id=datapartenza required></td>
+                            <td><input type="date" name="inputdatapartenza" value="<?php echo $row['datapartenza']; ?>" id=datapartenza required></td>
                         </p>
                     </tr>
                     </table>

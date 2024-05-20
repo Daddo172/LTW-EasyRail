@@ -8,7 +8,6 @@
 	<link href="stile.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image/x-icon">
-	<script src="funzioni.js"></script>
 </head>
 <body>
 <header class="topnav">
@@ -37,21 +36,21 @@
 				</div>
 				<?php }?>
 				<a class="center" href="HomePage.php">Home</a>
-				<a class="active center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
+				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
 	<main>
-		<form action="TrainStatus.php" method="post" onsubmit="return validaCT();" style="margin: 60px auto 60px auto; min-width: 200px;">
+		<form action="TrainStatus.php" method="post" style="margin: 60px auto 60px auto; min-width: 200px;">
 			<div class="formhead">Visualizza informazioni</div>
-			<table style="margin-top: 20px; margin-left: auto; margin-right: auto;">
+			<table style="margin: 20px 0 20px 0;margin-left: auto;
+    margin-right: auto;">
 				<tr>
 					<p>
 					<td><label for="ct">Codice treno </label></td>
-					<td><input type="number" id="ct" oninput="validaCT()" placeholder=" codice identificativo" required></td>
+					<td><input type="number" name="ct" id="ct" placeholder=" codice identificativo" required></td>
 					</p>
 				</tr>
 			</table>
-			<div id="messaggioCT" style="color: rgb(200, 0, 0); text-align: center;"></div>
 			<p>
 				<div style="text-align: center;">
 				<input class="button" type="submit" value="Cerca" id="cerca">

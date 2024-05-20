@@ -8,6 +8,7 @@ else {
 ?>
 <!DOCTYPE html>
 <html>
+    	<!-- Barra superiore-->
     <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +19,16 @@ else {
 </head>
     <body>
         <?php
+                //Controlla se la connessione con il database è attiva 
             if ($dbconn) {
+                //prende valore email dato dal form di registrazione
                 $email = $_POST['InputEmail'];
                 $q1="select * from utente where email= $1";
-                //metto tutto dentro mail
                 $result=pg_query_params($dbconn, $q1, array($email));
-                //controlla se esiste
+                //controlla se esiste nel DB utente
                 if ($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)) {?>
-                    <script >
+                    <!-- Messaggio di errore -->
+                    <script >    
                     Swal.fire({
   title: "<strong>Errore nella registrazione</strong>",
   icon: "error",
@@ -39,7 +42,7 @@ else {
                     </script>
                 <?php
                 }
-                //inserisce tutto in database
+                //Se la registrazione è corretta inserisce tutto in DB
                 else {
                     $nome = $_POST['InputName'];
                     $cognome = $_POST['InputSurname'];
@@ -49,6 +52,7 @@ else {
                         array($email, $nome, $cognome, $password));
                     if ($data) {
                         ?>
+                    	<!-- Messaggio di successo -->                      
                     <script >
                     Swal.fire({
   title: "<strong>L'accesso è stato effettuato correttamente</strong>",

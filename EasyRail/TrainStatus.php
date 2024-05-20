@@ -76,7 +76,7 @@
 				</div>
 				<?php }?>
 				<a class="center" href="HomePage.php">Home</a>
-				<a class="active center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
+				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
 	<main>
@@ -95,25 +95,26 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		$tuple = pg_fetch_assoc($result);
 		//Rimostra form ma stavolta con messaggio di errore
 		if ($tuple==false) {
-RETRY:	?>
-		<form action="TrainStatus.php" method="post" onsubmit="return validaCT();" style="margin-top: 60px auto 60px auto;">
-			<div class="formhead">Visualizza informazioni</div>
-			<table style="margin-top: 20px; margin-left: auto; margin-right: auto;">
+RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-top: 60px auto 60px auto;\">
+			<div class=\"formhead\">Visualizza informazioni</div>
+			<table style=\"margin: 20px 0 20px 0;\">
 				<tr>
 					<p>
-					<td><label for="ct">Codice treno </label></td>
-					<td><input type="number" name="ct" id="ct" placeholder=" codice identificativo" required></td>
+					<td><label for=\"ct\">Codice treno </label></td>
+					<td><input type=\"number\" name=\"ct\" id=\"ct\" placeholder=\" codice identificativo\" required></td>
 					</p>
 				</tr>
+				<tr>
+					<td></td>
+					<td style=\"color: rgb(200, 0, 0);\">Treno non trovato, inserisci un altro codice</td>
+				</tr>
 			</table>
-					<div style="color: rgb(200, 0, 0); text-align: center;">Treno non trovato, inserisci un altro codice</td>
 			<p>
-				<div style="text-align: center;">
-				<input class="button" type="submit" value="Cerca" id="cerca">
+				<div style=\"text-align: center;\">
+				<input class=\"button\" type=\"submit\" value=\"Cerca\" id=\"cerca\">
 				</div>
 			<p>
-		</form>
-		<?php
+		</form>";
 		} else {
 		//Header del risultato
 		echo "<div class=train-status >";

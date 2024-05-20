@@ -46,7 +46,7 @@
 				</div>
 				<?php }?>
 				<a class="active center" href="Admin.php">Area Admin</a>
-				<a href="logout.php">  Logout</a>
+				<a href="logout.php" style="margin-right: 1%;">  Logout</a>
 			</nav>
 		</header>
         <body>
@@ -67,6 +67,8 @@
                 
                     $query="SELECT * FROM utente";
                     $result=pg_query($query);
+                    //Controllo se la query ha dato dei valori
+
                     $check=pg_num_rows($result);
                     if($check >0){
                     while($row = pg_fetch_array($result))

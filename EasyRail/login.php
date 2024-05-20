@@ -15,12 +15,15 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
     <body>
         <?php
         session_start();
+        //Controlla se la connessione con il database è attiva 
             if ($dbconn) {
+                //effettua controllo se una data email si trova nel database utente
                 $email = $_POST['InputEmail'];
                 $q1 = "select * from utente where email= $1";
                 $result = pg_query_params($dbconn, $q1, array($email));
                 if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
                     ?>
+                    	<!-- Messaggio di errore -->
                     <script >
                     Swal.fire({
   title: "<strong>Errore nell'accesso</strong>",
@@ -34,6 +37,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 
                     </script> <?php                }
                 else {
+                    //effettua controllo se una data password sia correlata a una data email
                     $password =$_POST['InputPassword'];
                     $q2 = "select * from utente where email = $1 and paswd = $2";
                     $result = pg_query_params($dbconn, $q2, array($email,$password));
@@ -53,6 +57,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 
                     </script> <?php                     }
                     else {
+                        //Inizializzo le variabili globali dell'utente corrente
                         $nome = $tuple['nome'];
                         $_SESSION['name']=$nome;
                         $email= $tuple['email'];

@@ -45,11 +45,14 @@
 				</div>
 				<?php }?>
 				<a class="active center" href="Admin.php">Area Admin</a>
-				<a href="logout.php">  Logout</a>
+				<a href="logout.php" style="margin-right: 1%;">  Logout</a>
 			</nav>
 		</header>
         <main>
-            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
+        <!--Diversi form per inserire i dati nel Database-->
+        <table style="width:100%;">
+            <tr><td style="position:relative;top:0%;">
+            <form action="code.php" method="post" style="min-width:30%;">
                 <div class="formhead">INSERISCI DATI UTENTE</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -83,7 +86,8 @@
                 </div>
                 <p>
             </form>
-            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
+            </td><td>
+            <form action="code.php" method="post" style="margin-top: 60px auto 60px auto;min-width:30%;">
                 <div class="formhead">INSERISCI DATI PRENOTAZIONI</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -129,7 +133,9 @@
                 </div>
                 <p>
             </form>
-            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
+            </td></tr>
+            <tr><td>
+            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;">
                 <div class="formhead">INSERSICI DATI TRENI</div>
                 <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -217,7 +223,8 @@
                 </div>
                 <p>
             </form>
-            <form action="code.php" method="POST" style="margin-top: 60px auto 60px auto;min-width:30%;max-width:30%;">
+            </td><td>
+            <form action="code.php" method="POST" style="float:top;min-width:30%;">
                         <div class="formhead">INSERISCI DATI VIAGGI</div>
                         <table style="margin-left: auto;margin-right: auto;">
                     <tr>
@@ -268,6 +275,8 @@
                         </div>
                         <p>
                     </form>
+                    </td></tr>
+                    </table>
         </main>
     </body>
 </html>

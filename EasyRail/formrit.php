@@ -285,7 +285,7 @@ $_SESSION["stato"]='andata';
                                 <td> <?php 
                                        if(isset($_SESSION['name'])!=NULL){
                                            ?> <form style="margin-top: -10px;"><a class="button"
-                                            href="pagamento.php?prezzo=<?php echo $row2['prezzoeconomy'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                            href="pagamento.php?prezzo=<?php echo $row2['prezzoeconomy'];?>&orariopartenza=<?php echo $row2['hpartenza'];?>&orariodestinazione= <?php echo $row2['harrivo']; ?>&codice= <?php echo $row2['codice']; ?>">
                                             ECONOMY </a></form>
                                     <?php }      else{
                                                echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
@@ -293,7 +293,7 @@ $_SESSION["stato"]='andata';
                                 <td> <?php 
                                        if(isset($_SESSION['name'])!=NULL){
                                            ?> <form style="margin-top: -10px;"><a class="button"
-                                            href="pagamento.php?prezzo=<?php echo $row2['prezzoprima'];?>&orariopartenza=<?php echo $row['hpartenza'];?>&orariodestinazione= <?php echo $row['harrivo']; ?>&codice= <?php echo $row['codice']; ?>">
+                                            href="pagamento.php?prezzo=<?php echo $row2['prezzoprima'];?>&orariopartenza=<?php echo $row2['hpartenza'];?>&orariodestinazione= <?php echo $row2['harrivo']; ?>&codice= <?php echo $row2['codice']; ?>">
                                             PRIMA </a></form>
                                     <?php }      else{
                                                echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';

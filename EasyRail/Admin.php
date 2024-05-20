@@ -46,9 +46,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 				</div>
 				<?php }?>
 				<a class="active center" href="Admin.php">Area Admin</a>
-				<a href="logout.php">  Logout</a>
+				<a href="logout.php" style="margin-right: 1%;">  Logout</a>
 			</nav>
 		</header>
+		<!-- Diversi Form per l'inserimento e la visualizzazione dei dati -->
             <form style="min-width:30%;max-width:30%;">
                 <h1 style="text-align:center;" >INSERISCI DATI NEI DATABASE</h1>
 				<div style="text-align:center;">
