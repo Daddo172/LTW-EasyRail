@@ -104,6 +104,7 @@ input {
 .button {
 	color: white; font-weight: bold;
 	width: 160px;
+	display: inline-block;
 	border-radius: 10px;
 	background-color: rgb(16, 16, 104);
 	padding: 12px;

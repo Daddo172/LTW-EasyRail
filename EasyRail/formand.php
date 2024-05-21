@@ -187,7 +187,7 @@ if($check >0){
                                     ECONOMY </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoeconomy']; ?> </del> <?php
+                                    echo 'Prezzo: <br>';  ?><del style="color: red;"> <?Php echo $row2['prezzoeconomy']; ?> </del> <?php
                                     $scont= $row2['prezzoeconomy'] /100 *20;
                                     $prezzotempeco = $row2['prezzoeconomy'] - $scont ;
                                     echo $prezzotempeco;
@@ -196,7 +196,7 @@ if($check >0){
                                     }
                                     ?></form>
                             <?php }      else{
-                echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+                echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
             } ?> </td>
                         <td> <?php 
         if(isset($_SESSION['name'])!=NULL){
@@ -214,19 +214,14 @@ if($check >0){
                                         }
                                     ?></form>
                             <?php }      else{
-                echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+                echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
             } ?> </td>
                     </tr> <?php
         }
-        } else{
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-           }}
+        }else {
+            echo "Nessun treno disponibile per la tua ricerca.";
+        }}
+
 //Controllo se la data è quella odierna
 if($oggi==$andata){
 $queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
@@ -258,7 +253,7 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                                     }
                                     ?></form>
                             <?php }      else{
-                   echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+                   echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
                } ?> </td>
                         <td> <?php 
            if(isset($_SESSION['name'])!=NULL){
@@ -276,19 +271,13 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                                         }
                                     ?></form>
                             <?php }      else{
-                   echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+                   echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
                } ?> </td>
                     </tr> <?php
            }
-           }} else{
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-            echo'<td>NULL</td>';
-           }
+           }}else {
+            echo "<td>Nessun treno disponibile per la tua ricerca.</td>";
+        }
         }
 ?>
                 </tbody>
@@ -345,7 +334,7 @@ if(isset($_SESSION['name'])!=NULL){
                                     }
                                     ?></form>
                             <?php }      else{
-echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+echo '<form style="margin-top: -10px;"><a  class="button" style=\";\" href="Login.html"> Effettua il login per acquistare</a> </form>';
 } ?> </td>
                         <td> <?php 
 if(isset($_SESSION['name'])!=NULL){
@@ -363,7 +352,7 @@ if(isset($_SESSION['name'])!=NULL){
                                         }
                                     ?></form>
                             <?php }      else{
-echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
 } ?> </td>
                     </tr> <?php
 }
@@ -409,7 +398,7 @@ if(isset($_SESSION['name'])!=NULL){
                                     ?>
                                 </form>
                             <?php }      else{
-echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
 } ?> </td>
                         <td> <?php 
 if(isset($_SESSION['name'])!=NULL){
@@ -428,7 +417,7 @@ if(isset($_SESSION['name'])!=NULL){
                                     ?>
                                     </form>
                             <?php }      else{
-echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> LOGIN</a> </form>';
+echo '<form style="margin-top: -10px;"><a  class="button" href="Login.html"> Effettua il login per acquistare</a> </form>';
 } ?> </td>
                     </tr> <?php
 }

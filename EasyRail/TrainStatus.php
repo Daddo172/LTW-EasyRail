@@ -76,7 +76,7 @@
 				</div>
 				<?php }?>
 				<a class="center" href="HomePage.php">Home</a>
-				<a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
+				<a class="active center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
 			</nav>
 		</header>
 	<main>
