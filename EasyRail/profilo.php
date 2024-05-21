@@ -92,7 +92,12 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             <h1 style="text-align:center;">Treni Prenotati</h1>
             <div class="table-responsive-lg">
                 
-                <table  style="border-collapse:collapse;height:50px;"class="table table-bordered">
+                
+                        <?php  $query="SELECT * FROM prenotazione WHERE email='$email'";
+                        $result=pg_query($query); 
+                        $check=pg_num_rows($result);
+                        if($check >0){
+                            ?><table  style="border-collapse:collapse;height:50px;"class="table table-bordered">
                     <thead>
                         <tr padding:0>
                             <th>Codice</th>
@@ -105,11 +110,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <th>Cancella </th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <?php  $query="SELECT * FROM prenotazione WHERE email='$email'";
-                        $result=pg_query($query); 
-                        $check=pg_num_rows($result);
-                        if($check >0){
+                    <tbody > <?php
                 while ($row = pg_fetch_array($result)){ 
                     $codice= $row['codice'];
                     $email=$row['email'];
@@ -149,15 +150,9 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                 </form>
                             </td>
                         </tr>
-                        <?php  }}else{echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                                echo'<td>NULL</td>';
-                                                            }
+                        <?php  }}else{ ?>
+                                <h2 style="text-align:center;color:darkblue;">Non ci sono treni prenotati</h2>
+                                                           <?php }
 
 
                 ?>
