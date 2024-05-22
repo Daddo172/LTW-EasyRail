@@ -152,8 +152,8 @@ if($data == $andata)
         <div class="table-responsive-lg" style="border:5px outset;">
             <table class="table table-bordered">
                 <thead>
-                    <h1 style="text-align:center;color:black;">TRENI PRENOTABILI:</h1>
-
+                    <h2 style="text-align: center; color:black;">Seleziona treno di andata</h4>
+                    <div style="text-align: center; margin-bottom: 16px;">(prezzi a persona)</div>
                     <tr>
                         <th>Codice</th>
                         <th>Stazione di partenza</th>
@@ -178,8 +178,8 @@ if($check >0){
                         <td><?php echo $row['codice']; ?></td>
                         <td><?php echo $row['partenza']; ?></td>
                         <td><?php echo $row['destinazione']; ?></td>
-                        <td><?php echo $row['hpartenza']; ?></td>
-                        <td><?php echo $row['harrivo']; ?></td>
+                        <td><?php echo date("H:i", strtotime($row["hpartenza"])); ?></td>
+                        <td><?php echo date("H:i", strtotime($row["harrivo"])); ?></td>
                         <td> <?php 
         if(isset($_SESSION['name'])!=NULL){
             ?> <form style="margin-top: -10px;"><a class="button"
@@ -187,12 +187,12 @@ if($check >0){
                                     ECONOMY </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                    echo 'Prezzo: <br>';  ?><del style="color: red;"> <?Php echo $row['prezzoeconomy']; ?> </del> <?php
+                                    echo 'Prezzo: <br>';  ?><del style="color: red;"> <?Php echo $row['prezzoeconomy'] . "€"; ?> </del> <?php
                                     $scont= $row['prezzoeconomy'] /100 *20;
                                     $prezzotempeco = $row['prezzoeconomy'] - $scont ;
-                                    echo $prezzotempeco;
+                                    echo $prezzotempeco . "€";
                                     }else{
-                                        echo 'Prezzo: <br>'; echo $row['prezzoeconomy'];
+                                        echo 'Prezzo: <br>'; echo $row['prezzoeconomy'] . "€";
                                     }
                                     ?></form>
                             <?php }      else{
@@ -205,12 +205,12 @@ if($check >0){
                                     PRIMA </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row['prezzoprima']; ?> </del> <?php
+                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row['prezzoprima'] . "€"; ?> </del> <?php
                                         $sconto2= $row['prezzoprima'] /100 *20;
                                         $prezzotemppri = $row['prezzoprima'] - $sconto2 ;
-                                        echo $prezzotemppri;
+                                        echo $prezzotemppri . "€";
                                         }else{
-                                            echo 'Prezzo: <br>'; echo $row['prezzoprima'];
+                                            echo 'Prezzo: <br>'; echo $row['prezzoprima'] . "€";
                                         }
                                     ?></form>
                             <?php }      else{
@@ -235,8 +235,8 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                         <td><?php echo $row2['codice']; ?></td>
                         <td><?php echo $row2['partenza']; ?></td>
                         <td><?php echo $row2['destinazione']; ?></td>
-                        <td><?php echo $row2['hpartenza']; ?></td>
-                        <td><?php echo $row2['harrivo']; ?></td>
+                        <td><?php echo date("H:i", strtotime($row2["hpartenza"])); ?></td>
+                        <td><?php echo date("H:i", strtotime($row2["harrivo"])); ?></td>
                         <td> <?php 
            if(isset($_SESSION['name'])!=NULL){
                ?> <form style="margin-top: -10px;"><a class="button"
@@ -244,12 +244,12 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                                     ECONOMY </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoeconomy']; ?> </del> <?php
+                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoeconomy'] . "€"; ?> </del> <?php
                                     $scont= $row2['prezzoeconomy'] /100 *20;
                                     $prezzotempeco = $row2['prezzoeconomy'] - $scont ;
-                                    echo $prezzotempeco;
+                                    echo $prezzotempeco . "€";
                                     }else{
-                                        echo 'Prezzo: <br>'; echo $row2['prezzoeconomy'];
+                                        echo 'Prezzo: <br>'; echo $row2['prezzoeconomy'] . "€";
                                     }
                                     ?></form>
                             <?php }      else{
@@ -262,12 +262,12 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                                     PRIMA </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoprima']; ?> </del> <?php
+                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoprima'] . "€"; ?> </del> <?php
                                         $sconto2= $row2['prezzoprima'] /100 *20;
                                         $prezzotemppri = $row2['prezzoprima'] - $sconto2 ;
-                                        echo $prezzotemppri;
+                                        echo $prezzotemppri . "€";
                                         }else{
-                                            echo 'Prezzo: <br>'; echo $row2['prezzoprima'];
+                                            echo 'Prezzo: <br>'; echo $row2['prezzoprima'] . "€";
                                         }
                                     ?></form>
                             <?php }      else{
@@ -292,8 +292,8 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
             <table class="table table-bordered">
 
                 <thead>
-                    <h1 style="text-align:center;color:black;">TRENI PRENOTABILI:</h1>
-
+                <h2 style="text-align: center; color:black;">Seleziona treno di andata</h4>
+                <div style="text-align: center; margin-bottom: 16px;">(prezzi a persona)</div>
                     <tr>
                         <th>Codice</th>
                         <th>Stazione di partenza</th>
@@ -316,8 +316,8 @@ while ($row = pg_fetch_array($result)){
                         <td><?php echo $row['codice']; ?></td>
                         <td><?php echo $row['partenza']; ?></td>
                         <td><?php echo $row['destinazione']; ?></td>
-                        <td><?php echo $row['hpartenza']; ?></td>
-                        <td><?php echo $row['harrivo']; ?></td>
+                        <td><?php echo date("H:i", strtotime($row["hpartenza"])); ?></td>
+                        <td><?php echo date("H:i", strtotime($row["harrivo"])); ?></td>
                         <td> <?php 
 if(isset($_SESSION['name'])!=NULL){
 ?> <form style="margin-top: -10px;"><a class="button"
@@ -325,12 +325,12 @@ if(isset($_SESSION['name'])!=NULL){
                                     ECONOMY </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row['prezzoeconomy']; ?> </del> <?php
+                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row['prezzoeconomy'] . "€"; ?> </del> <?php
                                     $scont= $row['prezzoeconomy'] /100 *20;
                                     $prezzotempeco = $row['prezzoeconomy'] - $scont ;
-                                    echo $prezzotempeco;
+                                    echo $prezzotempeco . "€";
                                     }else{
-                                        echo 'Prezzo: <br>'; echo $row['prezzoeconomy'];
+                                        echo 'Prezzo: <br>'; echo $row['prezzoeconomy'] . "€";
                                     }
                                     ?></form>
                             <?php }      else{
@@ -343,12 +343,12 @@ if(isset($_SESSION['name'])!=NULL){
                                     PRIMA </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row['prezzoprima']; ?> </del> <?php
+                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row['prezzoprima'] . "€"; ?> </del> <?php
                                         $sconto2= $row['prezzoprima'] /100 *20;
                                         $prezzotemppri = $row['prezzoprima'] - $sconto2 ;
-                                        echo $prezzotemppri;
+                                        echo $prezzotemppri . "€";
                                         }else{
-                                            echo 'Prezzo: <br>'; echo $row['prezzoprima'];
+                                            echo 'Prezzo: <br>'; echo $row['prezzoprima'] . "€";
                                         }
                                     ?></form>
                             <?php }      else{
@@ -379,8 +379,8 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                         <td><?php echo $row2['codice']; ?></td>
                         <td><?php echo $row2['partenza']; ?></td>
                         <td><?php echo $row2['destinazione']; ?></td>
-                        <td><?php echo $row2['hpartenza']; ?></td>
-                        <td><?php echo $row2['harrivo']; ?></td>
+                        <td><?php echo date("H:i", strtotime($row2["hpartenza"])); ?></td>
+                        <td><?php echo date("H:i", strtotime($row2["harrivo"])); ?></td>
                         <td> <?php 
 if(isset($_SESSION['name'])!=NULL){
 ?> <form style="margin-top: -10px;"><a class="button"
@@ -388,12 +388,12 @@ if(isset($_SESSION['name'])!=NULL){
                                     ECONOMY </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoeconomy']; ?> </del> <?php
+                                    echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoeconomy'] . "€"; ?> </del> <?php
                                     $scont= $row2['prezzoeconomy'] /100 *20;
                                     $prezzotempeco = $row2['prezzoeconomy'] - $scont ;
-                                    echo $prezzotempeco;
+                                    echo $prezzotempeco . "€";
                                     }else{
-                                        echo 'Prezzo: <br>'; echo $row2['prezzoeconomy'];
+                                        echo 'Prezzo: <br>'; echo $row2['prezzoeconomy'] . "€";
                                     }
                                     ?>
                                 </form>
@@ -407,12 +407,12 @@ if(isset($_SESSION['name'])!=NULL){
                                     PRIMA </a>
                                     <br><br><?php
                                     if($sconto == 'LTW24'){
-                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoprima']; ?> </del> <?php
+                                        echo 'Prezzo: <br>';  ?><del style="color:red;"> <?Php echo $row2['prezzoprima'] . "€"; ?> </del> <?php
                                         $sconto2= $row2['prezzoprima'] /100 *20;
                                         $prezzotemppri = $row2['prezzoprima'] - $sconto2 ;
-                                        echo $prezzotemppri;
+                                        echo $prezzotemppri . "€";
                                         }else{
-                                            echo 'Prezzo: <br>'; echo $row2['prezzoprima'];
+                                            echo 'Prezzo: <br>'; echo $row2['prezzoprima'] . "€";
                                         }
                                     ?>
                                     </form>

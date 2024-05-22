@@ -9,7 +9,7 @@
 	<link href="stile.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 	<link rel="icon" href="pictures/LogoEasyRail.jpg" type="image">
-	<script>src="funzioni.js"</script>
+	<script src="funzioni.js"></script>
 	<style>
 		th {
 			font-weight: 600;
@@ -81,7 +81,8 @@
 		</header>
 	<main>
 	<?php
-$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");	if ($_POST==null&&$_GET==NULL) goto RETRY;
+	$dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=postgres port=5432");
+	if ($_POST==null && $_GET==NULL) goto RETRY;
 	else {
 		if($_POST==null){
 			$ct=$_GET["codice"];
@@ -95,26 +96,24 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		$tuple = pg_fetch_assoc($result);
 		//Rimostra form ma stavolta con messaggio di errore
 		if ($tuple==false) {
-RETRY:			echo "<form action=\"TrainStatus.php\" method=\"post\" style=\"margin-top: 60px auto 60px auto;\">
-			<div class=\"formhead\">Visualizza informazioni</div>
-			<table style=\"margin: 20px 0 20px 0;\">
-				<tr>
+RETRY:?>	<form action="TrainStatus.php" method="post" onsubmit="return validaCT()" style="margin-top: 60px auto 60px auto;">
+				<div class="formhead">Visualizza informazioni</div>
+				<table style="margin: 20px auto 20px auto;\">
+					<tr>
+						<p>
+						<td><label for="ct">Codice treno </label></td>
+						<td><input type="number" id="ct" oninput="validaCT()" placeholder=" codice identificativo" required></td>
+						</p>
+					</tr>
+					<tr><td></td><td><div id="messaggioCT" style="color: rgb(200, 0, 0);">Treno non trovato, inserisci un altro codice.</div></td></tr>
+				</table>
 					<p>
-					<td><label for=\"ct\">Codice treno </label></td>
-					<td><input type=\"number\" name=\"ct\" id=\"ct\" placeholder=\" codice identificativo\" required></td>
-					</p>
-				</tr>
-				<tr>
-					<td></td>
-					<td style=\"color: rgb(200, 0, 0);\">Treno non trovato, inserisci un altro codice</td>
-				</tr>
-			</table>
-			<p>
-				<div style=\"text-align: center;\">
-				<input class=\"button\" type=\"submit\" value=\"Cerca\" id=\"cerca\">
-				</div>
-			<p>
-		</form>";
+						<div style="text-align: center;">
+						<input class="button" type="submit" value="Cerca" id="cerca">
+						</div>
+					<p>
+		</form>
+		<?php
 		} else {
 		//Header del risultato
 		echo "<div class=train-status >";

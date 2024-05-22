@@ -145,7 +145,7 @@ function cancellaErr() {
 
 //Funzione per controllare la validità del codice treno
 function validaCT() {
-	var re = new RegExp("[1-9][0-9]*");
+	var re = new RegExp("^[1-9][0-9]{2,5}$");
 	if (!re.test(document.getElementById("ct").value)) {
 		document.getElementById("messaggioCT").innerHTML = "inserire un codice valido";
 		return false;

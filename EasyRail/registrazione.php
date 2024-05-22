@@ -55,7 +55,7 @@ else {
                     	<!-- Messaggio di successo -->                      
                     <script >
                     Swal.fire({
-  title: "<strong>L'accesso è stato effettuato correttamente</strong>",
+  title: "<strong>La registrazione è stata effettuata correttamente</strong>",
   icon: "success",
   html: `<b>Effettua il login per iniziare ad utilizzare il sito!</b>`,
   focusConfirm: false,

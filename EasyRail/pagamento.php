@@ -18,11 +18,15 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         margin: 0;
         width: 240px;
     }
+    main {
+        background: url(pictures/back3.jpg) space;
+        background-size: cover;
+        background-position: top;
+	}
     </style>
 </head>
 
 <body>
-    <main style="background: url(pictures/back3.jpg) no-repeat; background-size: cover; background-position: center;">
         <!--Barra superiore-->
         <header class="topnav">
             <nav>
@@ -52,9 +56,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                 <a class="center" href="HomePage.php">Home</a>
                 <a class="center" style="margin-right:1%;" href="TrainStato.php">Stato treno</a>
             </nav>
-        </header>
-        <main>
-            
+        </header> 
             <?php //CARICAMENTO CON ROTELLINA
 //Prendo tutti i dati utili dal form/imposto le diverse variabili di stato
                 $email = $_SESSION['email'];
@@ -116,7 +118,8 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
             //Div con informazioni sulla prenotazione corrente e 
             //form con inserimento dati del metodo di pagamento
             ?>  
-        <div class="container">
+    <main>
+        <div class="container" style="width:100%; margin: 15px auto 50px auto;">
         <div class="row" style="width:100%;">
             <div class="col-12 mt-4">
                 <div class="card p-3">
@@ -148,7 +151,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                                             $prezzo= $prezzo - $sconto;
                                             }
                                         $prezzo=$prezzo * $pass; ?>
-                                        <span class="c-green">€ <?php echo $prezzo ?></span>
+                                        <span class="c-green">€ <?php echo "$prezzo,00" ?></span>
                                     </p>
                                     <?php
                                     if(isset($_SESSION['temp'])){
@@ -213,7 +216,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 
                                             <div class="col-6">
                                                 <div class="form__div">
-                                                    <label for="cvv" class="form__label">CVV</label>
+                                                    <label for="cvc" class="form__label">CVC</label>
                                                     <input id="cvc" oninput="validaCVC()" type="number" class="form-control" placeholder="codice di 3 o 4 cifre" required>
                                                     <div id="messaggioCVC" style="color: rgb(200, 0, 0);"></div>
                                                 </div>
