@@ -18,6 +18,20 @@ unset($_SESSION['temp']); ?>
         margin: 0;
         width: 240px;
     }
+    .button {
+        text-align: center;
+        color: white; font-weight: bold;
+        display: inline;
+        border-radius: 10px;
+        background-color: rgb(16, 16, 104);
+        padding: 12px;
+    }
+    form {
+	    width: 120px;
+    }
+    th {
+        text-align: center;
+    }
     </style>
 </head>
 <main>

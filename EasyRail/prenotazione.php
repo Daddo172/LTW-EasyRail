@@ -17,6 +17,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 			margin: 0;
 			width: 240px;
 		}
+		img {
+			height: 120px;
+			margin: -25px 0 0 0%;
+		}
 	</style>
 </head>
 <main>
@@ -51,7 +55,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 			</nav>
 		</header>
 		<body>
-    <form>
+    <form style="padding: 25px; min-width: 545px;">
 <?php
 //Prendo tutti i dati utili dalle diverse variabili di sessioni
 //imposto le diverse variabili di stato
@@ -69,8 +73,11 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		if (pg_fetch_array($result2, null, PGSQL_ASSOC) && isset($_SESSION['ok'])){
 			$_SESSION['ritornoprenotato']= 'test';
 			echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI RITORNO</h1> <BR>';
-				echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></div>';
-				echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
+			echo "<table style=\"width: 100%;\"><tr>";	
+			echo '<td style="text-align:center;"><div style="float:left;"><a style="text-align:center;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></td>';
+            echo '<td style="text-align:center;"><img src="pictures/no-ticket.jpg" href="HomePage.php"></img></td>';
+			echo '<td style="text-align:right;"><a style="text-align:center;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></td>';
+			echo "</table></tr>";	
 		}else{
 		$_SESSION['ritornoprenotato']='falso';}
 		}else{$_SESSION['ritornoprenotato'] = 'falso';}
@@ -78,9 +85,12 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
 				$_SESSION['andataprenotato']='test';
                 echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI ANDATA</h1> <BR>';
-                    echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></div>';
-					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
-            }else{
+			echo "<table style=\"width: 100%;\"><tr>";	
+			echo '<td><div style="float:left;"><a style="text-align:center;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></td>';
+            echo '<td style="text-align:center;"><img src="pictures/no-ticket.jpg" href="HomePage.php"></img></td>';
+			echo '<td style="text-align:right;"><a style="text-align:center;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></td>';
+			echo "</table></tr>";	
+		}else{
 		$_SESSION['andataprenotato']='falso';}
         if ($_SESSION['ritornoprenotato'] != 'test' && $_SESSION['andataprenotato'] != 'test'){
 		$query1="select * from prenotazione";
@@ -104,8 +114,11 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		}
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);
-			echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></div>';
-			echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
+			echo "<table style=\"width: 100%;\"><tr>";	
+			echo '<td><div style="text-align:center;float:left;"><a style="text-align:center;" class="button" href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></td>';
+            echo '<td style="text-align:center;"><img src="pictures/acquisto.jpg" href="HomePage.php"></img></td>';
+			echo '<td style="text-align:right;"><a style="text-align:center;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></td>';
+			echo "</table></tr>";	
         }else{
             echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
         }

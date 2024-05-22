@@ -19,9 +19,19 @@ unset($_SESSION['ok']); ?>
         margin: 0;
         width: 240px;
     }
-
-    td {
-        padding: 15px;
+    .button {
+        text-align: center;
+        color: white; font-weight: bold;
+        display: inline;
+        border-radius: 10px;
+        background-color: rgb(16, 16, 104);
+        padding: 12px;
+    }
+    form {
+	    width: 120px;
+    }
+    th {
+        text-align: center;
     }
     </style>
 </head>
@@ -148,9 +158,8 @@ $oggi= date("Y-m-d");
 //Controllo se la data è quella dei potenziamenti infrastrutturali
 if($data == $andata)
 {?>
-<div class="form-2" style="max-width:60%;width:auto;margin-left: auto;margin-right: auto;">
-        <div class="table-responsive-lg" style="border:5px outset;">
-    <table class="table table-bordered">
+<div class="form-2" style="width:100%; margin-left: auto; margin-right: auto;">
+    <table style="width:50%;margin-left: auto;margin-right: auto;">
                 <thead>
                     <h2 style="text-align: center; color:black;">Seleziona treno di andata</h4>
                     <div style="text-align: center; margin-bottom: 16px;">(prezzi a persona)</div>
@@ -292,9 +301,7 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
         }
 ?>
                 </tbody>
-            </table>
-        </div>
-    </div> <?php
+     <?php
 //Controllo se la data è diversa da quella dei potenziamenti infrastrutturali
 }else{
 ?> <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
@@ -444,8 +451,6 @@ echo'<td>NULL</td>';
 }}}?>
                 </tbody>
             </table>
-        </div>
-    </div>
 </main>
 </body>
 
