@@ -82,10 +82,17 @@
                                 <a href="edit.php?email=<?php echo $row['email']; ?>" class="btn btn-success">Modifica dati</a>
                     </form></td>
                             <td> 
+                                <?php if( $row['email'] != 'admin@admin.it'){ ?>
                                 <form style="margin-top: -15px;" action="code.php" method="POST">
                                     <input type="hidden" name=deleteemail value="<?php echo $row['email']; ?>">
                                     <button type="submit" class="btn btn-danger">Cancella dati</button>
                                 </form>
+                               <?php }else{ ?>
+                                <form style="margin-top: -15px;" action="" method="POST">
+                                <input type="hidden" name=deleteemail value="<?php echo $row['email']; ?>">
+                                <button type="submit" class="btn btn-danger" disabled>Cancella dati</button>
+                            </form> <?Php
+                               } ?>
                             </td>
                         </tr><?php
                     }}else{ ?>

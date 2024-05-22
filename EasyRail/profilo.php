@@ -129,10 +129,10 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <td><?php echo $row2['hpartenza']; ?></td>
                             <td><?php echo $row2['harrivo']; ?></td>
                             <td><?php echo $row['datapartenza']; ?></td>
-                            <?php if($oggi != $datapartenza){ ?> <td><form style="margin-top: 0px;" ><a class="button" style="pointer-events: none;cursor: default;opacity:70%;" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
+                            <?php if($oggi != $datapartenza){ ?> <td><form style="margin-top: 0px;" ><a class="button"style="width:100px;pointer-events: none;cursor: default;opacity:70%;" href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
                                     value="Stato"> Stato </a></form></td> <?php
                             }else{ ?>
-                                <td><form style="margin-top: 0px;"><a class="button"  href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
+                                <td><form style="margin-top: 0px;"><a class="button" style="width:100px;text-align:center;"  href="trainstatus.php?codice=<?php echo $row['codice']; ?>"
                                     value="Stato"> Stato </a></form></td>
                             <?php
                             } ?>

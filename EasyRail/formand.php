@@ -148,12 +148,21 @@ $oggi= date("Y-m-d");
 //Controllo se la data è quella dei potenziamenti infrastrutturali
 if($data == $andata)
 {?>
-    <div class="form-2" style="width:auto;margin-left: auto;margin-right: auto;">
+<div class="form-2" style="max-width:60%;width:auto;margin-left: auto;margin-right: auto;">
         <div class="table-responsive-lg" style="border:5px outset;">
-            <table class="table table-bordered">
+    <table class="table table-bordered">
                 <thead>
                     <h2 style="text-align: center; color:black;">Seleziona treno di andata</h4>
                     <div style="text-align: center; margin-bottom: 16px;">(prezzi a persona)</div>
+                    <?php
+
+//Controllo se la data è diversa da quella odierna
+if($oggi != $andata){
+$queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
+$result=pg_query($queryand);
+$check=pg_num_rows($result);
+if($check >0){ ?>
+            
                     <tr>
                         <th>Codice</th>
                         <th>Stazione di partenza</th>
@@ -163,15 +172,7 @@ if($data == $andata)
                         <th colspan="2" class="text-center">Prenotazione</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-
-//Controllo se la data è diversa da quella odierna
-if($oggi != $andata){
-$queryand ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
-$result=pg_query($queryand);
-$check=pg_num_rows($result);
-if($check >0){
+                <tbody> <?php
     while ($row = pg_fetch_array($result)){
           ?>
                     <tr>
@@ -219,7 +220,7 @@ if($check >0){
                     </tr> <?php
         }
         }else {
-            echo "Nessun treno disponibile per la tua ricerca.";
+            echo "<h4 style=\"text-align:center;\">Nessun treno disponibile per la tua ricerca.</h4>";
         }}
 
 //Controllo se la data è quella odierna
@@ -227,7 +228,17 @@ if($oggi==$andata){
 $queryand2 ="select * from treno where partenza like '%$partenza%' and destinazione like '%$arrivo%'  and codice >= 1050 and codice <=1063 ORDER BY hpartenza";
 $result2=pg_query($queryand2) or die ('Query failed: ' . pg_last_error()); 
 $check2=pg_num_rows($result2);
-if($check2 >0){
+if($check2 >0){ ?>
+                    <tr>
+                        <th>Codice</th>
+                        <th>Stazione di partenza</th>
+                        <th>Stazione di arrivo</th>
+                        <th>Orario di partenza</th>
+                        <th>Orario di arrivo</th>
+                        <th colspan="2" class="text-center">Prenotazione</th>
+                    </tr>
+                </thead>
+                <tbody> <?php
 while ($row2 = pg_fetch_array($result2)){
 
 if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
@@ -381,9 +392,9 @@ if($row2['hpartenza']> $ora&&$oggi == $andata){ ?>
                         <td><?php echo $row2['destinazione']; ?></td>
                         <td><?php echo date("H:i", strtotime($row2["hpartenza"])); ?></td>
                         <td><?php echo date("H:i", strtotime($row2["harrivo"])); ?></td>
-                        <td> <?php 
+                        <td > <?php 
 if(isset($_SESSION['name'])!=NULL){
-?> <form style="margin-top: -10px;"><a class="button"
+?> <form style="margin-top: -10px;"><a class="button" 
                                     href="pagamento.php?prezzo=<?php echo $row2['prezzoeconomy'];?>&orariopartenza=<?php echo $row2['hpartenza'];?>&orariodestinazione= <?php echo $row2['harrivo']; ?>&codice= <?php echo $row2['codice']; ?>">
                                     ECONOMY </a>
                                     <br><br><?php

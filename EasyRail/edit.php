@@ -92,7 +92,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <p>
                                 <td><label for="email">Email </label></td>
                                 <td><input type="email" name="updateemail" value="<?php echo $row['email'];?>"
-                                        id="email" readonly></td>
+                                        id="email" disabled></td>
                             </p>
                         </tr>
                     </table>
@@ -200,7 +200,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <p>
                                 <td><label for="codice">codice</label></td>
                                 <td><input type="text" name="updatecodice2" value="<?php echo $row['codice'];?>"
-                                        id="nome" readonly></td>
+                                        id="nome" disabled></td>
                             </p>
                         </tr>
                         <tr>
@@ -332,7 +332,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
                             <p>
                                 <td><label for="codbiglietto">Codice Biglietto </label></td>
                                 <td><input type="number" name="updatecodbiglietto"
-                                        value="<?php echo $row['codbiglietto'];?>" id="codbiglietto" readonly></td>
+                                        value="<?php echo $row['codbiglietto'];?>" id="codbiglietto" disabled></td>
                             </p>
                         </tr>
                         <tr>

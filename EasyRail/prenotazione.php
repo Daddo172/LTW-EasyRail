@@ -69,7 +69,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		if (pg_fetch_array($result2, null, PGSQL_ASSOC) && isset($_SESSION['ok'])){
 			$_SESSION['ritornoprenotato']= 'test';
 			echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI RITORNO</h1> <BR>';
-				echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
+				echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></div>';
 				echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
 		}else{
 		$_SESSION['ritornoprenotato']='falso';}
@@ -78,7 +78,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
         if (pg_fetch_array($result, null, PGSQL_ASSOC)){
 				$_SESSION['andataprenotato']='test';
                 echo'<h1 style="text-align:center;">HAI GIÀ EFFETTUATO LA PRENOTAZIONE DEL TRENO DI ANDATA</h1> <BR>';
-                    echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
+                    echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></div>';
 					echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
             }else{
 		$_SESSION['andataprenotato']='falso';}
@@ -104,7 +104,7 @@ $dbconn = pg_connect("host=localhost dbname=EasyRail user=postgres password=post
 		}
         if($stato != 'ritorno'){
             unset($_SESSION['stato']);
-			echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna HomepAge </a></div>';
+			echo '<div><div style="text-align:left;float:left;"><a style="text-align:left;" class="button"  href="HomePage.php" value="Ritorno"> Torna alla Homepage </a></div>';
 			echo '<div style="text-align:right;"><a style="text-align:left;" class="button"  href="profilo.php" value="profilo"> Visualizza nel profilo</a></div></div>';
         }else{
             echo '<div style="text-align:center;"><a " class="button" href="formrit.php" value="Ritorno"> Prenota il ritorno </a></div>';
