@@ -29,6 +29,7 @@ PAGINA ADMIN CON MODIFICHE TRENI,UTENTI,PRENOTAZIONI,FERMATE
 
 **Stato Treno**
 ![image](https://github.com/Daddo172/LTW-EasyRail/assets/154556279/07ec4c24-b832-4bf0-94aa-97aa678b0dc2)
+(la casella dove si trova il treno ha un'animazione lampeggiante, anche il treno con un'animazione scorre da sinistra a destra tipo pac-man)
 
 **Pagamento**
 ![Screenshot 2024-05-28 153500](https://github.com/Daddo172/LTW-EasyRail/assets/154556279/27e84dbc-d186-4374-9634-1dbd97849159)
