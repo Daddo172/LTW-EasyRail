@@ -41,7 +41,7 @@
 			</nav>
 		</header>
 	<main>
-		<form action="TrainStatus.php" method="post" onsubmit="return validaCT()" style="margin: 60px auto 60px auto;">
+		<form action="TrainStatus.php" method="post" onsubmit="return validaCT();" style="margin: 60px auto 60px auto;">
 			<div class="formhead">Visualizza informazioni</div>
 			<table style="margin: 20px auto 20px auto">
 				<tr>

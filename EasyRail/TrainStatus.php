@@ -94,9 +94,10 @@
 		$query = "SELECT * from trenoCompleto where codice=$1";
 		$result = pg_query_params($dbconn, $query, array($ct));
 		$tuple = pg_fetch_assoc($result);
-		//Rimostra form ma stavolta con messaggio di errore
+		
+		//Se il codice non è valido rimostra form ma stavolta con messaggio di errore
 		if ($tuple==false) {
-RETRY:?>	<form action="TrainStatus.php" method="post" onsubmit="return validaCT()" style="margin-top: 60px auto 60px auto;">
+RETRY:?>	<form action="TrainStatus.php" method="post" onsubmit="return validaCT();" style="margin-top: 60px auto 60px auto;">
 				<div class="formhead">Visualizza informazioni</div>
 				<table style="margin: 20px auto 20px auto;\">
 					<tr>
@@ -112,7 +113,7 @@ RETRY:?>	<form action="TrainStatus.php" method="post" onsubmit="return validaCT(
 						<input class="button" type="submit" value="Cerca" id="cerca">
 						</div>
 					<p>
-		</form>
+			</form>
 		<?php
 		} else {
 		//Header del risultato
@@ -156,7 +157,7 @@ RETRY:?>	<form action="TrainStatus.php" method="post" onsubmit="return validaCT(
 			}
 		}
 		echo "</tr>";
-		/*Non sono riuscito a distanziare le righe in altro modo mi dispiace*/
+		/*Distanziamento righe*/
 		echo "<tr><td></td></tr>";
 		echo "<tr><td></td></tr>";
 		echo "<tr><td></td></tr>";
@@ -173,7 +174,7 @@ RETRY:?>	<form action="TrainStatus.php" method="post" onsubmit="return validaCT(
 			}
 		}
 		echo "</tr>";
-		/*Hehehehehe pt.2*/
+		/*Distanziamento righe*/
 		echo "<tr><td></td></tr>";
 		echo "<tr><td></td></tr>";
 		echo "<tr><td></td></tr>";
